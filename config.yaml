@@ -1,0 +1,260 @@
+baseURL: "https://sharnko.net"
+languageCode: "en-us"
+title: "sharnko.net"
+theme: hugo-profile
+
+Paginate: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+Menus:
+  main:
+    - identifier: gallery
+      name: Gallery
+      title: Blog posts
+      url: /gallery
+      weight: 2
+
+    # Dropdown menu
+    - identifier: dropdown
+      title: Example dropdown menu
+      name: Dropdown
+      weight: 3
+    - identifier: dropdown1
+      title: example dropdown 1
+      name: example 1
+      url: /#
+      parent: dropdown
+      weight: 1
+    - identifier: dropdown2
+      title: example dropdown 2
+      name: example 2
+      url: /#
+      parent: dropdown
+      weight: 2
+
+params:
+  title: "sharnko.net"
+  description: Text about my cool site
+  # staticPath: ""  # The path to serve the static files from
+  # favicon: ".png"
+
+  # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
+  # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
+  # Note the lack of "" in true, it should be of boolean type.
+  useBootstrapCDN: false
+
+  # Whether the fade animations on the home page will be enabled
+  animate: true
+
+  theme:
+    disableThemeToggle: true
+    defaultTheme: "dark"
+
+  # font:
+  #   fontSize: 1.5rem # default: 1rem
+  #   fontWeight: 500 # default: 400
+  #   lineHeight: 1 # default: 1.5
+  #   textAlign: right # default: left
+
+  # color preference
+  # color:
+  #   textColor:
+  #   secondaryTextColor:
+  #   backgroundColor:
+  #   secondaryBackgroundColor:
+  #   primaryColor:
+  #   secondaryColor:
+
+  #   darkmode:
+  #     textColor:
+  #     secondaryTextColor:
+  #     backgroundColor:
+  #     secondaryBackgroundColor:
+  #     primaryColor:
+  #     secondaryColor:
+
+  # If you want to customize the menu, you can change it here
+  # navbar:
+  #   align: mx-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
+  #   brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
+  #   brandName: "Profile" # Brand name for the brand | default is the title variable
+
+    menus:
+      disableAbout: true
+      disableExperience: true
+      disableEducation: true
+      disableProjects: true
+      disableAchievements: true
+      disableContact: true
+
+  # Hero
+  hero:
+    enable: true
+    title: "Sharn-Konet Reitsma"
+    subtitle: "Data Scientist"
+    content: |-
+      I want to make software and visualisations that surprise people.
+
+      Whether it's a Machine Learning system that gives a surprisingly good prediction, or a dashboard that uncovers a new perspective,
+      I want people to question their understanding of the problems around us.
+
+      I'm an Bachelor of Engineering (Hons) graduate from the University of Auckland specialising in Engineering Science.
+      My studies focused on software development, optimisation, and mathematical modelling of real-world systems.
+    image: /images/me.jpeg
+    button:
+      enable: true
+      name: "Download Resume"
+      url: "#"
+      download: true
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-github
+          url: https://github.com/Sharn-konet
+        - icon: fab fa-linkedin
+          url: https://www.linkedin.com/in/sharn-konet-reitsma/
+  # About
+  about:
+    enable: true
+    title: "Who am I?"
+    image: /images/guy.webp
+    content: |-
+
+      As a kid, I was always interested in mathematics and everything tech.
+      I pursued that interest as far as I could, and it guided me toward an education in Engineering Science at the University of Auckland.
+
+      Along the way, I discovered photography and cinematography as outlets for creativity. Throughout my secondary education I took part
+      in many competitions.
+    skills:
+      enable: true
+      title: "Here are a few technologies I've been working with recently:"
+      items:
+        - "Python"
+        - "Julia"
+        - "R"
+        - "Matlab"
+
+  # Experience
+  experience:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - job: "Data Science Graduate"
+        company: "Xero"
+        companyUrl: "https://xero.com"
+        date: "Feb 2022 - present"
+        featuredLink:
+          enable: true
+          name: "View the project"
+          url: "https://example.com"
+        content: ""
+
+      - job: "AI Software Developer"
+        company: "Spark 64"
+        companyUrl: "https://www.elementx.ai/"
+        date: "Dec 2020 - Mar 2021"
+        featuredLink:
+          enable: true
+          url: "https://example.com"
+        info:
+          enable: true
+          content: I worked as a software developer over the summer.
+        content: ""
+
+      - job: "Research Assistant"
+        company: "University of Auckland"
+        companyUrl: "https://www.auckland.ac.nz/"
+        date: "Dec 2020 - Mar 2021"
+        featuredLink:
+          enable: true
+          url: "https://example.com"
+        info:
+          enable: true
+          content: Part-time work, intermittent over multiple semesters.
+        content:
+
+      - job: "Data Scientist Intern"
+        company: "Harmonic Analytics"
+        companyUrl: "https://example.com"
+        date: "Dec 2019 - Mar 2020"
+        info:
+          enable: false
+        featuredLink:
+          enable: true
+          url: "https://example.com"
+        content: ""
+
+  # Education
+  education:
+    enable: true
+    # title: "Custom Name"
+    # index: true
+    items:
+      - title: "Bachelor of Engineering (Honours)"
+        school:
+          name: "University of Auckland"
+          url: "https://example.org"
+        date: "2018 - 2021"
+        GPA: "8.8 out of 9"
+        content: ""
+        featuredLink:
+          enable: true
+          name: "Academic Record"
+          url: "https://example.com"
+
+  # Achievements
+  achievements:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - title: Dean's Honour's List Part I-IV
+        content: In each year of my tertiary study, I achieved a GPA of at least 8.5.
+      - title: First in Course - ENGSCI 255
+        content: ENGSCI 255 is the first year course on optimisation, covering linear programming, data analytics, and queues.
+
+  # projects
+  projects:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - title: Flo
+        content: A simulation tool for visualising stunning, 3 dimensional differential equations
+        image: /images/projects/lorenz-attractor.gif
+        featured:
+          name: Demo
+          link: https://sharnko.net/flo
+        badges:
+          - "Julia"
+          - "Plotly"
+          - "Python"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/Sharn-konet/Flo
+
+      - title: Facebook Messenger Insights
+        content: A dashboard which breaks down your messaging history into insights.
+        image: /images/projects/plotly-dash-example.gif
+        featured:
+          name: Demo
+          link: https://sharnko.net/Messenger
+        badges:
+          - "Plotly"
+          - "Python"
+          - "Julia"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/Sharn-konet/messenger-analysis
+
+  #Contact
+  contact:
+    enable: true
+    title: "---"
+    content: If you want to reach out for anything, don't hesitate.
+    email: sharnkonet.reitsma@gmail.com
+    btnName: Send me an email
+
+  footer:
+    recentPosts: false
