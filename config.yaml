@@ -117,25 +117,25 @@ params:
         - icon: fab fa-linkedin
           url: https://www.linkedin.com/in/sharn-konet-reitsma/
   # About
-  about:
-    enable: true
-    title: "Who am I?"
-    image: /images/guy.webp
-    content: |-
+  # about:
+  #   enable: true
+  #   title: "Who am I?"
+  #   image: /images/guy.webp
+  #   content: |-
 
-      As a kid, I was always interested in mathematics and everything tech.
-      I pursued that interest as far as I could, and it guided me toward an education in Engineering Science at the University of Auckland.
+  #     As a kid, I was always interested in mathematics and everything tech.
+  #     I pursued that interest as far as I could, and it guided me toward an education in Engineering Science at the University of Auckland.
 
-      Along the way, I discovered photography and cinematography as outlets for creativity. Throughout my secondary education I took part
-      in many competitions.
-    skills:
-      enable: true
-      title: "Here are a few technologies I've been working with recently:"
-      items:
-        - "Python"
-        - "Julia"
-        - "R"
-        - "Matlab"
+  #     Along the way, I discovered photography and cinematography as outlets for creativity. Throughout my secondary education I took part
+  #     in many competitions.
+  #   skills:
+  #     enable: true
+  #     title: "Here are a few technologies I've been working with recently:"
+  #     items:
+  #       - "Python"
+  #       - "Julia"
+  #       - "R"
+  #       - "Matlab"
 
   # Experience
   experience:
