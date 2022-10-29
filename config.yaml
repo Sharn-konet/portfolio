@@ -198,7 +198,7 @@ params:
           name: "University of Auckland"
           url: "https://example.org"
         date: "2018 - 2021"
-        GPA: "8.8 out of 9"
+        GPA: "?.? out of 9"
         content: ""
         featuredLink:
           enable: true
