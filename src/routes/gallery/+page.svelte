@@ -1,7 +1,7 @@
-<body>
+<div id = 'content'>
     <h1>Gallery</h1>
     <p>Coming Soon!</p>
-</body>
+</div>
 
 <style>
 
@@ -13,7 +13,8 @@
         font-size: 4em
     }
 
-    body {
+    #content {
+        margin-top: 8em;
         text-align: center;
     }
 </style>
