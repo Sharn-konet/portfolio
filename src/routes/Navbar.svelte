@@ -1,5 +1,5 @@
 <script>
-    import Darkmode from "./Darkmode.svelte"
+	import Darkmode from "./Darkmode.svelte";
 </script>
 
 <nav>
@@ -16,9 +16,9 @@
                 <a href="/gallery">Photos</a>
             </li>
         </ul>
-        <Darkmode>
-            Toggle colour scheme
-        </Darkmode>
+
+        <Darkmode/>
+
     </div>
 </nav>
 

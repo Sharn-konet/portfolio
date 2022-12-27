@@ -1,12 +1,18 @@
-<script>
-    function toggle() {
-        window.document.body.classList.toggle('dark-mode')
+<script lang='ts'>
+    import {Switch} from '@svelteuidev/core'
+
+    let isDark: boolean = false;
+
+    $: if (typeof(window) !== 'undefined') {
+        if (isDark) {
+            window.document.body.classList.add('dark-mode')
+        } else {
+            window.document.body.classList.remove('dark-mode')
+        }
     }
 </script>
 
-<button on:click={toggle}>
-    <slot/>
-</button>
+<Switch on:change={() => {isDark = !isDark}} checked={isDark}/>
 
 <style>
     button {
