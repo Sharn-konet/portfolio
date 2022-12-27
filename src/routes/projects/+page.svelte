@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>sharnko.net | Projects</title>
+</svelte:head>
+
 <div id = 'content'>
     <h1>Projects</h1>
     <p>Coming Soon!</p>

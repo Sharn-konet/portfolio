@@ -1,7 +1,12 @@
+<svelte:head>
+    <title>sharnko.net | Gallery</title>
+</svelte:head>
+
 <div id = 'content'>
     <h1>Gallery</h1>
     <p>Coming Soon!</p>
 </div>
+
 
 <style>
 

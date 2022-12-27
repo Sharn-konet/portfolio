@@ -6,6 +6,10 @@
     import Projects from "./Projects.svelte"
 </script>
 
+<svelte:head>
+    <title>sharnko.net</title>
+</svelte:head>
+
 <Hero/>
 
 <Experience/>
