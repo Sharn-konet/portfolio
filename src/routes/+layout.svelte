@@ -14,11 +14,11 @@
 <style>
 
     :global(:root) {
-        --light-mode-text-color: #0084f5
-        --light-mode-background-color: #f2eee2
+        --light-mode-text-color: #0084f5;
+        --light-mode-background-color: #f2eee2;
 
-        --dark-mode-text-color: #e4e6eb
-        --dark-mode-background-color: #18191a
+        --dark-mode-text-color: #e4e6eb;
+        --dark-mode-background-color: #18191a;
     }
 
    :global(*) {
