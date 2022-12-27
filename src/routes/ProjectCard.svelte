@@ -25,7 +25,7 @@
 <style>
     #project-card {
         display: flex;
-        flex-direction: column;
+        flex-flow: column;
         box-shadow: 0px 0px 4em rgba(var(--light-mode-text-color), 0.30);
         border-radius: 25px;
     }
@@ -41,6 +41,7 @@
         padding: 0.5em 1.25em;
         border-radius: 0px 0px 25px 25px;
         background-color: #ffffff20;
+        flex: 1 1 auto;
     }
 
     #links {
