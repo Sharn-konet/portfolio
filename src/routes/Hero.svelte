@@ -13,7 +13,7 @@
 
     <div>
         <div>
-            <p> I want to make software that surprise people. </p>
+            <p> I want to make software that surprises people. </p>
 
             <p> Whether it's a Machine Learning system that gives a surprisingly good prediction, or a dashboard that uncovers a new perspective, I want people to question their understanding of the problems around us. </p>
 
@@ -78,7 +78,7 @@
             "title image"
             "description image"
         ;
-        margin: 10rem 30rem;
+        margin: 2.5% 10%;
     }
 
     #networking-buttons {
