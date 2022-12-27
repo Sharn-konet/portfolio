@@ -101,7 +101,7 @@
     }
 
     :global(body.dark-mode) img {
-        box-shadow: 0px 0px 40px #e7c493b7;
+        box-shadow: 0px 0px 40px rgb(var(--light-mode-text-color));
     }
 
     :global(body.dark-mode) #resume-button {

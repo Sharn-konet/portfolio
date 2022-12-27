@@ -27,18 +27,22 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: rgba(inherit, 0.8);
+        background-color: rgba(var(--light-mode-background-color), 0.95);
         border-radius: 6px;
         line-height: 1;
         text-align: left;
         box-sizing: border-box;
-        margin-top: 0.75em;
-        padding-top: 0.75em;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
         z-index: 1030;
 
         position: fixed;
         top: 0;
         width: 100%
+    }
+
+    :global(body.dark-mode) nav {
+        background-color: rgba(var(--dark-mode-background-color), 0.95)
     }
 
     a {

@@ -80,21 +80,21 @@
 
     :global(body) p,
     :global(body) li {
-        color: var(--light-mode-text-color)
+        color: rgb(var(--light-mode-text-color));
     }
 
     :global(body) h3,
     :global(body) h4 {
-        color: #0084f590
+        color: rgba(var(--light-mode-text-color), 0.70);
     }
 
     :global(body.dark-mode) p,
     :global(body.dark-mode) li {
-        color: #ffffff
+        color: rgb(var(--dark-mode-text-color));
     }
 
     :global(body.dark-mode) h3,
     :global(body.dark-mode) h4 {
-        color: #ffffff90
+        color: rgba(var(--dark-mode-text-color), 0.70);
     }
 </style>
