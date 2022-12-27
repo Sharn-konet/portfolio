@@ -71,7 +71,7 @@
 
     #hero {
         display: grid;
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 4fr 2fr;
         grid-template-rows: auto;
         align-items: center;
         grid-template-areas:
