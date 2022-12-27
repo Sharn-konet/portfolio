@@ -78,7 +78,7 @@
             "title image"
             "description image"
         ;
-        margin: 10% 10%;
+        margin: 10% 12.5%;
     }
 
     #networking-buttons {
@@ -93,7 +93,7 @@
 
     img {
         grid-area: image;
-        justify-self: center;
+        justify-self: right;
         border-radius: 50px;
         max-width: 75%;
         box-shadow: 0px 0px 60px #460465f4;
