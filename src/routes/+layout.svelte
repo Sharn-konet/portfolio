@@ -13,8 +13,12 @@
 
 <style>
 
-    :root {
+    :global(:root) {
         --light-mode-text-color: #0084f5
+        --light-mode-background-color: #f2eee2
+
+        --dark-mode-text-color: #e4e6eb
+        --dark-mode-background-color: #18191a
     }
 
    :global(*) {
@@ -23,7 +27,7 @@
     }
 
     :global(body) {
-        background-color: #f2eee2;
+        background-color: var(--light-mode-background-color);
         transition: background-color 0.3s;
         color: var(--light-mode-text-color);
         border-color: var(--light-mode-text-color);
@@ -34,8 +38,8 @@
     }
 
     :global(body.dark-mode) {
-        background-color: #18191a;
-        color: #e4e6eb;
+        background-color: var(--dark-mode-background-color);
+        color: var(--dark-mode-text-color);
     }
 
     #background {}
