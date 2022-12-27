@@ -1,15 +1,22 @@
 <script lang='ts'>
     import {Switch} from '@svelteuidev/core'
+    import { onMount } from 'svelte'
 
-    let isDark: boolean = false;
+    let isDark: boolean;
 
-    $: if (typeof(window) !== 'undefined') {
-        if (isDark) {
+
+    onMount(() => {
+        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    })
+
+    $: if (typeof isDark === 'undefined') {
+            //pass
+        } else if (isDark) {
             window.document.body.classList.add('dark-mode')
         } else {
             window.document.body.classList.remove('dark-mode')
         }
-    }
+
 </script>
 
 <Switch on:change={() => {isDark = !isDark}} checked={isDark}/>
