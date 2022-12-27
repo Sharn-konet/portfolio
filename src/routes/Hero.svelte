@@ -71,14 +71,14 @@
 
     #hero {
         display: grid;
-        grid-template-columns: 4fr 2fr;
+        grid-template-columns: 5fr 3fr;
         grid-template-rows: auto;
         align-items: center;
         grid-template-areas:
             "title image"
             "description image"
         ;
-        margin: 10% 12.5%;
+        margin: 10% 15%;
     }
 
     #networking-buttons {
