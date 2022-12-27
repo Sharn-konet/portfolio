@@ -17,10 +17,10 @@
 
             <p> Whether it's a Machine Learning system that gives a surprisingly good prediction, or a dashboard that uncovers a new perspective, I want people to question their understanding of the problems around us. </p>
 
-            <p> I'm a Bachelor of Engineering (Hons) graduate from the University of Auckland specialising in Engineering Science.My studies focused on software development, optimisation, and mathematical modelling of real-world systems. </p>
+            <p> I'm a Bachelor of Engineering (Hons) graduate from the University of Auckland specialising in Engineering Science. My studies focused on software development, optimisation, and mathematical modelling of real-world systems. </p>
         </div>
         <div id = networking-buttons>
-            <button id="resume-button">Download Resume</button>
+            <a href="sharnkonet_reitsma_CV.pdf" download="SharnKonetReitsma_CV"><button id="resume-button">Download Resume</button></a>
             <a href="https://github.com/Sharn-konet"><GithubBrand size = 2.5em/></a>
             <a href="https://www.linkedin.com/in/sharn-konet-reitsma/"><LinkedinBrand size = 2.5em/></a>
         </div>
