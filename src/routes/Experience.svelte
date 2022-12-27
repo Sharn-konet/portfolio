@@ -4,7 +4,7 @@
 
 <div id = 'experience'>
 <h1>Experience</h1>
-<Timeline active={4} lineWidth={4} override={{color: '#ffffff'}}>
+<Timeline active={4} lineWidth={4}>
     <Timeline.Item>
         <div class = title>
             <h3>Data Scientist Graduate at Xero</h3>
@@ -52,7 +52,7 @@
 
 <style>
     #experience {
-        margin: 10% 25%
+        margin: 10% 25%;
     }
 
     h1 {
@@ -62,6 +62,13 @@
 
     h3, h4 {
         margin-block-start: 0px;
+        font-size: 1.25em;
+        color: #ffffff89
+    }
+
+    p, li {
+        font-size: 1.25em;
+        margin-top: 0
     }
 
     .title {
@@ -72,16 +79,22 @@
     }
 
     :global(body) p,
-    :global(body) li,
-    :global(body) h3,
-    :global(body) h4 {
+    :global(body) li {
         color: var(--light-mode-text-color)
     }
 
+    :global(body) h3,
+    :global(body) h4 {
+        color: #0084f590
+    }
+
     :global(body.dark-mode) p,
-    :global(body.dark-mode) li,
+    :global(body.dark-mode) li {
+        color: #ffffff
+    }
+
     :global(body.dark-mode) h3,
     :global(body.dark-mode) h4 {
-        color: #ffffff
+        color: #ffffff90
     }
 </style>
