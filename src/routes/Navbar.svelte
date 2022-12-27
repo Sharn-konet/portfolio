@@ -27,13 +27,18 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: #987a5d00;
+        background-color: rgba(inherit, 0.8);
         border-radius: 6px;
         line-height: 1;
         text-align: left;
         box-sizing: border-box;
-        margin-top: 1.5em;
+        margin-top: 0.75em;
+        padding-top: 0.75em;
         z-index: 1030;
+
+        position: fixed;
+        top: 0;
+        width: 100%
     }
 
     a {

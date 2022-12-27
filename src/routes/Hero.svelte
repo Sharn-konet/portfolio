@@ -78,7 +78,7 @@
             "title image"
             "description image"
         ;
-        margin: 2.5% 10%;
+        margin: 10% 10%;
     }
 
     #networking-buttons {
