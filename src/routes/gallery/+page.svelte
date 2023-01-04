@@ -1,10 +1,21 @@
+<script lang='ts'>
+    const imageImports = import.meta.glob("/static/gallery/*", {"as": "url"});
+    let images = Object.keys(imageImports)
+    images = images.map(imageName => imageName.replace("/static", ""))
+</script>
+
+
 <svelte:head>
     <title>sharnko.net | Gallery</title>
 </svelte:head>
 
-<div id = 'content'>
+<div id = "content">
     <h1>Gallery</h1>
-    <p>Coming Soon!</p>
+    <div id="gallery">
+        {#each images as image}
+            <img src={image} alt = "An example of my photography" loading="lazy"/>
+        {/each}
+    </div>
 </div>
 
 
@@ -14,8 +25,23 @@
         font-size: 5em
     }
 
-    p {
-        font-size: 4em
+    #gallery {
+        line-height: 0;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 0px;
+        -moz-column-count: 3;
+        -moz-column-gap: 0px;
+        column-count: 5;
+        column-gap: 3px;
+    }
+    #gallery img {
+        width: 100% !important;
+        height: auto !important;
+    }
+    #gallery{
+        display:inline-block;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     #content {
