@@ -1,38 +1,23 @@
-# create-svelte
+# Sharn-Konet's Portfolio Website
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b9d15ba3-f4cd-47c3-9607-1fc547326b63/deploy-status)](https://app.netlify.com/sites/sharnkonet-portfolio/deploys)
 
-## Creating a project
+This is the source code for my portfolio website which I made using [Svelte](https://svelte.dev/) and [Netlify](https://www.netlify.com/).
 
-If you're seeing this, you've probably already done this step. Congrats!
+You can see it in action by going to [sharnko.net](https://sharnko.net)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+The website is made completely from scratch. Initially I started with Hugo and AWS Lightsail. I soon got frustrated with how little I could change the aesthetic of any given Hugo theme, and instead decided to learn how to do front-end development.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+I chose Svelte because of it's modularity. I could easily develop and focus on individual sections of my portfolio, then let Svelte combine them all together through compilation.
 
-## Developing
+I switched to Netlify because AWS Lightsail only caters for static websites, and I wanted to include some dynamic elements now that I was writing the code myself. Netlify seemed like the best alternative as it had a supported adapter maintained by the Svelte team. This meant I could create my website however I wanted locally, and it would translate directly to the website I'd see under my domain.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Projects
 
-```bash
-npm run dev
+The projects section of the website is meant to be a place to house all of my projects so that they are publically accessible. This means rather than having to run some source code, people can just interact with them online.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+At the moment, this section is empty while I figure out the best way to integrate compute resources into the website.
 
-## Building
+## Gallery
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+The gallery is a place for me to upload all of my photos so that if people are interested in my photography, I can direct them to one place.
