@@ -1,7 +1,7 @@
 <script lang='ts'>
-    const imageImports = import.meta.glob("/static/gallery/*", {"as": "url"});
+    const imageImports = import.meta.glob("/static/gallery/*/*.jpg");
     let images = Object.keys(imageImports)
-    images = images.map(imageName => imageName.replace("/static", ""))
+    images = images.map(imageName => imageName.replace("/static/", "").replace(".jpg", ""))
 </script>
 
 
@@ -13,7 +13,11 @@
     <h1>Gallery</h1>
     <div id="gallery">
         {#each images as image}
-            <img src={image} alt = "An example of my photography" loading="lazy"/>
+            <picture>
+                <source type="image/AVIF" srcset="{image}.avif"/>
+                <source type="image/webp" srcset="{image}.webp"/>
+                <img src="{image}.jpg" alt = "An example of my photography"/>
+            </picture>
         {/each}
     </div>
 </div>
@@ -31,14 +35,15 @@
         -webkit-column-gap: 0px;
         -moz-column-count: 3;
         -moz-column-gap: 0px;
-        column-count: 5;
+        column-count: 3;
         column-gap: 3px;
     }
     #gallery img {
         width: 100% !important;
         height: auto !important;
     }
-    #gallery{
+
+    #gallery {
         display:inline-block;
         margin-right: auto;
         margin-left: auto;
@@ -48,4 +53,5 @@
         margin-top: 8em;
         text-align: center;
     }
+
 </style>
