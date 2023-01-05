@@ -31,7 +31,7 @@
     {#if show}
     <div id="gallery">
             {#each images as image, i}
-                <picture transition:fade={{delay: (i%10)*100}}>
+                <picture in:fade={{delay: (i%10)*100}}>
                     <source type="image/AVIF" srcset="{image}.avif"/>
                     <source type="image/webp" srcset="{image}.webp"/>
                     <img src="{image}.jpg" alt = "An example of my photography" loading="eager"/>
