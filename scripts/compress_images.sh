@@ -4,7 +4,10 @@ set -e
 
 images=(static/gallery/*.*)
 
-for ((i=1; i<${#images[@]}; i++)); do
+echo $images
+
+for ((i=0; i<$((${#images[@]})); i++)); do
+
     file="${images[$i]}"
 
     filename="${file##*/}"
