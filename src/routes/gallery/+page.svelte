@@ -1,11 +1,20 @@
 <script lang='ts'>
+	import {blur, fade} from "svelte/transition";
+    import {onMount} from 'svelte'
+	import { CloudShowersHeavySolid } from "svelte-awesome-icons";
+
+    let show = false
+    onMount(() => {
+        show=true
+    })
+
     function shuffle(array: string[]) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
-    
+
     const imageImports = import.meta.glob("/static/gallery/*/*.jpg");
     let images = Object.keys(imageImports)
     images = images.map(imageName => imageName.replace("/static/", "").replace(".jpg", ""))
@@ -19,19 +28,27 @@
 
 <div id = "content">
     <h1>Gallery</h1>
+    {#if show}
     <div id="gallery">
-        {#each images as image}
-            <picture>
-                <source type="image/AVIF" srcset="{image}.avif"/>
-                <source type="image/webp" srcset="{image}.webp"/>
-                <img src="{image}.jpg" alt = "An example of my photography" loading="eager"/>
-            </picture>
-        {/each}
+            {#each images as image, i}
+                <picture transition:fade={{delay: (i%10)*100}}>
+                    <source type="image/AVIF" srcset="{image}.avif"/>
+                    <source type="image/webp" srcset="{image}.webp"/>
+                    <img src="{image}.jpg" alt = "An example of my photography" loading="eager"/>
+                </picture>
+            {/each}
     </div>
+    {/if}
 </div>
 
 
 <style>
+
+    :root {
+        --row-gap: 1.5em;
+        --column-gap: 1.5em;
+        --column-count: 3;
+    }
 
     h1 {
         font-size: 5em
@@ -39,22 +56,36 @@
 
     #gallery {
         line-height: 0;
-        -webkit-column-count: 3;
-        -webkit-column-gap: 0px;
-        -moz-column-count: 3;
-        -moz-column-gap: 0px;
-        column-count: 3;
-        column-gap: 3px;
+        -webkit-column-count: var(--column-count);
+        -webkit-column-gap: var(--column-gap);
+        -moz-column-count: var(--column-count);
+        -moz-column-gap: var(--column-gap);
+        column-count: var(--column-count);
+        column-gap: var(--column-gap);
     }
     #gallery img {
         width: 100% !important;
         height: auto !important;
+        margin-top: var(--row-gap);
+        border-radius: 20px;
+    }
+
+    #gallery img:hover {
+        transform: scale(1.025);
+        transition: all .3s ease-in-out;
+        cursor: pointer;
     }
 
     #gallery {
         display:inline-block;
-        margin-right: auto;
-        margin-left: auto;
+        padding-right: var(--row-gap);
+        padding-left: var(--row-gap);
+        padding-bottom: var(--row-gap);
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5em;
+        background-color: rgba(45, 45, 52, 0.39);
+        border-radius: 10px;
     }
 
     #content {
