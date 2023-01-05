@@ -1,7 +1,15 @@
 <script lang='ts'>
+    function shuffle(array: string[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    
     const imageImports = import.meta.glob("/static/gallery/*/*.jpg");
     let images = Object.keys(imageImports)
     images = images.map(imageName => imageName.replace("/static/", "").replace(".jpg", ""))
+    shuffle(images)
 </script>
 
 
@@ -16,7 +24,7 @@
             <picture>
                 <source type="image/AVIF" srcset="{image}.avif"/>
                 <source type="image/webp" srcset="{image}.webp"/>
-                <img src="{image}.jpg" alt = "An example of my photography"/>
+                <img src="{image}.jpg" alt = "An example of my photography" loading="eager"/>
             </picture>
         {/each}
     </div>
