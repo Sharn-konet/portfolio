@@ -14,6 +14,6 @@ for ((i=1; i<${#images[@]}; i++)); do
     mkdir $dir/$basename
 
     cwebp $file -q 50 -o $dir/$basename/$basename.webp
-    npx avif --input=${images[$i]} --output=$dir/$basename
+    npx avif --input=${images[$i]} --output=$dir/$basename --quality=25
     mv $file $dir/$basename/$filename
 done
