@@ -1,1 +1,2 @@
 static/gallery/* filter=lfs diff=lfs merge=lfs -text
+static/gallery/*/*.* filter=lfs diff=lfs merge=lfs -text
