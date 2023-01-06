@@ -20,17 +20,15 @@
 </svelte:head>
 
 {#if show}
-<div in:fade={{delay: 50}}>
-    <div in:fade={{delay:50, duration: 600}}>
-        <Hero/>
-    </div>
-
-    <div in:fade={{delay:300, duration: 600}}>
-        <Experience/>
-    </div>
-
-    <Education/>
-
-    <Projects/>
+<div in:fade={{delay:50, duration: 600}}>
+    <Hero/>
 </div>
+
+<div in:fade={{delay:300, duration: 600}}>
+    <Experience/>
+</div>
+
+<Education/>
+
+<Projects/>
 {/if}
