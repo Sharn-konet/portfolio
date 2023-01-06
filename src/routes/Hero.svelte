@@ -96,7 +96,7 @@
         justify-self: right;
         border-radius: 50px;
         max-width: 75%;
-        box-shadow: 0px 0px 60px var(--light-mode-box-shadow-color);
+        box-shadow: 0px 0px 80px rgba(var(--light-mode-box-shadow-color) );
         transition: box-shadow 1.5s;
     }
 

@@ -84,9 +84,13 @@
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 5em;
+        margin-bottom: 5%;
         border-radius: 10px;
-        transition: background-color 0.5s;
-        box-shadow: 0px 0px 120px var(--light-mode-box-shadow-color);
+        border-style: double;
+        border-width: 1em;
+        border-color: rgb(var(--light-mode-text-color));
+        transition: background-color 5s;
+        box-shadow: 0px 0px 200px rgba(var(--light-mode-box-shadow-color), 0.3);
         transition: box-shadow 1s;
     }
 
