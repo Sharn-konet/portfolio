@@ -1,6 +1,13 @@
 <script>
+    import {fade} from 'svelte/transition'
+    import {onMount} from 'svelte'
     import Navbar from './Navbar.svelte'
     import './global.css'
+
+    let show = false;
+    onMount(()=>
+        show=true
+    )
 </script>
 
 <svelte:head>
@@ -8,6 +15,10 @@
 </svelte:head>
 
 <div id="background">
-    <Navbar/>
+    {#if show}
+        <div in:fade={{duration: 400, delay:1000}}>
+            <Navbar/>
+        </div>
+    {/if}
     <slot/>
 </div>
