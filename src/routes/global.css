@@ -2,6 +2,8 @@
     --light-mode-text-color: 0, 132, 245;
     --light-mode-background-color: 242, 238, 226;
 
+    --light-mode-box-shadow-color: #46046524;
+
     --dark-mode-text-color: 228, 230, 235;
     --dark-mode-background-color: 24, 25, 26;
 }

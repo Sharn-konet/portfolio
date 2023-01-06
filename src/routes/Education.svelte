@@ -22,7 +22,7 @@
         border-radius: 15px;
         border-color: rgb(var(--light-mode-text-color));
         padding: 1em 3em;
-        box-shadow: 0px 0px 80px #46046524;
+        box-shadow: 0px 0px 80px var(--light-mode-box-shadow-color);
         transition: box-shadow 3s;
         margin-top: 3em;
     }
