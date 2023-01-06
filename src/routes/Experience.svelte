@@ -57,7 +57,8 @@
 
     h1 {
         text-align: center;
-        font-size: 3em
+        font-size: 3em;
+        margin-bottom: 1.5em;
     }
 
     h3, h4 {
