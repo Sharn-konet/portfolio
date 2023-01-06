@@ -84,8 +84,15 @@
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 5em;
-        background-color: rgba(45, 45, 52, 0.39);
         border-radius: 10px;
+        transition: background-color 0.5s;
+        box-shadow: 0px 0px 120px var(--light-mode-box-shadow-color);
+        transition: box-shadow 1s;
+    }
+
+    :global(body.dark-mode) #gallery {
+        background-color: rgba(45, 45, 52, 0.39);
+        box-shadow: 0px 0px 200px rgba(var(--light-mode-text-color), 0.2);
     }
 
     #content {
