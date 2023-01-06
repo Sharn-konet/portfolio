@@ -26,11 +26,14 @@
     #project-card {
         display: flex;
         flex-flow: column;
-        box-shadow: 0px 0px 4em rgba(var(--light-mode-text-color), 0.30);
+        box-shadow: 0px 0px 4em #46046534;
         border-radius: 25px;
+        transition: box-shadow 2s
     }
 
-
+    :global(body.dark-mode) #project-card {
+        box-shadow: 0px 0px 4em rgba(var(--light-mode-text-color), 0.30);
+    }
 
     img {
         max-width: 100%;
@@ -68,5 +71,7 @@
     :global(body.dark-mode) #demo-link {
         border-color: rgb(var(--dark-mode-text-color));
     }
+
+
 
 </style>
