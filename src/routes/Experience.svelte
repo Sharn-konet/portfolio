@@ -72,12 +72,21 @@
     h3, h4 {
         margin-block-start: 0px;
         font-size: 1.25em;
-        color: #ffffff89
+        color: #ffffff89;
+        
+        position: relative;
+        top: -4px;
     }
 
     p, li {
         font-size: 1.25em;
-        margin-top: 0
+        margin-top: 0;
+        position: relative;
+        top: -10px;
+    }
+
+    li {
+      margin-top: 20px;
     }
 
     .title {
