@@ -20,11 +20,11 @@
         <p>In the graduate program at Xero I rotated through multiple disciplines.</p>
 
         <ul>
-        <li>As a Data Applications Engineer I was learning to serve production-ready Machine Learning systems. I also got to work on develop internal tooling for orchestrating complex data pipelines.</li>
+        <li>As a Data Applications Engineer I was learning to serve production-ready Machine Learning systems. I also worked on internal tooling for orchestrating complex data pipelines.</li>
 
         <li>As an Applied Scientist I was engaged in developing better predictions for Bank Reconciliation. This gave me the opportunity to experience how experiments are conducted in large organisations improving existing products.</li>
 
-        <li>As a Data Enrichment Engineer, I implemented business logic using the Data Vault 2.0 modelling standard. I also worked on making the build process more efficient for existing models.</li>
+        <li>As a Data Enrichment Engineer, I implemented business logic using the Data Vault 2.0 modelling standard. As a part of this, I worked on improving standardisation and compliance across Xero's data warehouse.</li>
         </ul>
     </Timeline.Item>
 
