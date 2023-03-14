@@ -1,4 +1,5 @@
 <script>
+<script lang='ts'>
     import {GithubBrand, LinkedinBrand} from 'svelte-awesome-icons'
     let sharnphoto = "/purple_me.jpeg"
 </script>
@@ -29,13 +30,13 @@
 
 <style>
     h1 {
-        font-size: clamp(40px, 8vw, 80px);
+        font-size: clamp(50px, 4vw, 80px);
         margin-block-end: 0em;
         font-weight: 400;
     }
 
     h2 {
-        font-size: clamp(40px, 8vw, 60px);
+        font-size: clamp(50px, 3.5vw, 60px);
         color: var(--primary-color) !important;
         opacity: 0.5;
         margin-top: 0;
