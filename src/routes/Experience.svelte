@@ -7,8 +7,15 @@
 <Timeline active={4} lineWidth={4}>
     <Timeline.Item>
         <div class = title>
+            <h3>Data Applications Engineer at Xero</h3>
+            <h4>Feb 2023 - present</h4>
+        </div>
+        <p>As a full-time Data Applications Engineer, I am a part of the functional team that serves ML and AI products to the world. At the moment, I'm working to making our internal analysts lives easier using Python.</p>
+    </Timeline.Item>
+    <Timeline.Item>
+        <div class = title>
             <h3>Data Scientist Graduate at Xero</h3>
-            <h4>Feb 2022 - present</h4>
+            <h4>Feb 2022 - Feb 2023</h4>
         </div>
         <p>In the graduate program at Xero I rotated through multiple disciplines.</p>
 
