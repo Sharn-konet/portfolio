@@ -7,17 +7,24 @@
 <Timeline active={4} lineWidth={4}>
     <Timeline.Item>
         <div class = title>
+            <h3>Data Applications Engineer at Xero</h3>
+            <h4>Feb 2023 - present</h4>
+        </div>
+        <p>As a full-time Data Applications Engineer, I am a part of the functional team that serves ML and AI products to the world. At the moment, I'm working to making our internal analysts lives easier using Python.</p>
+    </Timeline.Item>
+    <Timeline.Item>
+        <div class = title>
             <h3>Data Scientist Graduate at Xero</h3>
-            <h4>Feb 2022 - present</h4>
+            <h4>Feb 2022 - Feb 2023</h4>
         </div>
         <p>In the graduate program at Xero I rotated through multiple disciplines.</p>
 
         <ul>
-        <li>As a Data Applications Engineer I was learning to serve production-ready Machine Learning systems. I also got to work on develop internal tooling for orchestrating complex data pipelines.</li>
+        <li>As a Data Applications Engineer I was learning to serve production-ready Machine Learning systems. I also worked on internal tooling for orchestrating complex data pipelines.</li>
 
         <li>As an Applied Scientist I was engaged in developing better predictions for Bank Reconciliation. This gave me the opportunity to experience how experiments are conducted in large organisations improving existing products.</li>
 
-        <li>As a Data Enrichment Engineer, I implemented business logic using the Data Vault 2.0 modelling standard. I also worked on making the build process more efficient for existing models.</li>
+        <li>As a Data Enrichment Engineer, I implemented business logic using the Data Vault 2.0 modelling standard. As a part of this, I worked on improving standardisation and compliance across Xero's data warehouse.</li>
         </ul>
     </Timeline.Item>
 
@@ -36,6 +43,7 @@
             <h3>Research Assistant at the University of Auckland</h3>
             <h4>Sep 2020 - Jan 2022</h4>
         </div>
+        <p>As a research assistant at the University of Auckland my research was focused on continuing work done by previous students in the field of Image Classification, working with four channel satellite imagery.</p>
     </Timeline.Item>
 
     <Timeline.Item>
@@ -64,12 +72,21 @@
     h3, h4 {
         margin-block-start: 0px;
         font-size: 1.25em;
-        color: #ffffff89
+        color: #ffffff89;
+        
+        position: relative;
+        top: -4px;
     }
 
     p, li {
         font-size: 1.25em;
-        margin-top: 0
+        margin-top: 0;
+        position: relative;
+        top: -10px;
+    }
+
+    li {
+      margin-top: 20px;
     }
 
     .title {
