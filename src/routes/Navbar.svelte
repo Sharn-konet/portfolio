@@ -1,10 +1,21 @@
-<script>
+<script lang='ts'>
 	import Darkmode from "./Darkmode.svelte";
+
+  let outerWidth: number = 800;
+  
+  let src: string = "/hamburger.svg"
+  
+  $: thin = outerWidth < 800
 </script>
+
+<svelte:window bind:outerWidth/>
 
 <nav>
     <a id="site-name" href="/">sharnko.net</a>
     <div id="right-side-content">
+      {#if thin}
+        <img {src} alt="Menu button"/>
+      {:else}
         <ul id="navbar-content">
             <li>
                 <a href="/">About</a>
@@ -18,6 +29,7 @@
         </ul>
 
         <Darkmode/>
+      {/if}
 
     </div>
 </nav>
@@ -36,7 +48,7 @@
         padding-bottom: 1.5em;
         z-index: 1030;
 
-        position: fixed;
+      position: fixed;
         top: 0;
         width: 100%
     }
@@ -72,5 +84,10 @@
         margin-inline-end: 0px;
         padding-inline-start: 40px;
         list-style: none;
+    }
+
+    img {
+      max-height: 3.5vh;
+      display: flex;
     }
 </style>
