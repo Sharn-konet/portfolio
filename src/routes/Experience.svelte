@@ -43,6 +43,7 @@
             <h3>Research Assistant at the University of Auckland</h3>
             <h4>Sep 2020 - Jan 2022</h4>
         </div>
+        <p>As a research assistant at the University of Auckland my research was focused on continuing work done by previous students in the field of Image Classification, working with four channel satellite imagery.</p>
     </Timeline.Item>
 
     <Timeline.Item>
