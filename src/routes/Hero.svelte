@@ -1,4 +1,3 @@
-<script>
 <script lang='ts'>
     import {GithubBrand, LinkedinBrand} from 'svelte-awesome-icons'
     let sharnphoto = "/purple_me.jpeg"
