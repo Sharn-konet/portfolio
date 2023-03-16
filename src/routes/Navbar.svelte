@@ -5,15 +5,16 @@
   
   let src: string = "/hamburger.svg"
   
-  $: thin = outerWidth < 800
+  $: mobile = outerWidth < 800
 </script>
 
 <svelte:window bind:outerWidth/>
 
 <nav>
-    <a id="site-name" href="/">sharnko.net</a>
+    <a id="site-name" class:mobile href="/">sharnko.net</a>
     <div id="right-side-content">
-      {#if thin}
+      {#if mobile}
+      <Darkmode/>
         <img {src} alt="Menu button"/>
       {:else}
         <ul id="navbar-content">
@@ -28,7 +29,7 @@
             </li>
         </ul>
 
-        <Darkmode/>
+      <Darkmode/>
       {/if}
 
     </div>
@@ -65,6 +66,10 @@
 
     #site-name {
         margin-left: 4em;
+    }
+
+    #site-name.mobile {
+      margin-left: 10%;
     }
 
     #right-side-content {
