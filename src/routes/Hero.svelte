@@ -119,7 +119,7 @@
 
     #hero.mobile {
       text-align: center;
-      margin: 30% 5% 30%;
+      margin: 33% 5% 30%;
       display: block;
       justify-content: center;
       align-items: center;
