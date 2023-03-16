@@ -1,7 +1,6 @@
 <script lang='ts'>
-	import {blur, fade} from "svelte/transition";
-    import {onMount} from 'svelte'
-	import { CloudShowersHeavySolid } from "svelte-awesome-icons";
+	import {fade} from "svelte/transition";
+  import {onMount} from 'svelte'
 
     let show = false
     onMount(() => {
