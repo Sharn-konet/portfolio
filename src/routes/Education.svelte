@@ -14,7 +14,7 @@
 
 <style>
     #education {
-        margin: 10% 25%;
+        margin: 10% clamp(5%, calc(30% - 100px), 25%);
     }
 
     #content {
