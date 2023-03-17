@@ -77,54 +77,54 @@
 
 <style>
     #experience {
-        margin: 10% clamp(10%, calc(25% - 100px), 20%);
+       margin: 10% clamp(10%, calc(25% - 100px), 20%);
     }
 
     h1 {
-        text-align: center;
-        font-size: 3em;
-        margin-bottom: 1.5em;
+       text-align: center;
+       font-size: 3em;
+       margin-bottom: 1.5em;
     }
 
     h3, h4 {
-        margin-block-start: 0px;
-        font-size: 1.25em;
-        color: #ffffff89;
-        
-        position: relative;
-        top: -4px;
+       margin-block-start: 0px;
+       font-size: 1.25em;
+       color: #ffffff89;
+       
+       position: relative;
+       top: -4px;
     }
 
     p, li {
-        font-size: 1.25em;
-        margin-top: 0;
-        position: relative;
-        top: -10px;
+       font-size: 1.25em;
+       margin-top: 0;
+       position: relative;
+       top: -10px;
     }
 
     li {
-      margin-top: 20px;
+       margin-top: 20px;
     }
 
     .title {
-        display: flex;
-        justify-content: space-between;
+       display: flex;
+       justify-content: space-between;
     }
     
     /* TODO: Refactor titles into their own component */
     .inlineDates {
-        flex-direction: row;
-        align-items: center;
+       flex-direction: row;
+       align-items: center;
     }
 
     .newlineDates {
-      flex-direction: column;
-      align-items: start;
+       flex-direction: column;
+       align-items: start;
     }
 
     .mobile {
-      flex-direction: column;
-      align-items: center;
+       flex-direction: column;
+       align-items: start;
     }
 
     :global(body) p,
