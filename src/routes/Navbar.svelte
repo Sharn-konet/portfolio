@@ -37,36 +37,36 @@
 
 <style>
     nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: rgba(var(--light-mode-background-color), 0.95);
-        border-radius: 6px;
-        line-height: 1;
-        text-align: left;
-        box-sizing: border-box;
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
-        z-index: 1030;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(var(--light-mode-background-color), 0.95);
+      border-radius: 6px;
+      line-height: 1;
+      text-align: left;
+      box-sizing: border-box;
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
+      z-index: 1030;
 
       position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%
+      top: 0;
+      left: 0;
+      width: 100%
     }
 
     :global(body.dark-mode) nav {
-        background-color: rgba(var(--dark-mode-background-color), 0.95)
+      background-color: rgba(var(--dark-mode-background-color), 0.95)
     }
 
     a {
-        color: inherit;
-        text-decoration: none;
-        font-size: 1.5em;
+      color: inherit;
+      text-decoration: none;
+      font-size: 1.5em;
     }
 
     #site-name {
-        margin-left: 4em;
+      margin-left: 4em;
     }
 
     #site-name.mobile {
@@ -74,22 +74,22 @@
     }
 
     #right-side-content {
-        display: flex;
-        flex-direction: row;
-        gap: 40%;
-        margin-right: 3em;
+      display: flex;
+      flex-direction: row;
+      gap: 40%;
+      margin-right: 3em;
     }
 
     #navbar-content {
-        gap: 3em;
-        display: flex;
-        flex-flow: row;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 40px;
-        list-style: none;
+      gap: 3em;
+      display: flex;
+      flex-flow: row;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+      list-style: none;
     }
 
     img {
