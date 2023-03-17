@@ -15,19 +15,19 @@
     <div id="right-side-content">
       {#if mobile}
       <Darkmode/>
-        <img {src} alt="Menu button"/>
+      <img {src} alt="Menu button"/>
       {:else}
-        <ul id="navbar-content">
-            <li>
-                <a href="/">About</a>
-            </li>
-            <li>
-                <a href="/projects">Projects</a>
-            </li>
-            <li>
-                <a href="/gallery">Photos</a>
-            </li>
-        </ul>
+      <ul id="navbar-content">
+          <li>
+              <a href="/">About</a>
+          </li>
+          <li>
+              <a href="/projects">Projects</a>
+          </li>
+          <li>
+              <a href="/gallery">Photos</a>
+          </li>
+      </ul>
 
       <Darkmode/>
       {/if}
@@ -52,7 +52,7 @@
       position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 100%
     }
 
     :global(body.dark-mode) nav {
@@ -76,14 +76,14 @@
     #right-side-content {
         display: flex;
         flex-direction: row;
-        gap: 3em;
+        gap: 40%;
         margin-right: 3em;
     }
 
     #navbar-content {
         gap: 3em;
         display: flex;
-        flex-direction: row;
+        flex-flow: row;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0px;
@@ -93,7 +93,6 @@
     }
 
     img {
-      max-height: 3.5vh;
-      display: flex;
+      height: 2em;
     }
 </style>
