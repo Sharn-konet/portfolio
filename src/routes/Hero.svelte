@@ -57,7 +57,7 @@
     }
 
     h1.mobile {
-      margin-top: 15%;
+      margin-top: clamp(10%, calc(20% - 100px), 15%);
       font-size: clamp(30px, 5vw, 200px);
       font-weight: 200;
     }
@@ -119,7 +119,7 @@
 
     #hero.mobile {
       text-align: center;
-      margin: 33% 5% 30%;
+      margin: clamp(110px, 17.5vh,33%) 5% 30%;
       display: block;
       justify-content: center;
       align-items: center;
@@ -145,7 +145,7 @@
     }
 
     img.mobile {
-      max-width: clamp(50px, 60%, 300px);
+      max-width: clamp(50px, 40vmin, 300px);
       border-radius: 25px;
     }
 
