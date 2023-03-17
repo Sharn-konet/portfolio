@@ -8,7 +8,6 @@
         I primarily explored the theory of data analytics, optimisation, and machine learning, while also dabbling in computational mechanics and software engineering principles.
     </p>
     <p>Graduated with First Class Honours</p>
-    <p>GPA: ?.? out of 9.0</p>
 </div>
 </div>
 
