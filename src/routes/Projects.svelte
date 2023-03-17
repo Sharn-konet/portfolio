@@ -41,7 +41,7 @@
 <style>
 
     #section {
-        margin: 10% 17.5%;
+        margin: 10% clamp(5%, calc(50% - 150px - 20vh), 25%);
     }
 
     h1 {
