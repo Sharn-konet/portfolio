@@ -12,7 +12,7 @@
 
 <nav>
     <a id="site-name" class:mobile href="/">sharnko.net</a>
-    <div id="right-side-content">
+    <div id="right-side-content" class:mobile>
       {#if mobile}
       <Darkmode/>
       <img {src} alt="Menu button"/>
@@ -76,20 +76,26 @@
     #right-side-content {
       display: flex;
       flex-direction: row;
-      gap: 40%;
+      justify-content: space-between;
       margin-right: 3em;
     }
 
+    #right-side-content.mobile {
+      width: 100px;
+      margin-right: clamp(5%, 7.5%, 10%);
+    }
+
     #navbar-content {
-      gap: 3em;
       display: flex;
-      flex-flow: row;
+      flex-direction: row;
+      justify-content: space-evenly;
       margin-block-start: 1em;
       margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
+      margin-left: 0;
       list-style: none;
+      width: 400px;
+
+      padding-inline-start:0;
     }
 
     img {
