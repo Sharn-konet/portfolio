@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import Darkmode from "./Darkmode.svelte";
+	import Darkmode from "@components/Darkmode.svelte";
 
   let outerWidth: number = 800;
   

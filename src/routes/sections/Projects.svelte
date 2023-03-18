@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import ProjectCard from "./ProjectCard.svelte";
+	import ProjectCard from "@components/ProjectCard.svelte";
   import { Chip } from "@svelteuidev/core";
 
   let outerWidth: number;
