@@ -1,9 +1,8 @@
 <script lang='ts'>
 	import Darkmode from "@components/Darkmode.svelte";
+  import Menu from "@components/Menu.svelte"
 
   let outerWidth: number = 800;
-  
-  let src: string = "/hamburger.svg"
   
   $: mobile = outerWidth < 800
 </script>
@@ -15,7 +14,19 @@
     <div id="right-side-content" class:mobile>
       {#if mobile}
       <Darkmode/>
-      <img {src} alt="Menu button"/>
+      <Menu> 
+        <ul>
+          <li>
+              <a href="/">About</a>
+          </li>
+          <li>
+              <a href="/projects">Projects</a>
+          </li>
+          <li>
+              <a href="/gallery">Photos</a>
+          </li>
+        </ul>
+      </Menu>
       {:else}
       <ul id="navbar-content">
           <li>
@@ -98,7 +109,4 @@
       padding-inline-start:0;
     }
 
-    img {
-      height: 2em;
-    }
 </style>
