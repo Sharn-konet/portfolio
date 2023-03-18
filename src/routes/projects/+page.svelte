@@ -9,11 +9,11 @@
 
 <style>
     h1 {
-        font-size: 5em
+        font-size: clamp(40px, 10vw, 5em);
     }
 
     p {
-        font-size: 4em
+        font-size: clamp(30px, 10vw, 4em)
     }
 
     #content {
