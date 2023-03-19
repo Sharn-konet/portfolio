@@ -72,10 +72,21 @@
       color: inherit;
       text-decoration: none;
       font-size: 1.5em;
+      cursor: pointer;
+      transition: color 0.3s;
+      transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045), ;
+    }
+
+    a:hover {
+      color: rgba(var(--light-mode-text-color), 0.75);
     }
 
     #site-name {
       margin-left: 4em;
+    }
+    
+    #site-name:hover {
+      color: inherit;
     }
 
     #site-name.mobile {
