@@ -1,7 +1,7 @@
 <script>
     import {fade} from 'svelte/transition'
     import {onMount} from 'svelte'
-    import Navbar from './Navbar.svelte'
+    import Navbar from '@components/Navbar.svelte'
     import './global.css'
 
     let show = false;

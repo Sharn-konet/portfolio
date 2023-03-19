@@ -1,18 +1,18 @@
 <script>
-    import {fade} from 'svelte/transition'
-    import {cubicIn} from 'svelte/easing'
-    import {onMount} from 'svelte'
+  import {fade} from 'svelte/transition'
+  import {cubicIn} from 'svelte/easing'
+  import {onMount} from 'svelte'
 
-    let show = false
-    onMount(() =>
-        show=true
-    )
+  let show = false
+  onMount(() =>
+      show=true
+  )
 
-	import Experience from "./Experience.svelte";
-    import Education from "./Education.svelte";
-    import Hero from "./Hero.svelte"
-    import Introduction from "./Introduction.svelte"
-    import Projects from "./Projects.svelte"
+	import Experience from "./sections/Experience.svelte";
+  import Education from "./sections/Education.svelte";
+  import Hero from "./sections/Hero.svelte"
+  import Introduction from "./sections/Introduction.svelte"
+  import Projects from "./sections/Projects.svelte"
 </script>
 
 <svelte:head>

@@ -1,11 +1,16 @@
-<script>
-	import ProjectCard from "./ProjectCard.svelte";
-    import { Chip } from "@svelteuidev/core"
+<script lang='ts'>
+	import ProjectCard from "@components/ProjectCard.svelte";
+  import { Chip } from "@svelteuidev/core";
+
+  let outerWidth: number;
+  $: mobile = outerWidth < 1250;
 </script>
+
+<svelte:window bind:outerWidth />
 
 <div id='section'>
     <h1>Projects</h1>
-    <div id ='projects'>
+    <div id ='projects' class:mobile>
         <ProjectCard
             src='/projects/lorenz-attractor.gif'
             imageDescription='A Lorenz Attractor in motion.'
@@ -36,7 +41,7 @@
 <style>
 
     #section {
-        margin: 10% 25%;
+        margin: 10% clamp(5%, calc(50% - 150px - 20vh), 25%);
     }
 
     h1 {
@@ -57,5 +62,9 @@
 
         border-color: rgb(var(--light-mode-text-color));
         border-radius: 90px;
+    }
+
+    #projects.mobile {
+        flex-direction: column;
     }
 </style>
