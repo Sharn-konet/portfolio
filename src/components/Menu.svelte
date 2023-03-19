@@ -35,6 +35,10 @@
     cursor: pointer;
   }
 
+  img {
+    cursor: pointer;
+  }
+
   #menu-overlay {
     position: fixed;
     top: 0;
