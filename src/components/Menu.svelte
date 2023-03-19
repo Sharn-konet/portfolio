@@ -20,15 +20,15 @@
 
 {#if showMenu}
   <div id="menu-overlay" on:click={closeMenu} in:fade="{{duration: 150}}" out:fade="{{duration: 100}}">
-    <div id="ExitButton"><XmarkSolid/></div>
-    <div id="List"><slot/></div>
+    <div id="exit-button"><XmarkSolid/></div>
+    <div id="list"><slot/></div>
   </div>
 {:else}
   <img {src} alt="Menu button" on:click={toggleMenu}/>
 {/if}
 
 <style>
-  #ExitButton {
+  #exit-button {
     position: fixed;
     top: 0;
     right: 0;
@@ -54,7 +54,7 @@
     height: 2em;
   }
 
-  #List {
+  #list {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,13 +62,13 @@
     height: 100vh;
   }
 
-  #List :global(ul) {
+  #list :global(ul) {
     list-style: none;
     padding-inline-start: 0;
     text-align: center;
   }
 
-  #List :global(li) {
+  #list :global(li) {
     font-size: 2em;
     margin-top: 20%;
     margin-bottom: 20%;
