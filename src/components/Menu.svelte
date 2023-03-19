@@ -1,5 +1,6 @@
 <script lang="ts">
   import {XmarkSolid} from 'svelte-awesome-icons'
+  import { fade } from 'svelte/transition'
   let src: string = "/hamburger.svg"
 
   let showMenu = false;
@@ -18,7 +19,7 @@
 
 
 {#if showMenu}
-  <div id="menu-overlay" on:click={closeMenu}>
+  <div id="menu-overlay" on:click={closeMenu} in:fade="{{duration: 150}}" out:fade="{{duration: 100}}">
     <div id="ExitButton"><XmarkSolid/></div>
     <div id="List"><slot/></div>
   </div>
