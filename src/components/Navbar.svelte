@@ -12,8 +12,21 @@
 <nav>
     <a id="site-name" class:mobile href="/">sharnko.net</a>
     <div id="right-side-content" class:mobile>
-      {#if mobile}
+      {#if !mobile}
+      <ul id="navbar-content">
+          <li>
+              <a href="/">About</a>
+          </li>
+          <li>
+              <a href="/projects">Projects</a>
+          </li>
+          <li>
+              <a href="/gallery">Photos</a>
+          </li>
+      </ul>
+      {/if}
       <Darkmode/>
+      {#if mobile}
       <Menu> 
         <ul>
           <li>
@@ -27,22 +40,7 @@
           </li>
         </ul>
       </Menu>
-      {:else}
-      <ul id="navbar-content">
-          <li>
-              <a href="/">About</a>
-          </li>
-          <li>
-              <a href="/projects">Projects</a>
-          </li>
-          <li>
-              <a href="/gallery">Photos</a>
-          </li>
-      </ul>
-
-      <Darkmode/>
       {/if}
-
     </div>
 </nav>
 
