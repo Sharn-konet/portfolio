@@ -73,12 +73,16 @@
       text-decoration: none;
       font-size: 1.5em;
       cursor: pointer;
-      transition: color 0.2s;
-      transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045), ;
     }
 
     a:hover {
       color: rgba(var(--light-mode-text-color), 0.75);
+      text-shadow: 0px 0px 15px rgba(var(--light-mode-text-color), 1);
+      
+      /* Make hover transitions slower */
+      transition: 
+        color 0.3s cubic-bezier(0.23, 1, 0.320, 1),
+        text-shadow 0.3s cubic-bezier(0.23, 1, 0.320, 1); 
     }
 
     #site-name {
