@@ -18,13 +18,13 @@
 </script>
 
 
+<img {src} alt="Menu button" on:click={toggleMenu}/>
+
 {#if showMenu}
   <div id="menu-overlay" on:click={closeMenu} in:fade="{{duration: 150}}" out:fade="{{duration: 100}}">
     <div id="exit-button"><XmarkSolid/></div>
     <div id="list"><slot/></div>
   </div>
-{:else}
-  <img {src} alt="Menu button" on:click={toggleMenu}/>
 {/if}
 
 <style>
