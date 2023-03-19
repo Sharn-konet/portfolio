@@ -45,7 +45,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--dark-mode-background-color), 0.95);
+    background-color: rgba(var(--dark-mode-background-color), 0.975);
     z-index: 2000;
   }
 
