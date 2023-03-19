@@ -19,4 +19,4 @@
 
 </script>
 
-<Switch on:change={() => {isDark = !isDark}} checked={isDark}/>
+<Switch size="md" on:change={() => {isDark = !isDark}} checked={isDark}/>
