@@ -73,7 +73,7 @@
       text-decoration: none;
       font-size: 1.5em;
       cursor: pointer;
-      transition: color 0.3s;
+      transition: color 0.2s;
       transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045), ;
     }
 
