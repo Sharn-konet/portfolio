@@ -71,12 +71,13 @@
     a {
       color: inherit;
       text-decoration: none;
-      font-size: 1.5em;
+      font-family: Bombing;
+      font-size: 3em;
       cursor: pointer;
     }
 
     a:hover {
-      color: rgba(var(--light-mode-text-color), 0.75);
+      color: inherit;
       text-shadow: 0px 0px 15px rgba(var(--light-mode-text-color), 1);
       
       /* Make hover transitions slower */
@@ -86,7 +87,7 @@
     }
 
     #site-name {
-      margin-left: 4em;
+      margin-left: 2em;
     }
     
     #site-name:hover {
@@ -101,7 +102,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-right: 3em;
+      margin-right: 5em;
     }
 
     #right-side-content.mobile {
