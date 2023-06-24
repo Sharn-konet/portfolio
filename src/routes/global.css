@@ -8,9 +8,21 @@
     --dark-mode-background-color: 24, 25, 26;
 }
 
-* {
-    font-family: "Alata", sans-serif;
+@font-face{
+    font-family: "Alata";
     font-size: 1rem;
+    font-weight: normal;
+    font-style: normal;
+    src: url("/fonts/Alata/Alata-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Bombing";
+    src: url("/fonts/Bombing/Bombing.ttf") format("truetype")
+}
+
+* {
+  font-family: 'Alata';
 }
 
 body {

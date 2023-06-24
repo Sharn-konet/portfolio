@@ -10,10 +10,6 @@
     )
 </script>
 
-<svelte:head>
-    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
-</svelte:head>
-
 <div id="background">
     {#if show}
         <div in:fade={{duration: 400, delay:1000}}>
