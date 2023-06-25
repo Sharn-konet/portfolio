@@ -41,6 +41,7 @@
 	"dependencies": {
 		"@svelteuidev/composables": "^0.7.7",
 		"@svelteuidev/core": "^0.7.7",
+		"svelte-inline-svg": "^1.2.0",
 		"svelte-inview": "^3.0.1",
 		"sveltestrap": "^5.10.0"
 	}
