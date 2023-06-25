@@ -1,8 +1,10 @@
-<script>
-    import {fade} from 'svelte/transition'
+<script lang="ts">
+    import {fade, draw} from 'svelte/transition'
     import {onMount} from 'svelte'
-    import Navbar from '@components/Navbar.svelte'
+
     import './global.css'
+    import Navbar from '@components/Navbar.svelte'
+    import Drawings from '@components/Drawings.svelte'
 
     let show = false;
     onMount(()=>
@@ -15,6 +17,10 @@
         <div in:fade={{duration: 400, delay:1000}}>
             <Navbar/>
         </div>
+        <Drawings/>
     {/if}
     <slot/>
 </div>
+
+<style>
+</style>
