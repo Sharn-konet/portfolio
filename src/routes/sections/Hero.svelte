@@ -1,6 +1,7 @@
 <script lang='ts'>
     import {GithubBrand, LinkedinBrand} from 'svelte-awesome-icons'
     let sharnphoto = "/purple_me.jpeg"
+    import Me from '@components/drawings/Me.svelte'
 
     let outerWidth: number = 800;
 
@@ -13,7 +14,7 @@
 <div id="hero" class:desktop class:mobile>
     
   {#if mobile}
-    <img src={sharnphoto} class="mobile" alt = "Sharn-Konet Reitsma"/>
+    <Me/>
   {/if}
 
     <div id = "title">
@@ -26,7 +27,7 @@
     </div>
     
     {#if desktop}
-    <img src={sharnphoto} class="desktop" alt = "Sharn-Konet Reitsma"/>
+      <Me/>
     {/if}
 
     <div>
@@ -107,14 +108,14 @@
 
     #hero.desktop {
         display: grid;
-        grid-template-columns: 5fr 3fr;
+        grid-template-columns: 4fr 3fr;
         grid-template-rows: auto;
         align-items: center;
         grid-template-areas:
             "title image"
             "description image"
         ;
-        margin: 10% 15%;
+        margin: 5% 10%;
     }
 
     #hero.mobile {

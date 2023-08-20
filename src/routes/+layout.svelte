@@ -4,7 +4,7 @@
 
     import './global.css'
     import Navbar from '@components/Navbar.svelte'
-    import Drawings from '@components/Drawings.svelte'
+    import Drawings from '@components/drawings/Drawings.svelte'
 
     let show = false;
     onMount(()=>
@@ -17,7 +17,6 @@
         <div in:fade={{duration: 400, delay:1000}}>
             <Navbar/>
         </div>
-        <Drawings/>
     {/if}
     <slot/>
 </div>
