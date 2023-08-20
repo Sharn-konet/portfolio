@@ -57,7 +57,7 @@
       padding-top: 1.5em;
       padding-bottom: 1.5em;
       z-index: 1030;
-
+      
       position: fixed;
       top: 0;
       left: 0;
@@ -72,7 +72,7 @@
       color: inherit;
       text-decoration: none;
       font-family: Bombing;
-      font-size: 3em;
+      font-size: clamp(2em, 3em, 10vw);
       cursor: pointer;
     }
 
