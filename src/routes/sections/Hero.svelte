@@ -87,7 +87,8 @@
 
     #title {
         align-items: center;
-        display: grid
+        display: grid;
+        margin-bottom: 2em;
     }
 
     #resume-button {
@@ -114,8 +115,9 @@
         grid-template-areas:
             "title image"
             "description image"
+            "description image"
         ;
-        margin: 5% 10%;
+        margin: 6.5% 10%;
     }
 
     #hero.mobile {
@@ -130,6 +132,7 @@
         display: inline-flex;
         align-items: center;
         gap: 2em;
+        margin-top: 1em;
     }
 
     a {
