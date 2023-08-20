@@ -47,7 +47,7 @@
     h1 {
         text-align: center;
         font-family: Bombing;
-        font-size: 5em;
+        font-size: var(--section-title-size);
         font-weight: lighter;
         margin-bottom: 0.5em;
     }
