@@ -6,6 +6,8 @@
 
     --dark-mode-text-color: 228, 230, 235;
     --dark-mode-background-color: 24, 25, 26;
+
+    --background-transition: background-color 0.9s cubic-bezier(.15,1,.2,1)
 }
 
 @font-face{
@@ -27,10 +29,10 @@
 
 body {
     background-color: rgb(var(--light-mode-background-color));
-    transition: background-color 0.3s;
     color: rgb(var(--light-mode-text-color));
     border-color: rgb(var(--light-mode-text-color));
-    transition: color 0.1s;
+
+    transition: var(--background-transition), color 0.3s;
 
     line-height: 1.5;
     text-align: left;

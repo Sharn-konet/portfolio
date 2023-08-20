@@ -51,6 +51,7 @@
       justify-content: space-between;
       background-color: rgba(var(--light-mode-background-color), 0.95);
       border-radius: 6px;
+      transition: var(--background-transition);
       line-height: 1;
       text-align: left;
       box-sizing: border-box;
