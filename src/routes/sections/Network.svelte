@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from "svelte";
+import { onMount } from "svelte";
 
 
 import data from "./../../data/tools.js"
@@ -40,13 +40,13 @@ const svg = d3.select("#my_dataviz")
       .style("fill",  "#0084f5")
 
   // Let's list the force we wanna apply on the network
-  const simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
-      .force("link", d3.forceLink()                               // This force provides links between nodes
-            .id(function(d) { return d.id; })                     // This provide  the id of a node
-            .links(data.links)                                    // and this the list of links
-      )
+  const simulation = d3.forceSimulation(data.nodes)
+      .alphaDecay(0.001) // Force algorithm is applied to data.nodes
+      .force("link", d3.forceLink(data.links).id(d => d.id))                     // This provide  the id of a nod
       .force("charge", d3.forceManyBody())         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
-      .force("center", d3.forceCenter(width / 2, height / 2).strength(1))     // This force attracts nodes to the center of the svg area
+      .force("center", d3.forceCenter(width / 2, height / 2).strength(0.7))     // This force attracts nodes to the center of the svg area
+      .force("radial", d3.forceRadial(60, width/2, height/2).strength(0.08))
+      .force("collision", d3.forceCollide(10))
       .on("tick", ticked);
 
   // Add a drag behavior.
