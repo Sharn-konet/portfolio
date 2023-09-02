@@ -29,7 +29,6 @@
 </div>
 
 <div in:fade={{delay:300, duration: 600}}>
-    <Tools/>
 </div>
 
 <Experience/>
