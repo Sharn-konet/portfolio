@@ -22,6 +22,12 @@
 }
 
 @font-face {
+    font-family: "Lexend";
+    font-size: 1rem;
+    src: url("/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "Alatsi";
     font-size: 1rem;
     src: url("/fonts/Alatsi/Alatsi-Regular.ttf") format("truetype");
@@ -33,7 +39,8 @@
 }
 
 * {
-  font-family: 'Alatsi';
+  font-family: 'Lexend';
+  font-weight: 400;
 }
 
 body {
