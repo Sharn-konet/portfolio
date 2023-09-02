@@ -54,13 +54,13 @@
     h1.desktop {
         font-size: clamp(50px, 4vw, 80px);
         margin-block-end: 0em;
-        font-weight: 400;
+        font-weight: 500;
     }
 
     h1.mobile {
       margin-top: clamp(10%, calc(20% - 100px), 15%);
       font-size: clamp(30px, 5vw, 200px);
-      font-weight: 200;
+      font-weight: 600;
     }
 
     h2 {
@@ -72,7 +72,7 @@
 
     h2.desktop {
         font-size: clamp(50px, 3.5vw, 60px);
-        font-weight: 500;
+        font-weight: 400;
         margin-bottom: 0.5rem;
     }
 
@@ -83,10 +83,10 @@
 
     p {
         font-size: 1.25em;
+        padding-left: 0.5%;
     }
 
     #title {
-        align-items: center;
         display: grid;
         margin-bottom: 2em;
     }
