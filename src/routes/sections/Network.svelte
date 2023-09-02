@@ -30,6 +30,7 @@ const svg = d3.select("#my_dataviz")
     .data(data.links)
     .join("line")
       .style("stroke", "#0084f5")
+      .style("stroke-width", 3)
 
   // Initialize the nodes
   const node = svg
