@@ -12,7 +12,8 @@
     --section-title-size: clamp(3em, 5em, 12.5vw);
 }
 
-@font-face{
+/* DEFINING FONT FACES */
+@font-face {
     font-family: "Alata";
     font-size: 1rem;
     font-weight: normal;
@@ -21,12 +22,18 @@
 }
 
 @font-face {
+    font-family: "Alatsi";
+    font-size: 1rem;
+    src: url("/fonts/Alatsi/Alatsi-Regular.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "Bombing";
-    src: url("/fonts/Bombing/Bombing.ttf") format("truetype")
+    src: url("/fonts/Bombing/Bombing.ttf") format("truetype");
 }
 
 * {
-  font-family: 'Alata';
+  font-family: 'Alatsi';
 }
 
 body {
