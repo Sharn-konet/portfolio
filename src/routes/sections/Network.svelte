@@ -32,13 +32,15 @@ const svg = d3.select("#my_dataviz")
       .style("stroke", "#0084f5")
       .style("stroke-width", 3)
 
-  // Initialize the nodes
+
   const node = svg
-    .selectAll("circle")
+    .selectAll(".logo")
     .data(data.nodes)
+    .append()
     .join("circle")
       .attr("r", 10)
       .style("fill",  "#0084f5")
+    .join("text")
 
   // Let's list the force we wanna apply on the network
   const simulation = d3.forceSimulation(data.nodes)
