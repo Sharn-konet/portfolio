@@ -6,6 +6,9 @@ import data from "./../../data/tools.js"
 
 import * as d3 from 'd3';
 
+function createLogo() {
+  return this.appendChild(document.createElementNS("http://www.w3.org/2000/svg", 's'))
+}
 
 onMount(() => {
 // set the dimensions and margins of the graph
