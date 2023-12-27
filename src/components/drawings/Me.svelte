@@ -1,4 +1,20 @@
-<svg width="90%" height="90%" viewBox="0 0 672 895" fill="none" xmlns="http://www.w3.org/2000/svg">
+<script lang='ts'>
+    let outerWidth: number = 800;
+
+    let viewBox = "0 0 672 895"
+
+    $:{
+      if (outerWidth < 1150) {
+        let viewBox = "0 0 672 895"
+      } else {
+        let viewBox = "100 50 400 600"
+      }
+    }
+</script>
+
+<svelte:window bind:outerWidth/>
+
+<svg width="90%" height="90%" viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1_2)">
 <ellipse cx="257.362" cy="295.046" rx="257.28" ry="295.046" fill="url(#paint0_linear_1_2)" fill-opacity="0.61"/>
 <ellipse cx="223.53" cy="669.835" rx="223.448" ry="240.165" fill="url(#paint1_linear_1_2)" fill-opacity="0.61"/>
