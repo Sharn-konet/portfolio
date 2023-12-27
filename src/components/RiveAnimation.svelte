@@ -41,5 +41,8 @@
 		width: 100%;
 		height: 100%;
     margin: -10% 0 -15% 0;
+    overflow: hidden;
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 	}
 </style>
