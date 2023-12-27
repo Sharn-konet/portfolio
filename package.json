@@ -39,6 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@rive-app/canvas": "^2.9.0",
 		"@svelteuidev/composables": "^0.7.7",
 		"@svelteuidev/core": "^0.7.7",
 		"@types/d3": "^7.4.0",
