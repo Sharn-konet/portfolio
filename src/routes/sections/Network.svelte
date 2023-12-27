@@ -22,7 +22,7 @@ const svg = d3.select("#my_dataviz")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)      
   .attr("viewBox", [0, 0, width, height])
-  .attr("style", "max-width: 100%; height: auto; margin-left: 20%; border-color: white; border-style: solid; margin-top: 15%;")
+  .attr("style", "max-width: 100%; height: auto; border-color: white; border-style: solid; margin: 10% clamp(10%, calc(25% - 100px), 20%);")
 .append("g")
   .attr("transform",
         `translate(${margin.left}, ${margin.top})`);
@@ -35,16 +35,14 @@ const svg = d3.select("#my_dataviz")
       .style("stroke", "#0084f5")
       .style("stroke-width", 3)
 
-
   const node = svg
     .selectAll(".logo")
     .data(data.nodes)
-    .append()
-    .join("circle")
-      .attr("r", 10)
-      .style("fill",  "#0084f5")
-    .join("text")
-
+    .join("image")
+      .attr("width", 10)
+      .attr("height", 10)
+      .style("src", "/static/drawings/Rust.png")
+  
   // Let's list the force we wanna apply on the network
   const simulation = d3.forceSimulation(data.nodes)
       .alphaDecay(0.001) // Force algorithm is applied to data.nodes
