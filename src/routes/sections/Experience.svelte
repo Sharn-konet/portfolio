@@ -82,8 +82,10 @@
 
     h1 {
        text-align: center;
-       font-size: 3em;
-       margin-bottom: 1.5em;
+       font-family: Bombing;
+       font-size: var(--section-title-size);
+       font-weight: lighter;
+       margin-bottom: 0.5em;
     }
 
     h3, h4 {

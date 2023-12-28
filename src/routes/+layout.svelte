@@ -1,18 +1,16 @@
-<script>
-    import {fade} from 'svelte/transition'
+<script lang="ts">
+    import {fade, draw} from 'svelte/transition'
     import {onMount} from 'svelte'
-    import Navbar from '@components/Navbar.svelte'
+
     import './global.css'
+    import Navbar from '@components/Navbar.svelte'
+    import Drawings from '@components/drawings/Drawings.svelte'
 
     let show = false;
     onMount(()=>
         show=true
     )
 </script>
-
-<svelte:head>
-    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
-</svelte:head>
 
 <div id="background">
     {#if show}
@@ -22,3 +20,6 @@
     {/if}
     <slot/>
 </div>
+
+<style>
+</style>

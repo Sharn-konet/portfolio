@@ -10,9 +10,11 @@
 
 	import Experience from "./sections/Experience.svelte";
   import Education from "./sections/Education.svelte";
-  import Hero from "./sections/Hero.svelte"
-  import Introduction from "./sections/Introduction.svelte"
-  import Projects from "./sections/Projects.svelte"
+  import Hero from "./sections/Hero.svelte";
+  import Introduction from "./sections/Introduction.svelte";
+  import Projects from "./sections/Projects.svelte";
+  import Tools from "./sections/Tools.svelte";
+  import Network from "./sections/Network.svelte";
 </script>
 
 <svelte:head>
@@ -25,8 +27,10 @@
 </div>
 
 <div in:fade={{delay:300, duration: 600}}>
-    <Experience/>
+<Tools/>
 </div>
+
+<Experience/>
 
 <Education/>
 

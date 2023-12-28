@@ -1,6 +1,7 @@
 <script lang='ts'>
     import {GithubBrand, LinkedinBrand} from 'svelte-awesome-icons'
     let sharnphoto = "/purple_me.jpeg"
+    import Me from '@components/drawings/Me.svelte'
 
     let outerWidth: number = 800;
 
@@ -13,7 +14,7 @@
 <div id="hero" class:desktop class:mobile>
     
   {#if mobile}
-    <img src={sharnphoto} class="mobile" alt = "Sharn-Konet Reitsma"/>
+    <Me/>
   {/if}
 
     <div id = "title">
@@ -26,17 +27,20 @@
     </div>
     
     {#if desktop}
-    <img src={sharnphoto} class="desktop" alt = "Sharn-Konet Reitsma"/>
+      <Me/>
     {/if}
 
     <div>
         <div>
-            {#if desktop}
-            <p> I want to make software that surprises people. </p>
+            {#if desktop}            
+            <p> I'm a Bachelor of Engineering graduate with First Class Honours in Engineering Science with four years of work expeirence. I studied at the University of Auckland and developed a skill-set which spanned AI development, optimisation, and mathematical modelling. </p>
 
-            <p> Whether it's a Machine Learning system that gives a surprisingly good prediction, or a dashboard that uncovers a new perspective, I want people to question their understanding of the problems around us. </p>
+            <p> Through my work experience, this skill-set expanded to include knowledge in software development best-practices, data ETL, and cloud infrastructure. </p>
 
-            <p> I'm a Bachelor of Engineering (Hons) graduate from the University of Auckland specialising in Engineering Science. My studies focused on software development, optimisation, and mathematical modelling of real-world systems. </p>
+            <p> More than anything, I love working on complex problems. </p>
+
+            <p> I fill my spare time with photography and other miscellaneous software projects in areas that I'm interested in such as graphics programming, front-end development, and data visualisation. </p>
+
             {/if}
         </div>
         <div id = networking-buttons>
@@ -53,13 +57,13 @@
     h1.desktop {
         font-size: clamp(50px, 4vw, 80px);
         margin-block-end: 0em;
-        font-weight: 400;
+        font-weight: 500;
     }
 
     h1.mobile {
       margin-top: clamp(10%, calc(20% - 100px), 15%);
       font-size: clamp(30px, 5vw, 200px);
-      font-weight: 200;
+      font-weight: 600;
     }
 
     h2 {
@@ -71,7 +75,7 @@
 
     h2.desktop {
         font-size: clamp(50px, 3.5vw, 60px);
-        font-weight: 500;
+        font-weight: 400;
         margin-bottom: 0.5rem;
     }
 
@@ -82,11 +86,12 @@
 
     p {
         font-size: 1.25em;
+        padding-left: 0.5%;
     }
 
     #title {
-        align-items: center;
-        display: grid
+        display: grid;
+        margin-bottom: 2em;
     }
 
     #resume-button {
@@ -107,14 +112,15 @@
 
     #hero.desktop {
         display: grid;
-        grid-template-columns: 5fr 3fr;
+        grid-template-columns: 4fr 3fr;
         grid-template-rows: auto;
         align-items: center;
         grid-template-areas:
             "title image"
             "description image"
+            "description image"
         ;
-        margin: 10% 15%;
+        margin: 6.5% 10%;
     }
 
     #hero.mobile {
@@ -129,6 +135,7 @@
         display: inline-flex;
         align-items: center;
         gap: 2em;
+        margin-top: 1em;
     }
 
     a {

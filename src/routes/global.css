@@ -6,19 +6,49 @@
 
     --dark-mode-text-color: 228, 230, 235;
     --dark-mode-background-color: 24, 25, 26;
+
+    --background-transition: background-color 1.5s cubic-bezier(0,0.9,.1,1);
+
+    --section-title-size: clamp(3em, 5em, 12.5vw);
+}
+
+/* DEFINING FONT FACES */
+@font-face {
+    font-family: "Alata";
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: normal;
+    src: url("/fonts/Alata/Alata-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lexend";
+    font-size: 1rem;
+    src: url("/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Alatsi";
+    font-size: 1rem;
+    src: url("/fonts/Alatsi/Alatsi-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Bombing";
+    src: url("/fonts/Bombing/Bombing.ttf") format("truetype");
 }
 
 * {
-    font-family: "Alata", sans-serif;
-    font-size: 1rem;
+  font-family: 'Lexend';
+  font-weight: 400;
 }
 
 body {
     background-color: rgb(var(--light-mode-background-color));
-    transition: background-color 0.3s;
     color: rgb(var(--light-mode-text-color));
     border-color: rgb(var(--light-mode-text-color));
-    transition: color 0.1s;
+
+    transition: var(--background-transition), color 0.3s;
 
     line-height: 1.5;
     text-align: left;

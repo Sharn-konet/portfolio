@@ -50,14 +50,14 @@
       align-items: center;
       justify-content: space-between;
       background-color: rgba(var(--light-mode-background-color), 0.95);
-      border-radius: 6px;
+      transition: var(--background-transition);
       line-height: 1;
       text-align: left;
       box-sizing: border-box;
       padding-top: 1.5em;
       padding-bottom: 1.5em;
       z-index: 1030;
-
+      
       position: fixed;
       top: 0;
       left: 0;
@@ -71,12 +71,13 @@
     a {
       color: inherit;
       text-decoration: none;
-      font-size: 1.5em;
+      font-family: Bombing;
+      font-size: clamp(2em, 3em, 10vw);
       cursor: pointer;
     }
 
     a:hover {
-      color: rgba(var(--light-mode-text-color), 0.75);
+      color: inherit;
       text-shadow: 0px 0px 15px rgba(var(--light-mode-text-color), 1);
       
       /* Make hover transitions slower */
@@ -86,7 +87,7 @@
     }
 
     #site-name {
-      margin-left: 4em;
+      margin-left: 2em;
     }
     
     #site-name:hover {
@@ -101,7 +102,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-right: 3em;
+      margin-right: 5em;
     }
 
     #right-side-content.mobile {
