@@ -32,12 +32,15 @@
 
     <div>
         <div>
-            {#if desktop}
-            <p> I want to make software that surprises people. </p>
+            {#if desktop}            
+            <p> I'm a Bachelor of Engineering graduate with First Class Honours in Engineering Science with four years of work expeirence. I studied at the University of Auckland and developed a skill-set which spanned AI development, optimisation, and mathematical modelling. </p>
 
-            <p> Whether it's a Machine Learning system that gives a surprisingly good prediction, or a dashboard that uncovers a new perspective, I want people to question their understanding of the problems around us. </p>
+            <p> Through my work experience, this skill-set expanded to include knowledge in software development best-practices, data ETL, and cloud infrastructure. </p>
 
-            <p> I'm a Bachelor of Engineering (Hons) graduate from the University of Auckland specialising in Engineering Science. My studies focused on software development, optimisation, and mathematical modelling of real-world systems. </p>
+            <p> More than anything, I love working on complex problems. </p>
+
+            <p> I fill my spare time with photography and other miscellaneous software projects in areas that I'm interested in such as graphics programming, front-end development, and data visualisation. </p>
+
             {/if}
         </div>
         <div id = networking-buttons>
