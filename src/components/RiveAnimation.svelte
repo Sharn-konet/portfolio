@@ -15,7 +15,7 @@
 			autoplay,
 			artboard,
 			layout: new Layout({
-				fit: Fit.Contain,
+				fit: Fit.None,
 				alignment: Alignment.Center,
 			}),
 			stateMachines,
@@ -38,7 +38,7 @@
 	}
 
 	#rive-canvas {
-		width: 100%;
+		width: max(100%, 750px);
 		height: 100%;
     margin: -10% 0 -15% 0;
     overflow: hidden;
