@@ -1,13 +1,18 @@
 <script lang='ts'>
   import Card from '@components/Card.svelte'
   import Uoa from '@components/drawings/Uoa.svelte'
+
+  let outerWidth: number;
+  $: mobile = outerWidth < 1150;
 </script>
+
+<svelte:window bind:outerWidth/>
 
 <div id = 'education'>
 <h1>Education</h1>
 <Card>
-    <div class="spread-container">
-      <div class="image">
+    <div class="spread-container" class:mobile>
+      <div class="image" class:mobile>
         <Uoa/>
       </div>
       <div>
@@ -23,8 +28,8 @@
 </Card>
 
 <Card>
-  <div class="spread-container">
-    <img src="/aws-certification.png" alt="AWS Certification badge" class="image"/>
+  <div class="spread-container" class:mobile>
+    <img src="/aws-certification.png" alt="AWS Certification badge" class="image" class:mobile/>
     <div>
       <h2>Certified AWS Developer Associate</h2>
       <p>
@@ -51,11 +56,21 @@
     .spread-container {
       display: flex;
       flex: auto;
+      flex-direction: row;
+      column-gap: 50px;
+    }
+
+    .spread-container.mobile {
+      flex-direction: column;
     }
 
     .image {
       height: 200px;
-      margin: auto 5% auto auto;
+      margin: auto auto auto auto;
+    }
+
+    .image.mobile {
+      margin: 5% auto auto auto;
     }
 
     #education {
