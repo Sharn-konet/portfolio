@@ -33,7 +33,7 @@
     <div>
         <div>
             {#if desktop}            
-            <p> I'm a Bachelor of Engineering graduate with First Class Honours in Engineering Science with four years of work expeirence. I studied at the University of Auckland and developed a skill-set which spanned AI development, optimisation, and mathematical modelling. </p>
+            <p> I'm a Bachelor of Engineering graduate with First Class Honours in Engineering Science with four years of work experience. I studied at the University of Auckland and developed a skill-set which spanned AI development, optimisation, and mathematical modelling. </p>
 
             <p> Through my work experience, this skill-set expanded to include knowledge in software development best-practices, data ETL, and cloud infrastructure. </p>
 
