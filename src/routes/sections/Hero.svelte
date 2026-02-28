@@ -12,7 +12,9 @@
 <div id="hero" class:desktop class:mobile>
 
   {#if mobile}
-    <Me/>
+    <div class="portrait mobile">
+      <Me/>
+    </div>
   {/if}
 
     <div id="title">
@@ -25,7 +27,9 @@
     </div>
 
     {#if desktop}
-      <Me/>
+      <div class="portrait desktop">
+        <Me/>
+      </div>
     {/if}
 
     <div>
@@ -145,6 +149,17 @@
 
     a {
         color: inherit;
+    }
+
+    .portrait.desktop {
+        grid-area: image;
+        justify-self: right;
+        max-width: 75%;
+    }
+
+    .portrait.mobile {
+        max-width: clamp(50px, 40vmin, 300px);
+        margin: 0 auto;
     }
 
     :global(body.dark-mode) #resume-button {
