@@ -1,16 +1,18 @@
 <script lang="ts">
-  import {Rive, Layout, Fit, Alignment} from '@rive-app/canvas';
+  import {Rive, Layout, Fit, Alignment, EventType} from '@rive-app/canvas';
 
   let {
     src,
     autoplay = true,
     artboard,
     stateMachines,
+    onRiveEvent,
   }: {
     src: string;
     autoplay?: boolean;
     artboard?: string;
     stateMachines?: string;
+    onRiveEvent?: (eventName: string) => void;
   } = $props();
 
   let canvasEl: HTMLCanvasElement;
@@ -30,6 +32,18 @@
       canvas: canvasEl,
       onLoad: () => {
         riveInstance?.resizeDrawingSurfaceToCanvas();
+
+        // Rive event listener — will fire once .riv file has click events
+        // added to each skill ball (see RIVE_IMPLEMENTATION.md).
+        // Event names should follow pattern: "skill_<name>_clicked"
+        if (onRiveEvent && riveInstance) {
+          riveInstance.on(EventType.RiveEvent, (event: any) => {
+            const eventName = event?.data?.name;
+            if (eventName) {
+              onRiveEvent(eventName);
+            }
+          });
+        }
       },
     });
 
