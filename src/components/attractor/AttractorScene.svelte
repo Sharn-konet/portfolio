@@ -6,13 +6,15 @@
   let {
     system,
     params,
-    numPoints = 50000,
+    particleCount = 100,
+    trailLength = 300,
     colorStart = '#3366ff',
     colorEnd = '#ff33cc',
   }: {
     system: AttractorSystem;
     params: Record<string, number>;
-    numPoints?: number;
+    particleCount?: number;
+    trailLength?: number;
     colorStart?: string;
     colorEnd?: string;
   } = $props();
@@ -23,7 +25,8 @@
     <AttractorRenderer
       {system}
       {params}
-      {numPoints}
+      {particleCount}
+      {trailLength}
       {colorStart}
       {colorEnd}
     />

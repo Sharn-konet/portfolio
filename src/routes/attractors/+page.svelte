@@ -12,7 +12,8 @@
   let outerWidth = $state(0);
   let mobile = $derived(outerWidth < 768);
   let tinyMobile = $derived(outerWidth < 480);
-  let numPoints = $derived(mobile ? 20000 : 50000);
+  let particleCount = $derived(mobile ? 50 : 100);
+  let trailLength = $derived(mobile ? 150 : 300);
 
   let loaded = $state(false);
 
@@ -54,14 +55,15 @@
         </p>
       </div>
     {:else if loaded && AttractorScene && AttractorControls}
-      <svelte:component this={AttractorScene}
+      <AttractorScene
         system={selectedSystem}
         params={currentParams}
-        {numPoints}
+        {particleCount}
+        {trailLength}
         {colorStart}
         {colorEnd}
       />
-      <svelte:component this={AttractorControls}
+      <AttractorControls
         bind:selectedSystem
         bind:currentParams
         bind:colorStart
@@ -78,7 +80,7 @@
     <h2>{selectedSystem.name}</h2>
     <div class="equation-info">
       <p>Parameters: {Object.entries(currentParams).map(([k, v]) => `${k}=${v.toFixed(3)}`).join(', ')}</p>
-      <p>dt = {selectedSystem.dt} · Scale = {selectedSystem.scale} · Points = {numPoints.toLocaleString()}</p>
+      <p>dt = {selectedSystem.dt} · {particleCount} particles · {trailLength}-point trails</p>
     </div>
   </div>
 </div>

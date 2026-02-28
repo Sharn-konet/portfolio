@@ -37,31 +37,119 @@ function rk4Step(f: DerivativeFn, state: Vec3, params: Record<string, number>, d
   ];
 }
 
+export interface Normalization {
+  center: Vec3;
+  scale: number;
+}
+
+/**
+ * Pre-solve the attractor to compute bounding box, then return center offset
+ * and scale factor so the attractor fills a [-1,1]^3 cube.
+ */
+export function computeNormalization(
+  system: AttractorSystem,
+  params: Record<string, number>,
+  samplePoints: number = 10000
+): Normalization {
+  let state: Vec3 = [...system.initialState];
+  let minX = Infinity, minY = Infinity, minZ = Infinity;
+  let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+
+  // Skip transient (first 10% of samples)
+  const skip = Math.floor(samplePoints * 0.1);
+  for (let i = 0; i < skip; i++) {
+    state = rk4Step(system.derivative, state, params, system.dt);
+    if (!isFinite(state[0])) break;
+  }
+
+  for (let i = 0; i < samplePoints; i++) {
+    if (!isFinite(state[0]) || !isFinite(state[1]) || !isFinite(state[2])) break;
+    minX = Math.min(minX, state[0]); maxX = Math.max(maxX, state[0]);
+    minY = Math.min(minY, state[1]); maxY = Math.max(maxY, state[1]);
+    minZ = Math.min(minZ, state[2]); maxZ = Math.max(maxZ, state[2]);
+    state = rk4Step(system.derivative, state, params, system.dt);
+  }
+
+  const center: Vec3 = [
+    (minX + maxX) / 2,
+    (minY + maxY) / 2,
+    (minZ + maxZ) / 2,
+  ];
+  const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ);
+  const scale = extent > 0 ? extent / 2 : 1;
+
+  return { center, scale };
+}
+
+/**
+ * Normalize a point: center then scale to [-1,1]^3
+ */
+export function normalizePoint(p: Vec3, norm: Normalization): Vec3 {
+  return [
+    (p[0] - norm.center[0]) / norm.scale,
+    (p[1] - norm.center[1]) / norm.scale,
+    (p[2] - norm.center[2]) / norm.scale,
+  ];
+}
+
+/**
+ * Generate perturbed initial states for multiple particles.
+ * Each is a small random offset from the system's initialState.
+ */
+export function generateInitialStates(
+  system: AttractorSystem,
+  count: number,
+  perturbScale: number = 0.01
+): Vec3[] {
+  const states: Vec3[] = [];
+  const base = system.initialState;
+  const mag = Math.max(Math.abs(base[0]), Math.abs(base[1]), Math.abs(base[2]), 1);
+  for (let i = 0; i < count; i++) {
+    states.push([
+      base[0] + (Math.random() - 0.5) * 2 * perturbScale * mag,
+      base[1] + (Math.random() - 0.5) * 2 * perturbScale * mag,
+      base[2] + (Math.random() - 0.5) * 2 * perturbScale * mag,
+    ]);
+  }
+  return states;
+}
+
+/**
+ * Step a single particle forward by one RK4 step.
+ */
+export function stepParticle(
+  state: Vec3,
+  system: AttractorSystem,
+  params: Record<string, number>
+): Vec3 {
+  const next = rk4Step(system.derivative, state, params, system.dt);
+  if (!isFinite(next[0]) || !isFinite(next[1]) || !isFinite(next[2])) {
+    return state; // freeze on divergence
+  }
+  return next;
+}
+
+// Legacy solver kept for reference but no longer used by renderer
 export function solveAttractor(
   system: AttractorSystem,
   params: Record<string, number>,
   numPoints: number
 ): Float32Array {
+  const norm = computeNormalization(system, params);
   const positions = new Float32Array(numPoints * 3);
   let state: Vec3 = [...system.initialState];
-  const s = system.scale;
 
   for (let i = 0; i < numPoints; i++) {
-    positions[i * 3] = state[0] / s;
-    positions[i * 3 + 1] = state[1] / s;
-    positions[i * 3 + 2] = state[2] / s;
+    const n = normalizePoint(state, norm);
+    positions[i * 3] = n[0];
+    positions[i * 3 + 1] = n[1];
+    positions[i * 3 + 2] = n[2];
     state = rk4Step(system.derivative, state, params, system.dt);
-
-    // Safety: bail on NaN/Infinity
     if (!isFinite(state[0]) || !isFinite(state[1]) || !isFinite(state[2])) {
-      // Fill remaining with last valid position
-      const lastX = positions[(i) * 3];
-      const lastY = positions[(i) * 3 + 1];
-      const lastZ = positions[(i) * 3 + 2];
       for (let j = i + 1; j < numPoints; j++) {
-        positions[j * 3] = lastX;
-        positions[j * 3 + 1] = lastY;
-        positions[j * 3 + 2] = lastZ;
+        positions[j * 3] = positions[i * 3];
+        positions[j * 3 + 1] = positions[i * 3 + 1];
+        positions[j * 3 + 2] = positions[i * 3 + 2];
       }
       break;
     }
