@@ -38,7 +38,10 @@
   let colAttr: THREE.BufferAttribute | null = null;
   let ready = false;
 
-  // The geometry is $state only so the template {#if} can react to it
+  // Plain variable for disposal (never read inside $effect to avoid loops)
+  let prevGeo: THREE.BufferGeometry | null = null;
+
+  // The geometry is $state ONLY so the template {#if} can react — write-only from effects
   let geometry: THREE.BufferGeometry | undefined = $state(undefined);
 
   const material = new THREE.PointsMaterial({
@@ -124,13 +127,14 @@
       trailBuffers.push(trail);
     }
 
-    // Clean up old geometry
-    if (geometry) {
-      geometry.dispose();
+    // Clean up old geometry via plain variable (not $state read)
+    if (prevGeo) {
+      prevGeo.dispose();
     }
 
     const geo = buildGeometry();
-    geometry = geo;
+    prevGeo = geo;
+    geometry = geo; // write-only — triggers template update
     ready = true;
   }
 
