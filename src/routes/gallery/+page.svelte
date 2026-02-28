@@ -1,5 +1,6 @@
 <script lang='ts'>
 	import {fade} from "svelte/transition";
+  import Lightbox from '@components/gallery/Lightbox.svelte';
 
   let show = $state(false)
   $effect(() => {
@@ -22,6 +23,15 @@
   let threeColumns = $derived(outerWidth >= 1600);
   let oneColumn = $derived(outerWidth < 600);
   let twoColumns = $derived(!threeColumns && !oneColumn);
+
+  // Lightbox state
+  let lightboxOpen = $state(false);
+  let lightboxIndex = $state(0);
+
+  function openLightbox(index: number) {
+    lightboxIndex = index;
+    lightboxOpen = true;
+  }
 </script>
 
 <svelte:window bind:outerWidth/>
@@ -38,12 +48,27 @@
                 <picture in:fade={{delay: (i%10)*100}}>
                     <source type="image/AVIF" srcset="{image}.avif"/>
                     <source type="image/webp" srcset="{image}.webp"/>
-                    <img src="{image}.jpg" alt="An example of my photography" loading="lazy"/>
+                    <img
+                      src="{image}.jpg"
+                      alt="Photography example {i + 1}"
+                      loading="lazy"
+                      role="button"
+                      tabindex="0"
+                      aria-label="View photo {i + 1} in lightbox"
+                      onclick={() => openLightbox(i)}
+                      onkeydown={(e) => e.key === 'Enter' && openLightbox(i)}
+                    />
                 </picture>
             {/each}
     </div>
     {/if}
 </div>
+
+<Lightbox
+  {images}
+  bind:currentIndex={lightboxIndex}
+  bind:open={lightboxOpen}
+/>
 
 
 <style>
@@ -95,6 +120,11 @@
         transform: scale(1.025);
         transition: all .3s ease-in-out;
         cursor: pointer;
+    }
+
+    #gallery img:focus-visible {
+        outline: 3px solid rgb(var(--light-mode-text-color));
+        outline-offset: 2px;
     }
 
     #gallery {
