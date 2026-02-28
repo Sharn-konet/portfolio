@@ -30,97 +30,17 @@
     colorEnd?: string;
   } = $props();
 
-  let pointsRef: THREE.Points | undefined = $state(undefined);
-
-  // Total vertices = particleCount * trailLength
-  let totalPoints = $derived(particleCount * trailLength);
-
-  // Simulation state (re-initialized when system/params change)
+  // All simulation state managed imperatively — no $state for perf-critical data
   let particleStates: Vec3[] = [];
-  let trails: Vec3[][] = [];
+  let trailBuffers: Vec3[][] = [];
   let norm: Normalization = { center: [0, 0, 0], scale: 1 };
-  let initialized = false;
+  let posAttr: THREE.BufferAttribute | null = null;
+  let colAttr: THREE.BufferAttribute | null = null;
+  let ready = false;
 
-  // Track previous system/params to detect changes
-  let prevSystemName = '';
-  let prevParamsKey = '';
-
-  function paramsKey(p: Record<string, number>): string {
-    return Object.entries(p).map(([k, v]) => `${k}:${v}`).join(',');
-  }
-
-  function initSimulation() {
-    norm = computeNormalization(system, params, 15000);
-    particleStates = generateInitialStates(system, particleCount, 0.02);
-
-    // Warm up each particle a bit so they spread out, each gets a different warmup
-    trails = [];
-    for (let p = 0; p < particleCount; p++) {
-      const warmup = 50 + Math.floor(Math.random() * 200);
-      for (let w = 0; w < warmup; w++) {
-        particleStates[p] = stepParticle(particleStates[p], system, params);
-      }
-      // Initialize trail with current position
-      const normalizedPos = normalizePoint(particleStates[p], norm);
-      const trail: Vec3[] = [];
-      for (let t = 0; t < trailLength; t++) {
-        trail.push([...normalizedPos]);
-      }
-      trails.push(trail);
-    }
-    initialized = true;
-  }
-
-  // Re-initialize when system or params change
-  $effect(() => {
-    const sysName = system.name;
-    const pKey = paramsKey(params);
-    if (sysName !== prevSystemName || pKey !== prevParamsKey) {
-      prevSystemName = sysName;
-      prevParamsKey = pKey;
-      initSimulation();
-    }
-  });
-
-  // Build the buffer geometry
+  // The geometry is $state only so the template {#if} can react to it
   let geometry: THREE.BufferGeometry | undefined = $state(undefined);
 
-  $effect(() => {
-    if (!initialized) return;
-    const total = particleCount * trailLength;
-
-    const geo = new THREE.BufferGeometry();
-    const posAttr = new THREE.BufferAttribute(new Float32Array(total * 3), 3);
-    const colAttr = new THREE.BufferAttribute(new Float32Array(total * 4), 4);
-    posAttr.setUsage(THREE.DynamicDrawUsage);
-    colAttr.setUsage(THREE.DynamicDrawUsage);
-    geo.setAttribute('position', posAttr);
-    geo.setAttribute('color', colAttr);
-
-    // Initial fill
-    const c1 = new THREE.Color(colorStart);
-    const c2 = new THREE.Color(colorEnd);
-
-    for (let p = 0; p < particleCount; p++) {
-      // Each particle gets a unique color by interpolating along the gradient
-      const particleT = p / Math.max(particleCount - 1, 1);
-      const particleColor = new THREE.Color().copy(c1).lerp(c2, particleT);
-
-      for (let t = 0; t < trailLength; t++) {
-        const idx = p * trailLength + t;
-        const trail = trails[p][t];
-        posAttr.setXYZ(idx, trail[0], trail[1], trail[2]);
-        // Older points (low t) = more transparent, newer (high t) = more opaque
-        const alpha = (t / trailLength) * 0.8 + 0.05;
-        colAttr.setXYZW(idx, particleColor.r, particleColor.g, particleColor.b, alpha);
-      }
-    }
-
-    if (geometry) geometry.dispose();
-    geometry = geo;
-  });
-
-  // Points material
   const material = new THREE.PointsMaterial({
     size: 2.5,
     sizeAttenuation: false,
@@ -130,12 +50,113 @@
     blending: THREE.AdditiveBlending,
   });
 
-  // Animation loop: step particles and update trails
-  useTask(() => {
-    if (!initialized || !geometry) return;
+  function buildGeometry() {
+    const total = particleCount * trailLength;
+    const geo = new THREE.BufferGeometry();
+    const positions = new Float32Array(total * 3);
+    const colors = new Float32Array(total * 4);
 
-    const posAttr = geometry.getAttribute('position') as THREE.BufferAttribute;
-    if (!posAttr) return;
+    posAttr = new THREE.BufferAttribute(positions, 3);
+    colAttr = new THREE.BufferAttribute(colors, 4);
+    posAttr.setUsage(THREE.DynamicDrawUsage);
+    colAttr.setUsage(THREE.DynamicDrawUsage);
+    geo.setAttribute('position', posAttr);
+    geo.setAttribute('color', colAttr);
+
+    // Fill initial positions from trail buffers
+    for (let p = 0; p < particleCount; p++) {
+      for (let t = 0; t < trailLength; t++) {
+        const idx = p * trailLength + t;
+        const pt = trailBuffers[p][t];
+        positions[idx * 3] = pt[0];
+        positions[idx * 3 + 1] = pt[1];
+        positions[idx * 3 + 2] = pt[2];
+      }
+    }
+
+    applyColors(colors);
+
+    return geo;
+  }
+
+  function applyColors(colorData?: Float32Array) {
+    const arr = colorData || colAttr?.array as Float32Array;
+    if (!arr) return;
+
+    const c1 = new THREE.Color(colorStart);
+    const c2 = new THREE.Color(colorEnd);
+
+    for (let p = 0; p < particleCount; p++) {
+      const particleT = p / Math.max(particleCount - 1, 1);
+      const pc = new THREE.Color().copy(c1).lerp(c2, particleT);
+
+      for (let t = 0; t < trailLength; t++) {
+        const idx = (p * trailLength + t) * 4;
+        const alpha = (t / trailLength) * 0.8 + 0.05;
+        arr[idx] = pc.r;
+        arr[idx + 1] = pc.g;
+        arr[idx + 2] = pc.b;
+        arr[idx + 3] = alpha;
+      }
+    }
+
+    if (colAttr) colAttr.needsUpdate = true;
+  }
+
+  function initSimulation() {
+    ready = false;
+
+    norm = computeNormalization(system, params, 15000);
+    particleStates = generateInitialStates(system, particleCount, 0.02);
+
+    trailBuffers = [];
+    for (let p = 0; p < particleCount; p++) {
+      // Warm up each particle to spread them across the attractor
+      const warmup = 50 + Math.floor(Math.random() * 200);
+      for (let w = 0; w < warmup; w++) {
+        particleStates[p] = stepParticle(particleStates[p], system, params);
+      }
+      const pos = normalizePoint(particleStates[p], norm);
+      const trail: Vec3[] = [];
+      for (let t = 0; t < trailLength; t++) {
+        trail.push([...pos]);
+      }
+      trailBuffers.push(trail);
+    }
+
+    // Clean up old geometry
+    if (geometry) {
+      geometry.dispose();
+    }
+
+    const geo = buildGeometry();
+    geometry = geo;
+    ready = true;
+  }
+
+  // Re-initialize when system or params change
+  $effect(() => {
+    // Read reactive deps to track them
+    const _sys = system;
+    const _params = { ...params };
+    const _pc = particleCount;
+    const _tl = trailLength;
+
+    initSimulation();
+  });
+
+  // Update colors when they change (without recreating geometry)
+  $effect(() => {
+    const _cs = colorStart;
+    const _ce = colorEnd;
+    if (ready) {
+      applyColors();
+    }
+  });
+
+  // Animation loop — runs every frame, mutates buffers directly
+  useTask(() => {
+    if (!ready || !posAttr) return;
 
     // Step each particle forward
     for (let s = 0; s < stepsPerFrame; s++) {
@@ -143,44 +164,24 @@
         particleStates[p] = stepParticle(particleStates[p], system, params);
         const normalized = normalizePoint(particleStates[p], norm);
 
-        // Shift trail: drop oldest (index 0), append newest
-        const trail = trails[p];
-        trail.shift();
-        trail.push(normalized);
+        // Shift trail: drop oldest, append newest
+        trailBuffers[p].shift();
+        trailBuffers[p].push(normalized);
       }
     }
 
-    // Update buffer
+    // Write to GPU buffer
+    const arr = posAttr.array as Float32Array;
     for (let p = 0; p < particleCount; p++) {
       for (let t = 0; t < trailLength; t++) {
-        const idx = p * trailLength + t;
-        const pt = trails[p][t];
-        posAttr.setXYZ(idx, pt[0], pt[1], pt[2]);
+        const idx = (p * trailLength + t) * 3;
+        const pt = trailBuffers[p][t];
+        arr[idx] = pt[0];
+        arr[idx + 1] = pt[1];
+        arr[idx + 2] = pt[2];
       }
     }
     posAttr.needsUpdate = true;
-  });
-
-  // Update colors when colorStart/colorEnd change
-  $effect(() => {
-    if (!geometry) return;
-    const colAttr = geometry.getAttribute('color') as THREE.BufferAttribute;
-    if (!colAttr) return;
-
-    const c1 = new THREE.Color(colorStart);
-    const c2 = new THREE.Color(colorEnd);
-
-    for (let p = 0; p < particleCount; p++) {
-      const particleT = p / Math.max(particleCount - 1, 1);
-      const particleColor = new THREE.Color().copy(c1).lerp(c2, particleT);
-
-      for (let t = 0; t < trailLength; t++) {
-        const idx = p * trailLength + t;
-        const alpha = (t / trailLength) * 0.8 + 0.05;
-        colAttr.setXYZW(idx, particleColor.r, particleColor.g, particleColor.b, alpha);
-      }
-    }
-    colAttr.needsUpdate = true;
   });
 </script>
 
@@ -196,5 +197,5 @@
 <T.AmbientLight intensity={0.3} />
 
 {#if geometry}
-  <T.Points bind:ref={pointsRef} {geometry} {material} />
+  <T.Points {geometry} {material} />
 {/if}
