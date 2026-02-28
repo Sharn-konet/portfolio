@@ -1,10 +1,9 @@
 <script lang='ts'>
 	import {fade} from "svelte/transition";
-  import {onMount} from 'svelte'
 
-  let show = false
-  onMount(() => {
-      show=true
+  let show = $state(false)
+  $effect(() => {
+      show = true
   })
 
   function shuffle(array: string[]) {
@@ -19,10 +18,10 @@
   images = images.map(imageName => imageName.replace("/static/", "").replace(".jpg", ""))
   shuffle(images)
 
-  let outerWidth: number;
-  $: threeColumns = outerWidth >= 1600
-  $: twoColumns = !threeColumns && !oneColumn
-  $: oneColumn = outerWidth < 600
+  let outerWidth = $state(0);
+  let threeColumns = $derived(outerWidth >= 1600);
+  let oneColumn = $derived(outerWidth < 600);
+  let twoColumns = $derived(!threeColumns && !oneColumn);
 </script>
 
 <svelte:window bind:outerWidth/>
@@ -31,7 +30,7 @@
     <title>sharnko.net | Gallery</title>
 </svelte:head>
 
-<div id = "content">
+<div id="content">
     <h1>Gallery</h1>
     {#if show}
     <div id="gallery" class:threeColumns class:twoColumns class:oneColumn>
@@ -39,7 +38,7 @@
                 <picture in:fade={{delay: (i%10)*100}}>
                     <source type="image/AVIF" srcset="{image}.avif"/>
                     <source type="image/webp" srcset="{image}.webp"/>
-                    <img src="{image}.jpg" alt = "An example of my photography" loading="eager"/>
+                    <img src="{image}.jpg" alt="An example of my photography" loading="lazy"/>
                 </picture>
             {/each}
     </div>
@@ -57,7 +56,7 @@
     h1 {
         font-size: clamp(40px, 10vw, 80px);
     }
-    
+
     /* Define photo structure */
 
     #gallery {
@@ -66,7 +65,7 @@
         -moz-column-gap: var(--column-gap);
         column-gap: var(--column-gap);
     }
-    
+
     #gallery.threeColumns {
         -webkit-column-count: 3;
         column-count: 3;

@@ -1,15 +1,15 @@
 <script lang="ts">
-    import {fade, draw} from 'svelte/transition'
-    import {onMount} from 'svelte'
+    import {fade} from 'svelte/transition'
 
     import './global.css'
     import Navbar from '@components/Navbar.svelte'
-    import Drawings from '@components/drawings/Drawings.svelte'
 
-    let show = false;
-    onMount(()=>
-        show=true
-    )
+    let { children } = $props();
+
+    let show = $state(false);
+    $effect(() => {
+        show = true;
+    });
 </script>
 
 <div id="background">
@@ -18,7 +18,7 @@
             <Navbar/>
         </div>
     {/if}
-    <slot/>
+    {@render children()}
 </div>
 
 <style>

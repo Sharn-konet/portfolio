@@ -2,9 +2,9 @@
 	import Darkmode from "@components/Darkmode.svelte";
   import Menu from "@components/Menu.svelte"
 
-  let outerWidth: number = 800;
-  
-  $: mobile = outerWidth < 800
+  let outerWidth = $state(800);
+
+  let mobile = $derived(outerWidth < 800);
 </script>
 
 <svelte:window bind:outerWidth/>
@@ -23,11 +23,14 @@
           <li>
               <a href="/gallery">Photos</a>
           </li>
+          <li>
+              <a href="/attractors">Attractors</a>
+          </li>
       </ul>
       {/if}
       <Darkmode/>
       {#if mobile}
-      <Menu> 
+      <Menu>
         <ul>
           <li>
               <a href="/">About</a>
@@ -37,6 +40,9 @@
           </li>
           <li>
               <a href="/gallery">Photos</a>
+          </li>
+          <li>
+              <a href="/attractors">Attractors</a>
           </li>
         </ul>
       </Menu>
@@ -57,7 +63,7 @@
       padding-top: 1.5em;
       padding-bottom: 1.5em;
       z-index: 1030;
-      
+
       position: fixed;
       top: 0;
       left: 0;
@@ -79,17 +85,17 @@
     a:hover {
       color: inherit;
       text-shadow: 0px 0px 15px rgba(var(--light-mode-text-color), 1);
-      
+
       /* Make hover transitions slower */
-      transition: 
+      transition:
         color 0.3s cubic-bezier(0.23, 1, 0.320, 1),
-        text-shadow 0.3s cubic-bezier(0.23, 1, 0.320, 1); 
+        text-shadow 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     #site-name {
       margin-left: 2em;
     }
-    
+
     #site-name:hover {
       color: inherit;
     }
@@ -118,7 +124,7 @@
       margin-block-end: 1em;
       margin-left: 0;
       list-style: none;
-      width: 400px;
+      width: 500px;
 
       padding-inline-start:0;
     }

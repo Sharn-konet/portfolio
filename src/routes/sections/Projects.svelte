@@ -1,39 +1,46 @@
 <script lang='ts'>
 	import ProjectCard from "@components/ProjectCard.svelte";
-  import { Chip } from "@svelteuidev/core";
 
-  let outerWidth: number;
-  $: mobile = outerWidth < 1250;
+  let outerWidth = $state(0);
+  let mobile = $derived(outerWidth < 1250);
 </script>
 
 <svelte:window bind:outerWidth />
 
 <div id='section'>
     <h1>Projects</h1>
-    <div id ='projects' class:mobile>
+    <div id='projects' class:mobile>
         <ProjectCard
             src='/projects/lorenz-attractor.gif'
             imageDescription='A Lorenz Attractor in motion.'
             githubLink='https://github.com/Sharn-konet/Flo.jl'
-            demoLink="/projects"
+            demoLink="/attractors"
         >
-            <h2 slot='project-title'>Flo</h2>
-            <p slot='project-description'>
-                A simulation tool for visualising stunning,
-                3 dimensional differential equations
-            </p>
+            {#snippet projectTitle()}
+                <h2>Flo</h2>
+            {/snippet}
+            {#snippet projectDescription()}
+                <p>
+                    A simulation tool for visualising stunning,
+                    3 dimensional differential equations
+                </p>
+            {/snippet}
         </ProjectCard>
 
         <ProjectCard
             src='/projects/plotly-dash-example.gif'
-            imageDescription='A Lorenz Attractor in motion.'
+            imageDescription='A dashboard showing messaging statistics.'
             githubLink='https://github.com/Sharn-konet/messenger-analysis'
             demoLink="/projects"
         >
-            <h2 slot='project-title'>Messenger Analysis</h2>
-            <p slot='project-description'>
-                A dashboard which breaks down your messaging history into insights.
-            </p>
+            {#snippet projectTitle()}
+                <h2>Messenger Analysis</h2>
+            {/snippet}
+            {#snippet projectDescription()}
+                <p>
+                    A dashboard which breaks down your messaging history into insights.
+                </p>
+            {/snippet}
         </ProjectCard>
     </div>
 </div>

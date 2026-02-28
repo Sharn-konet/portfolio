@@ -1,9 +1,9 @@
 <script lang="ts">
-  import {XmarkSolid} from 'svelte-awesome-icons'
   import { fade } from 'svelte/transition'
-  let src: string = "/hamburger.svg"
 
-  let showMenu = false;
+  let { children } = $props();
+
+  let showMenu = $state(false);
 
   function toggleMenu() {
     showMenu = !showMenu;
@@ -14,16 +14,19 @@
     showMenu = false;
     document.body.style.overflow = '';
   }
-
 </script>
 
-
-<img {src} alt="Menu button" on:click={toggleMenu}/>
+<img src="/hamburger.svg" alt="Menu button" onclick={toggleMenu}/>
 
 {#if showMenu}
-  <div id="menu-overlay" on:click={closeMenu} in:fade="{{duration: 150}}" out:fade="{{duration: 100}}">
-    <div id="exit-button"><XmarkSolid/></div>
-    <div id="list"><slot/></div>
+  <div id="menu-overlay" onclick={closeMenu} role="button" tabindex="-1"
+       in:fade={{duration: 150}} out:fade={{duration: 100}}>
+    <div id="exit-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+    </div>
+    <div id="list">{@render children()}</div>
   </div>
 {/if}
 
@@ -38,6 +41,7 @@
 
   img {
     cursor: pointer;
+    height: 2em;
   }
 
   #menu-overlay {
@@ -48,10 +52,6 @@
     height: 100%;
     background-color: rgba(var(--dark-mode-background-color), 0.975);
     z-index: 2000;
-  }
-
-  img {
-    height: 2em;
   }
 
   #list {

@@ -1,15 +1,7 @@
 <script lang='ts'>
-    let outerWidth: number = 800;
+    let outerWidth = $state(800);
 
-    let viewBox = "0 0 672 895"
-
-    $:{
-      if (outerWidth < 1150) {
-        let viewBox = "0 0 672 895"
-      } else {
-        let viewBox = "100 50 400 600"
-      }
-    }
+    let viewBox = $derived(outerWidth < 1150 ? "0 0 672 895" : "100 50 400 600");
 </script>
 
 <svelte:window bind:outerWidth/>

@@ -2,13 +2,13 @@
   import Card from '@components/Card.svelte'
   import Uoa from '@components/drawings/Uoa.svelte'
 
-  let outerWidth: number;
-  $: mobile = outerWidth < 1150;
+  let outerWidth = $state(0);
+  let mobile = $derived(outerWidth < 1150);
 </script>
 
 <svelte:window bind:outerWidth/>
 
-<div id = 'education'>
+<div id='education'>
 <h1>Education</h1>
 <Card>
     <div class="spread-container" class:mobile>
@@ -33,7 +33,7 @@
     <div>
       <h2>Certified AWS Developer Associate</h2>
       <p>
-        My skill in AWS has been officially accredited. Achieving the developer certification requires in-depth knowledge around implementing AWS services into code-bases.  
+        My skill in AWS has been officially accredited. Achieving the developer certification requires in-depth knowledge around implementing AWS services into code-bases.
       </p>
       <p>
         This certification is backed up by two years of experience as a heavy user of AWS in an enterprise account. In particular, I have a lot of experience in using:
@@ -45,6 +45,7 @@
           <li>DynamoDB</li>
           <li>Secrets Manager</li>
           <li>IAM</li>
+      </ul>
     </div>
   </div>
 </Card>

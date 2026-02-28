@@ -1,17 +1,10 @@
 <script lang='ts'>
-    export let isDark: boolean;
+    let { isDark = false }: { isDark?: boolean } = $props();
 
     let nightPicture = '/DSC02179-cropped-to-match.jpg'
     let dayPicture = '/DSC02436-cropped-to-match.jpg'
 
-    let picture: string = dayPicture;
-
-    $: if (isDark) {
-        let picture = nightPicture;
-    } else {
-        let picture = dayPicture
-    }
-
+    let picture = $derived(isDark ? nightPicture : dayPicture);
 </script>
 
 <div style="background-image: linear-gradient(rgba(0,0,0,0.5), rgb(0,0,0,0.5)), url('{picture}')">
@@ -37,4 +30,3 @@
         text-size: 4em;
     }
 </style>
-

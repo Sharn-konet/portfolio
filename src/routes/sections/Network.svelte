@@ -1,103 +1,88 @@
 <script>
-import { onMount } from "svelte";
-
-
+import * as d3 from 'd3';
 import data from "./../../data/tools.js"
 
-import * as d3 from 'd3';
+let container: HTMLDivElement;
 
-function createLogo() {
-  return this.appendChild(document.createElementNS("http://www.w3.org/2000/svg", 's'))
-}
+$effect(() => {
+  if (!container) return;
 
-onMount(() => {
-// set the dimensions and margins of the graph
-const margin = {top: 10, right: 30, bottom: 30, left: 40},
-  width = 600 - margin.left - margin.right,
-  height = 600 - margin.top - margin.bottom;
+  const margin = {top: 10, right: 30, bottom: 30, left: 40};
+  const width = 600 - margin.left - margin.right;
+  const height = 600 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-const svg = d3.select("#my_dataviz")
-.append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)      
-  .attr("viewBox", [0, 0, width, height])
-  .attr("style", "max-width: 100%; height: auto; border-color: white; border-style: solid; margin: 10% clamp(10%, calc(25% - 100px), 20%);")
-.append("g")
-  .attr("transform",
-        `translate(${margin.left}, ${margin.top})`);
+  const svg = d3.select(container)
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto;")
+    .append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  // Initialize the links
   const link = svg
     .selectAll("line")
     .data(data.links)
     .join("line")
-      .style("stroke", "#0084f5")
-      .style("stroke-width", 3)
+    .style("stroke", "#0084f5")
+    .style("stroke-width", 3);
 
   const node = svg
     .selectAll(".logo")
     .data(data.nodes)
     .join("image")
-      .attr("width", 10)
-      .attr("height", 10)
-      .style("src", "/static/drawings/Rust.png")
-  
-  // Let's list the force we wanna apply on the network
+    .attr("width", 10)
+    .attr("height", 10);
+
   const simulation = d3.forceSimulation(data.nodes)
-      .alphaDecay(0.001) // Force algorithm is applied to data.nodes
-      .force("link", d3.forceLink(data.links).id(d => d.id))                     // This provide  the id of a nod
-      .force("charge", d3.forceManyBody())         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
-      .force("center", d3.forceCenter(width / 2, height / 2).strength(0.7))     // This force attracts nodes to the center of the svg area
-      .force("radial", d3.forceRadial(60, width/2, height/2).strength(0.08))
-      .force("collision", d3.forceCollide(10))
-      .on("tick", ticked);
+    .alphaDecay(0.001)
+    .force("link", d3.forceLink(data.links).id(d => d.id))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(width / 2, height / 2).strength(0.7))
+    .force("radial", d3.forceRadial(60, width/2, height/2).strength(0.08))
+    .force("collision", d3.forceCollide(10))
+    .on("tick", ticked);
 
-  // Add a drag behavior.
   node.call(d3.drag()
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended));
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended));
 
-  // This function is run at each iteration of the force algorithm, updating the nodes position.
   function ticked() {
     link
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y);
     node
-         .attr("cx", function (d) { return d.x; })
-         .attr("cy", function(d) { return d.y; });
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y);
   }
 
-  // Reheat the simulation when drag starts, and fix the subject position.
   function dragstarted(event) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     event.subject.fx = event.subject.x;
     event.subject.fy = event.subject.y;
   }
 
-  // Update the subject (dragged node) position during drag.
   function dragged(event) {
     event.subject.fx = event.x;
     event.subject.fy = event.y;
   }
 
-  // Restore the target alpha so the simulation cools after dragging ends.
-  // Unfix the subject position now that it’s no longer being dragged.
   function dragended(event) {
     if (!event.active) simulation.alphaTarget(0);
     event.subject.fx = null;
     event.subject.fy = null;
   }
 
+  return () => {
+    simulation.stop();
+  };
 });
-
 </script>
 
-<div id="my_dataviz"></div>
+<div bind:this={container}></div>
 
 <style>
 </style>

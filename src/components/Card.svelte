@@ -1,5 +1,9 @@
+<script lang="ts">
+  let { children } = $props();
+</script>
+
 <div id='content'>
-  <slot/>
+  {@render children()}
 </div>
 
 <style>
