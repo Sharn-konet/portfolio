@@ -40,6 +40,8 @@ function rk4Step(f: DerivativeFn, state: Vec3, params: Record<string, number>, d
 export interface Normalization {
   center: Vec3;
   scale: number;
+  /** Sampled trajectory points for spawning particles across the attractor */
+  spawnPoints: Vec3[];
 }
 
 /**
@@ -55,23 +57,29 @@ export function computeNormalization(
   let minX = Infinity, minY = Infinity, minZ = Infinity;
   let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
   let validSamples = 0;
+  const spawnPoints: Vec3[] = [];
 
   // Skip transient (first 10% of samples)
   const skip = Math.floor(samplePoints * 0.1);
   for (let i = 0; i < skip; i++) {
     state = rk4Step(system.derivative, state, params, system.dt);
     if (!isFinite(state[0]) || !isFinite(state[1]) || !isFinite(state[2])) {
-      // Diverged during warmup — reset to initial state
       state = [...system.initialState];
       break;
     }
   }
+
+  // Sample every Nth point for spawn positions (collect ~500 evenly spaced)
+  const spawnInterval = Math.max(1, Math.floor(samplePoints / 500));
 
   for (let i = 0; i < samplePoints; i++) {
     if (!isFinite(state[0]) || !isFinite(state[1]) || !isFinite(state[2])) break;
     minX = Math.min(minX, state[0]); maxX = Math.max(maxX, state[0]);
     minY = Math.min(minY, state[1]); maxY = Math.max(maxY, state[1]);
     minZ = Math.min(minZ, state[2]); maxZ = Math.max(maxZ, state[2]);
+    if (i % spawnInterval === 0) {
+      spawnPoints.push([...state]);
+    }
     validSamples++;
     state = rk4Step(system.derivative, state, params, system.dt);
   }
@@ -81,6 +89,7 @@ export function computeNormalization(
     return {
       center: [...system.initialState],
       scale: system.scale || 1,
+      spawnPoints: [system.initialState],
     };
   }
 
@@ -92,7 +101,7 @@ export function computeNormalization(
   const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ);
   const scale = extent > 1e-10 ? extent / 2 : 1;
 
-  return { center, scale };
+  return { center, scale, spawnPoints };
 }
 
 /**

@@ -8,6 +8,8 @@
   let currentParams: Record<string, number> = $state({ ...allSystems[0].defaultParams });
   let colorStart = $state('#3366ff');
   let colorEnd = $state('#ff33cc');
+  let speed = $state(1);
+  let stepsPerFrame = $derived(Math.max(1, Math.round(speed * 3)));
 
   let outerWidth = $state(0);
   let mobile = $derived(outerWidth < 768);
@@ -60,6 +62,7 @@
         params={currentParams}
         {particleCount}
         {trailLength}
+        {stepsPerFrame}
         {colorStart}
         {colorEnd}
       />
@@ -68,6 +71,7 @@
         bind:currentParams
         bind:colorStart
         bind:colorEnd
+        bind:speed
       />
     {:else}
       <div class="loading">

@@ -5,7 +5,6 @@
   import {
     computeNormalization,
     normalizePoint,
-    generateInitialStates,
     stepParticle,
     type AttractorSystem,
     type Vec3,
@@ -110,15 +109,17 @@
     ready = false;
 
     norm = computeNormalization(system, params, 15000);
-    particleStates = generateInitialStates(system, particleCount, 0.02);
 
+    // Spawn particles at random positions sampled from the attractor trajectory
+    // so they start spread across the entire attractor, not clustered together
+    const spawns = norm.spawnPoints;
+    particleStates = [];
     trailBuffers = [];
     for (let p = 0; p < particleCount; p++) {
-      // Warm up each particle to spread them across the attractor
-      const warmup = 50 + Math.floor(Math.random() * 200);
-      for (let w = 0; w < warmup; w++) {
-        particleStates[p] = stepParticle(particleStates[p], system, params);
-      }
+      // Pick a random point from the sampled trajectory
+      const spawnIdx = Math.floor(Math.random() * spawns.length);
+      particleStates.push([...spawns[spawnIdx]]);
+
       const pos = normalizePoint(particleStates[p], norm);
       const trail: Vec3[] = [];
       for (let t = 0; t < trailLength; t++) {

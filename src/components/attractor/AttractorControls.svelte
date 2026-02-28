@@ -7,11 +7,13 @@
     currentParams = $bindable({ ...allSystems[0].defaultParams }),
     colorStart = $bindable('#3366ff'),
     colorEnd = $bindable('#ff33cc'),
+    speed = $bindable(1),
   }: {
     selectedSystem: AttractorSystem;
     currentParams: Record<string, number>;
     colorStart: string;
     colorEnd: string;
+    speed: number;
   } = $props();
 
   let showControls = $state(true);
@@ -23,6 +25,16 @@
 
   function resetParams() {
     currentParams = { ...selectedSystem.defaultParams };
+  }
+
+  // Compute sensible step for a parameter value
+  function stepFor(val: number): number {
+    const abs = Math.abs(val);
+    if (abs >= 100) return 1;
+    if (abs >= 10) return 0.1;
+    if (abs >= 1) return 0.01;
+    if (abs >= 0.1) return 0.001;
+    return 0.0001;
   }
 
   const colorPresets = [
@@ -56,20 +68,31 @@
             {/each}
           </div>
 
+          <h3>Speed</h3>
+          <div class="speed-row">
+            <input
+              id="speed-slider"
+              type="range"
+              min={0.1}
+              max={10}
+              step={0.1}
+              bind:value={speed}
+            />
+            <span class="speed-value">{speed.toFixed(1)}x</span>
+          </div>
+
           <h3>Parameters</h3>
           <div class="params">
             {#each Object.entries(currentParams) as [key, value]}
+              {@const defaultVal = selectedSystem.defaultParams[key]}
               <div class="param-row">
                 <label for="param-{key}">{key}</label>
                 <input
                   id="param-{key}"
-                  type="range"
-                  min={value * -2 || -10}
-                  max={value * 3 || 10}
-                  step={Math.abs(value) > 1 ? 0.1 : 0.001}
+                  type="number"
+                  step={stepFor(defaultVal)}
                   bind:value={currentParams[key]}
                 />
-                <span class="param-value">{currentParams[key].toFixed(3)}</span>
               </div>
             {/each}
             <button class="reset-btn" onclick={resetParams}>Reset Defaults</button>
@@ -173,6 +196,24 @@
     font-weight: 600;
   }
 
+  .speed-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .speed-row input[type="range"] {
+    flex: 1;
+    accent-color: rgb(var(--light-mode-text-color));
+  }
+
+  .speed-value {
+    font-size: 0.8em;
+    font-family: monospace;
+    min-width: 3.5em;
+    text-align: right;
+  }
+
   .params {
     display: flex;
     flex-direction: column;
@@ -181,7 +222,7 @@
 
   .param-row {
     display: grid;
-    grid-template-columns: 70px 1fr 60px;
+    grid-template-columns: 70px 1fr;
     align-items: center;
     gap: 8px;
   }
@@ -191,15 +232,20 @@
     opacity: 0.8;
   }
 
-  .param-row input[type="range"] {
+  .param-row input[type="number"] {
     width: 100%;
-    accent-color: rgb(var(--light-mode-text-color));
+    padding: 0.3em 0.5em;
+    border: 1px solid rgba(var(--light-mode-text-color), 0.3);
+    border-radius: 4px;
+    background: rgba(var(--light-mode-background-color), 0.5);
+    color: inherit;
+    font-family: monospace;
+    font-size: 0.85em;
   }
 
-  .param-value {
-    font-size: 0.75em;
-    font-family: monospace;
-    text-align: right;
+  :global(body.dark-mode) .param-row input[type="number"] {
+    background: rgba(var(--dark-mode-background-color), 0.5);
+    border-color: rgba(var(--dark-mode-text-color), 0.3);
   }
 
   .reset-btn {
@@ -237,7 +283,6 @@
     border-color: rgb(var(--light-mode-text-color));
   }
 
-  /* Scrollbar for controls */
   .controls-overlay::-webkit-scrollbar {
     width: 4px;
   }

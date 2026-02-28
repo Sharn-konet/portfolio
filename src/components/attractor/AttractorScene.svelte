@@ -8,6 +8,7 @@
     params,
     particleCount = 100,
     trailLength = 300,
+    stepsPerFrame = 3,
     colorStart = '#3366ff',
     colorEnd = '#ff33cc',
   }: {
@@ -15,6 +16,7 @@
     params: Record<string, number>;
     particleCount?: number;
     trailLength?: number;
+    stepsPerFrame?: number;
     colorStart?: string;
     colorEnd?: string;
   } = $props();
@@ -27,6 +29,7 @@
       {params}
       {particleCount}
       {trailLength}
+      {stepsPerFrame}
       {colorStart}
       {colorEnd}
     />
