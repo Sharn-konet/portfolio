@@ -54,12 +54,17 @@ export function computeNormalization(
   let state: Vec3 = [...system.initialState];
   let minX = Infinity, minY = Infinity, minZ = Infinity;
   let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+  let validSamples = 0;
 
   // Skip transient (first 10% of samples)
   const skip = Math.floor(samplePoints * 0.1);
   for (let i = 0; i < skip; i++) {
     state = rk4Step(system.derivative, state, params, system.dt);
-    if (!isFinite(state[0])) break;
+    if (!isFinite(state[0]) || !isFinite(state[1]) || !isFinite(state[2])) {
+      // Diverged during warmup — reset to initial state
+      state = [...system.initialState];
+      break;
+    }
   }
 
   for (let i = 0; i < samplePoints; i++) {
@@ -67,7 +72,16 @@ export function computeNormalization(
     minX = Math.min(minX, state[0]); maxX = Math.max(maxX, state[0]);
     minY = Math.min(minY, state[1]); maxY = Math.max(maxY, state[1]);
     minZ = Math.min(minZ, state[2]); maxZ = Math.max(maxZ, state[2]);
+    validSamples++;
     state = rk4Step(system.derivative, state, params, system.dt);
+  }
+
+  // Fallback if no valid samples or bounds are degenerate
+  if (validSamples === 0 || !isFinite(minX) || !isFinite(maxX)) {
+    return {
+      center: [...system.initialState],
+      scale: system.scale || 1,
+    };
   }
 
   const center: Vec3 = [
@@ -76,7 +90,7 @@ export function computeNormalization(
     (minZ + maxZ) / 2,
   ];
   const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ);
-  const scale = extent > 0 ? extent / 2 : 1;
+  const scale = extent > 1e-10 ? extent / 2 : 1;
 
   return { center, scale };
 }
@@ -85,11 +99,12 @@ export function computeNormalization(
  * Normalize a point: center then scale to [-1,1]^3
  */
 export function normalizePoint(p: Vec3, norm: Normalization): Vec3 {
-  return [
-    (p[0] - norm.center[0]) / norm.scale,
-    (p[1] - norm.center[1]) / norm.scale,
-    (p[2] - norm.center[2]) / norm.scale,
-  ];
+  const x = (p[0] - norm.center[0]) / norm.scale;
+  const y = (p[1] - norm.center[1]) / norm.scale;
+  const z = (p[2] - norm.center[2]) / norm.scale;
+  // Guard against NaN/Infinity leaking into GPU buffers
+  if (!isFinite(x) || !isFinite(y) || !isFinite(z)) return [0, 0, 0];
+  return [x, y, z];
 }
 
 /**
