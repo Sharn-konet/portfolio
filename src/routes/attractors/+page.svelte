@@ -83,7 +83,7 @@
   <div class="info">
     <h2>{selectedSystem.name}</h2>
     <div class="equation-info">
-      <p>Parameters: {Object.entries(currentParams).map(([k, v]) => `${k}=${v.toFixed(3)}`).join(', ')}</p>
+      <p>Parameters: {Object.entries(currentParams).map(([k, v]) => `${k}=${v != null ? Number(v).toFixed(3) : '—'}`).join(', ')}</p>
       <p>dt = {selectedSystem.dt} · {particleCount} particles · {trailLength}-point trails</p>
     </div>
   </div>
