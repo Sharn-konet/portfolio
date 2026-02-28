@@ -1,5 +1,6 @@
 <script lang="ts">
-  import {Rive, Layout, Fit, Alignment, EventType} from '@rive-app/canvas';
+  import pkg from '@rive-app/canvas';
+  const {Rive, Layout, Fit, Alignment, EventType} = pkg;
 
   let {
     src,
