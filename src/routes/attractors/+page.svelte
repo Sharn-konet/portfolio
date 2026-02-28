@@ -45,7 +45,7 @@
     </p>
   </div>
 
-  <div class="viewport">
+  <div class="viewport" aria-label="Interactive 3D visualization of the {selectedSystem.name} chaotic attractor. Use mouse to orbit, scroll to zoom." role="img">
     {#if tinyMobile}
       <div class="fallback">
         <img src="/projects/lorenz-attractor.gif" alt="Lorenz attractor animation" />

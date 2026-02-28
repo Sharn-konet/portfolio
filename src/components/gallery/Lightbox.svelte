@@ -128,30 +128,60 @@
     }
   }
 
-  // Lock body scroll when open
+  // Focus management
+  let overlayEl: HTMLDivElement | undefined = $state(undefined);
+  let previouslyFocused: HTMLElement | null = $state(null);
+
+  // Lock body scroll and manage focus when open
   $effect(() => {
     if (open) {
+      previouslyFocused = document.activeElement as HTMLElement;
       document.body.style.overflow = 'hidden';
+      // Focus the overlay after mount
+      requestAnimationFrame(() => {
+        overlayEl?.focus();
+      });
+    } else if (previouslyFocused) {
+      previouslyFocused.focus();
+      previouslyFocused = null;
     }
     return () => {
       document.body.style.overflow = '';
     };
   });
 
+  // Focus trap: tab cycles through lightbox buttons
+  function handleTab(e: KeyboardEvent) {
+    if (!open || e.key !== 'Tab' || !overlayEl) return;
+    const focusable = overlayEl.querySelectorAll<HTMLElement>('button, [tabindex]');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   let imageTransform = $derived(
     `scale(${scale}) translate(${translateX / scale}px, ${translateY / scale}px)`
   );
 </script>
 
-<svelte:window onkeydown={handleKeydown} />
+<svelte:window onkeydown={(e) => { handleKeydown(e); handleTab(e); }} />
 
 {#if open}
   <div
     class="lightbox-overlay"
+    bind:this={overlayEl}
     transition:fade={{ duration: 200 }}
     role="dialog"
-    aria-label="Image lightbox"
+    aria-label="Image lightbox — photo {currentIndex + 1} of {images.length}"
     aria-modal="true"
+    tabindex="-1"
   >
     <!-- Backdrop -->
     <div class="backdrop" onclick={close}></div>
