@@ -1,6 +1,5 @@
 <script lang="ts">
     import {fade} from 'svelte/transition'
-    import { page } from '$app/stores';
 
     import './global.css'
     import Navbar from '@components/Navbar.svelte'
@@ -22,15 +21,8 @@
             <Navbar/>
         </div>
     {/if}
-    {#key $page.url.pathname}
-        <div class="page-transition" in:fade={{ duration: 300, delay: 100 }} out:fade={{ duration: 200 }}>
-            {@render children()}
-        </div>
-    {/key}
+    {@render children()}
 </div>
 
 <style>
-    .page-transition {
-        min-height: 100vh;
-    }
 </style>

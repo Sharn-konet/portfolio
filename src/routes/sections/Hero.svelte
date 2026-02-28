@@ -147,24 +147,6 @@
         color: inherit;
     }
 
-    img {
-        grid-area: image;
-        justify-self: right;
-        border-radius: 50px;
-        max-width: 75%;
-        box-shadow: 0px 0px 80px rgba(var(--light-mode-box-shadow-color) );
-        transition: box-shadow 1.5s;
-    }
-
-    img.mobile {
-      max-width: clamp(50px, 40vmin, 300px);
-      border-radius: 25px;
-    }
-
-    :global(body.dark-mode) img {
-        box-shadow: 0px 0px 40px rgb(var(--light-mode-text-color));
-    }
-
     :global(body.dark-mode) #resume-button {
         border-color: #ffffff;
     }

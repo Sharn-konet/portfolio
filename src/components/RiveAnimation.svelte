@@ -1,7 +1,4 @@
 <script lang="ts">
-  import pkg from '@rive-app/canvas';
-  const {Rive, Layout, Fit, Alignment, EventType} = pkg;
-
   let {
     src,
     autoplay = true,
@@ -17,35 +14,39 @@
   } = $props();
 
   let canvasEl: HTMLCanvasElement;
-  let riveInstance: Rive | undefined = $state(undefined);
+  let riveInstance: any = $state(undefined);
 
   $effect(() => {
     if (!canvasEl) return;
-    riveInstance = new Rive({
-      src,
-      autoplay,
-      artboard,
-      layout: new Layout({
-        fit: Fit.None,
-        alignment: Alignment.Center,
-      }),
-      stateMachines,
-      canvas: canvasEl,
-      onLoad: () => {
-        riveInstance?.resizeDrawingSurfaceToCanvas();
 
-        // Rive event listener — will fire once .riv file has click events
-        // added to each skill ball (see RIVE_IMPLEMENTATION.md).
-        // Event names should follow pattern: "skill_<name>_clicked"
-        if (onRiveEvent && riveInstance) {
-          riveInstance.on(EventType.RiveEvent, (event: any) => {
-            const eventName = event?.data?.name;
-            if (eventName) {
-              onRiveEvent(eventName);
-            }
-          });
-        }
-      },
+    // Dynamic import to handle CJS/ESM module resolution
+    import('@rive-app/canvas').then((module) => {
+      const rive = module.default || module;
+      const { Rive, Layout, Fit, Alignment, EventType } = rive;
+
+      riveInstance = new Rive({
+        src,
+        autoplay,
+        artboard,
+        layout: new Layout({
+          fit: Fit.None,
+          alignment: Alignment.Center,
+        }),
+        stateMachines,
+        canvas: canvasEl,
+        onLoad: () => {
+          riveInstance?.resizeDrawingSurfaceToCanvas();
+
+          if (onRiveEvent && riveInstance) {
+            riveInstance.on(EventType.RiveEvent, (event: any) => {
+              const eventName = event?.data?.name;
+              if (eventName) {
+                onRiveEvent(eventName);
+              }
+            });
+          }
+        },
+      });
     });
 
     return () => {

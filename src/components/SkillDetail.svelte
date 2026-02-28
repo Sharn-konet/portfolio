@@ -29,8 +29,8 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if open && skill}
-  <div class="backdrop" transition:fade={{ duration: 200 }} onclick={close}></div>
-  <aside
+  <div class="backdrop" transition:fade={{ duration: 200 }} onclick={close} onkeydown={(e) => e.key === 'Enter' && close()} role="presentation"></div>
+  <div
     class="drawer"
     transition:fly={{ x: 300, duration: 300 }}
     role="dialog"
@@ -65,7 +65,7 @@
         </ul>
       </div>
     </SketchyBox>
-  </aside>
+  </div>
 {/if}
 
 <style>

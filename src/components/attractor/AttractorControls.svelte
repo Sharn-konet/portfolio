@@ -60,8 +60,9 @@
           <div class="params">
             {#each Object.entries(currentParams) as [key, value]}
               <div class="param-row">
-                <label>{key}</label>
+                <label for="param-{key}">{key}</label>
                 <input
+                  id="param-{key}"
                   type="range"
                   min={value * -2 || -10}
                   max={value * 3 || 10}

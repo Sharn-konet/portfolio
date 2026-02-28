@@ -16,10 +16,12 @@
   }
 </script>
 
-<img src="/hamburger.svg" alt="Menu button" onclick={toggleMenu}/>
+<button class="hamburger-btn" onclick={toggleMenu} aria-label="Open menu">
+  <img src="/hamburger.svg" alt="" />
+</button>
 
 {#if showMenu}
-  <div id="menu-overlay" onclick={closeMenu} role="button" tabindex="-1"
+  <div id="menu-overlay" onclick={closeMenu} onkeydown={(e) => e.key === 'Escape' && closeMenu()} role="presentation"
        in:fade={{duration: 150}} out:fade={{duration: 100}}>
     <div id="exit-button">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -39,8 +41,14 @@
     cursor: pointer;
   }
 
-  img {
+  .hamburger-btn {
+    background: none;
+    border: none;
+    padding: 0;
     cursor: pointer;
+  }
+
+  .hamburger-btn img {
     height: 2em;
   }
 

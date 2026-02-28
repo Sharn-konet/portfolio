@@ -14,7 +14,7 @@
   import Tools from "./sections/Tools.svelte";
   import SketchyDivider from "@components/handdrawn/SketchyDivider.svelte";
 
-  // Per-section scroll visibility flags
+  // Per-section scroll visibility flags — used for CSS animation classes
   let toolsVisible = $state(false);
   let experienceVisible = $state(false);
   let educationVisible = $state(false);
@@ -71,16 +71,12 @@
 </div>
 
 <div
-  use:inview={{ threshold: 0.15 }}
+  class="animate-section"
+  class:visible={toolsVisible}
+  use:inview={{ threshold: 0.1 }}
   oninview_enter={() => toolsVisible = true}
 >
-  {#if toolsVisible}
-    <div in:fly={{ y: 40, duration: 600 }}>
-      <Tools/>
-    </div>
-  {:else}
-    <div class="placeholder"></div>
-  {/if}
+  <Tools/>
 </div>
 
 <div class="divider-container">
@@ -88,16 +84,12 @@
 </div>
 
 <div
-  use:inview={{ threshold: 0.1 }}
+  class="animate-section"
+  class:visible={experienceVisible}
+  use:inview={{ threshold: 0.05 }}
   oninview_enter={() => experienceVisible = true}
 >
-  {#if experienceVisible}
-    <div in:fade={{ duration: 800 }}>
-      <Experience/>
-    </div>
-  {:else}
-    <div class="placeholder"></div>
-  {/if}
+  <Experience/>
 </div>
 
 <div class="divider-container">
@@ -105,16 +97,12 @@
 </div>
 
 <div
-  use:inview={{ threshold: 0.15 }}
+  class="animate-section slide-left"
+  class:visible={educationVisible}
+  use:inview={{ threshold: 0.1 }}
   oninview_enter={() => educationVisible = true}
 >
-  {#if educationVisible}
-    <div in:fly={{ x: -40, duration: 600 }}>
-      <Education/>
-    </div>
-  {:else}
-    <div class="placeholder"></div>
-  {/if}
+  <Education/>
 </div>
 
 <div class="divider-container">
@@ -122,16 +110,12 @@
 </div>
 
 <div
-  use:inview={{ threshold: 0.1 }}
+  class="animate-section scale-up"
+  class:visible={projectsVisible}
+  use:inview={{ threshold: 0.05 }}
   oninview_enter={() => projectsVisible = true}
 >
-  {#if projectsVisible}
-    <div in:scale={{ start: 0.95, duration: 500 }}>
-      <Projects/>
-    </div>
-  {:else}
-    <div class="placeholder"></div>
-  {/if}
+  <Projects/>
 </div>
 
 {/if}
@@ -149,8 +133,32 @@
         margin: 0 10%;
     }
 
-    .placeholder {
-        min-height: 200px;
+    /* Scroll-triggered animations via CSS classes (content always rendered) */
+    .animate-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-section.slide-left {
+        transform: translateX(-30px);
+    }
+
+    .animate-section.scale-up {
+        transform: scale(0.96);
+    }
+
+    .animate-section.visible {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-section {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
     }
 
     /* Konami easter egg: extra sketchy style */

@@ -184,7 +184,7 @@
     tabindex="-1"
   >
     <!-- Backdrop -->
-    <div class="backdrop" onclick={close}></div>
+    <div class="backdrop" onclick={close} onkeydown={(e) => e.key === 'Enter' && close()} role="presentation"></div>
 
     <!-- Close button -->
     <button class="close-btn" onclick={close} aria-label="Close lightbox">
