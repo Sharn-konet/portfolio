@@ -1,27 +1,28 @@
 <script lang="ts">
-  let { children } = $props();
+  import type { Snippet } from 'svelte';
+  import SketchyBox from './handdrawn/SketchyBox.svelte';
+
+  let { children }: { children: Snippet } = $props();
 </script>
 
-<div id='content'>
-  {@render children()}
+<div class="card-wrapper">
+  <SketchyBox roughness={1.5} padding={4}>
+    <div id='content'>
+      {@render children()}
+    </div>
+  </SketchyBox>
 </div>
 
 <style>
-
-    #content {
-        background-color: rgb(var(--light-mode-background-color));
-        border-radius: 15px;
-        border-color: rgb(var(--light-mode-text-color));
-        padding: 1em 3em;
-        box-shadow: 0px 0px 60px rgba(var(--light-mode-box-shadow-color), 0.2);
-        transition: box-shadow 3s;
+    .card-wrapper {
         margin-top: 3em;
     }
 
-    :global(body.dark-mode) #content {
-        background-color:   #ffffff20;
-        border-radius: 15px;
-        box-shadow: 0px 0px 80px rgba(var(--light-mode-text-color), 0.20);
-        border-color: rgb(var(--dark-mode-text-color))
+    #content {
+        padding: 1em 2em;
+    }
+
+    :global(body.dark-mode) .card-wrapper {
+        filter: brightness(1.1);
     }
 </style>
