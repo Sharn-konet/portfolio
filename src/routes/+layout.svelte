@@ -3,7 +3,6 @@
 
     import './global.css'
     import Navbar from '@components/Navbar.svelte'
-    import CustomCursor from '@components/CustomCursor.svelte'
 
     let { children } = $props();
 
@@ -12,8 +11,6 @@
         show = true;
     });
 </script>
-
-<CustomCursor />
 
 <div id="background">
     {#if show}

@@ -23,9 +23,6 @@
           <li>
               <a href="/gallery">Photos</a>
           </li>
-          <li>
-              <a href="/attractors">Attractors</a>
-          </li>
       </ul>
       {/if}
       <Darkmode/>
@@ -40,9 +37,6 @@
           </li>
           <li>
               <a href="/gallery">Photos</a>
-          </li>
-          <li>
-              <a href="/attractors">Attractors</a>
           </li>
         </ul>
       </Menu>

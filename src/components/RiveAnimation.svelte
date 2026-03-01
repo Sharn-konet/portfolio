@@ -4,13 +4,11 @@
     autoplay = true,
     artboard,
     stateMachines,
-    onRiveEvent,
   }: {
     src: string;
     autoplay?: boolean;
     artboard?: string;
     stateMachines?: string;
-    onRiveEvent?: (eventName: string) => void;
   } = $props();
 
   let canvasEl: HTMLCanvasElement;
@@ -22,7 +20,7 @@
     // Dynamic import to handle CJS/ESM module resolution
     import('@rive-app/canvas').then((module) => {
       const rive = module.default || module;
-      const { Rive, Layout, Fit, Alignment, EventType } = rive;
+      const { Rive, Layout, Fit, Alignment } = rive;
 
       riveInstance = new Rive({
         src,
@@ -36,15 +34,6 @@
         canvas: canvasEl,
         onLoad: () => {
           riveInstance?.resizeDrawingSurfaceToCanvas();
-
-          if (onRiveEvent && riveInstance) {
-            riveInstance.on(EventType.RiveEvent, (event: any) => {
-              const eventName = event?.data?.name;
-              if (eventName) {
-                onRiveEvent(eventName);
-              }
-            });
-          }
         },
       });
     });

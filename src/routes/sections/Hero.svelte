@@ -12,9 +12,7 @@
 <div id="hero" class:desktop class:mobile>
 
   {#if mobile}
-    <div class="portrait mobile">
-      <Me/>
-    </div>
+    <Me/>
   {/if}
 
     <div id="title">
@@ -27,9 +25,7 @@
     </div>
 
     {#if desktop}
-      <div class="portrait desktop">
-        <Me/>
-      </div>
+      <Me/>
     {/if}
 
     <div>
@@ -151,15 +147,22 @@
         color: inherit;
     }
 
-    .portrait.desktop {
+    img {
         grid-area: image;
         justify-self: right;
+        border-radius: 50px;
         max-width: 75%;
+        box-shadow: 0px 0px 80px rgba(var(--light-mode-box-shadow-color) );
+        transition: box-shadow 1.5s;
     }
 
-    .portrait.mobile {
-        max-width: clamp(50px, 40vmin, 300px);
-        margin: 0 auto;
+    img.mobile {
+      max-width: clamp(50px, 40vmin, 300px);
+      border-radius: 25px;
+    }
+
+    :global(body.dark-mode) img {
+        box-shadow: 0px 0px 40px rgb(var(--light-mode-text-color));
     }
 
     :global(body.dark-mode) #resume-button {

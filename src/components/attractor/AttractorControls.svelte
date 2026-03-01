@@ -1,6 +1,5 @@
 <script lang="ts">
   import { allSystems, type AttractorSystem } from '@lib/attractors';
-  import SketchyBox from '@components/handdrawn/SketchyBox.svelte';
 
   let {
     selectedSystem = $bindable(allSystems[0]),
@@ -53,7 +52,6 @@
 
   {#if showControls}
     <div class="controls-inner">
-      <SketchyBox roughness={1} padding={2}>
         <div class="controls-content">
           <h3>Attractor System</h3>
           <div class="system-grid">
@@ -111,7 +109,6 @@
             {/each}
           </div>
         </div>
-      </SketchyBox>
     </div>
   {/if}
 </div>
@@ -149,6 +146,7 @@
 
   .controls-inner {
     background: rgba(var(--light-mode-background-color), 0.92);
+    border: 1px solid rgba(var(--light-mode-text-color), 0.2);
     border-radius: 8px;
     backdrop-filter: blur(8px);
   }

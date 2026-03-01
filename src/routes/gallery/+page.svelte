@@ -1,6 +1,5 @@
 <script lang='ts'>
 	import {fade} from "svelte/transition";
-  import Lightbox from '@components/gallery/Lightbox.svelte';
 
   let show = $state(false)
   $effect(() => {
@@ -15,23 +14,14 @@
   }
 
   const imageImports = import.meta.glob("/static/gallery/*/*.jpg");
-  const images = Object.keys(imageImports)
-    .map(imageName => imageName.replace("/static/", "").replace(".jpg", ""));
-  shuffle(images);
+  let images = Object.keys(imageImports)
+  images = images.map(imageName => imageName.replace("/static/", "").replace(".jpg", ""))
+  shuffle(images)
 
   let outerWidth = $state(0);
   let threeColumns = $derived(outerWidth >= 1600);
   let oneColumn = $derived(outerWidth < 600);
   let twoColumns = $derived(!threeColumns && !oneColumn);
-
-  // Lightbox state
-  let lightboxOpen = $state(false);
-  let lightboxIndex = $state(0);
-
-  function openLightbox(index: number) {
-    lightboxIndex = index;
-    lightboxOpen = true;
-  }
 </script>
 
 <svelte:window bind:outerWidth/>
@@ -48,28 +38,12 @@
                 <picture in:fade={{delay: (i%10)*100}}>
                     <source type="image/AVIF" srcset="{image}.avif"/>
                     <source type="image/webp" srcset="{image}.webp"/>
-                    <button
-                      class="gallery-img-btn"
-                      aria-label="View photo {i + 1} in lightbox"
-                      onclick={() => openLightbox(i)}
-                    >
-                      <img
-                        src="{image}.jpg"
-                        alt="Photography example {i + 1}"
-                        loading="lazy"
-                      />
-                    </button>
+                    <img src="{image}.jpg" alt="An example of my photography" loading="lazy"/>
                 </picture>
             {/each}
     </div>
     {/if}
 </div>
-
-<Lightbox
-  {images}
-  bind:currentIndex={lightboxIndex}
-  bind:open={lightboxOpen}
-/>
 
 
 <style>
@@ -110,33 +84,17 @@
         -moz-column-count: 1;
     }
 
-    .gallery-img-btn {
-        background: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-        cursor: pointer;
-        display: block;
-        width: 100%;
-        margin-top: var(--row-gap);
-    }
-
-    .gallery-img-btn:focus-visible {
-        outline: 3px solid rgb(var(--light-mode-text-color));
-        outline-offset: 2px;
-        border-radius: clamp(0px, 1vw, 20px);
-    }
-
     #gallery img {
         width: 100% !important;
         height: auto !important;
+        margin-top: var(--row-gap);
         border-radius: clamp(0px, 1vw, 20px);
-        display: block;
     }
 
-    .gallery-img-btn:hover img {
+    #gallery img:hover {
         transform: scale(1.025);
         transition: all .3s ease-in-out;
+        cursor: pointer;
     }
 
     #gallery {
