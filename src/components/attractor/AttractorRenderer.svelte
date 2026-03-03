@@ -43,9 +43,7 @@
   // The geometry is $state ONLY so the template {#if} can react — write-only from effects
   let geometry: THREE.BufferGeometry | undefined = $state(undefined);
 
-  const material = new THREE.PointsMaterial({
-    size: 2.5,
-    sizeAttenuation: false,
+  const material = new THREE.LineBasicMaterial({
     vertexColors: true,
     transparent: true,
     depthWrite: false,
@@ -56,23 +54,36 @@
     const total = particleCount * trailLength;
     const geo = new THREE.BufferGeometry();
     const positions = new Float32Array(total * 3);
-    const colors = new Float32Array(total * 4);
+    const colors = new Float32Array(total * 3);
 
     posAttr = new THREE.BufferAttribute(positions, 3);
-    colAttr = new THREE.BufferAttribute(colors, 4);
+    colAttr = new THREE.BufferAttribute(colors, 3);
     posAttr.setUsage(THREE.DynamicDrawUsage);
     colAttr.setUsage(THREE.DynamicDrawUsage);
     geo.setAttribute('position', posAttr);
     geo.setAttribute('color', colAttr);
 
+    // Index buffer: connect consecutive trail points within each particle
+    const segCount = particleCount * (trailLength - 1) * 2;
+    const indices = new Uint32Array(segCount);
+    let idx = 0;
+    for (let p = 0; p < particleCount; p++) {
+      const base = p * trailLength;
+      for (let t = 0; t < trailLength - 1; t++) {
+        indices[idx++] = base + t;
+        indices[idx++] = base + t + 1;
+      }
+    }
+    geo.setIndex(new THREE.BufferAttribute(indices, 1));
+
     // Fill initial positions from trail buffers
     for (let p = 0; p < particleCount; p++) {
       for (let t = 0; t < trailLength; t++) {
-        const idx = p * trailLength + t;
+        const i = (p * trailLength + t) * 3;
         const pt = trailBuffers[p][t];
-        positions[idx * 3] = pt[0];
-        positions[idx * 3 + 1] = pt[1];
-        positions[idx * 3 + 2] = pt[2];
+        positions[i] = pt[0];
+        positions[i + 1] = pt[1];
+        positions[i + 2] = pt[2];
       }
     }
 
@@ -93,12 +104,12 @@
       const pc = new THREE.Color().copy(c1).lerp(c2, particleT);
 
       for (let t = 0; t < trailLength; t++) {
-        const idx = (p * trailLength + t) * 4;
-        const alpha = (t / trailLength) * 0.8 + 0.05;
-        arr[idx] = pc.r;
-        arr[idx + 1] = pc.g;
-        arr[idx + 2] = pc.b;
-        arr[idx + 3] = alpha;
+        const i = (p * trailLength + t) * 3;
+        // Fade older trail points by dimming color (additive blending makes dim = transparent)
+        const fade = (t / trailLength) * 0.85 + 0.05;
+        arr[i] = pc.r * fade;
+        arr[i + 1] = pc.g * fade;
+        arr[i + 2] = pc.b * fade;
       }
     }
 
@@ -179,11 +190,11 @@
     const arr = posAttr.array as Float32Array;
     for (let p = 0; p < particleCount; p++) {
       for (let t = 0; t < trailLength; t++) {
-        const idx = (p * trailLength + t) * 3;
+        const i = (p * trailLength + t) * 3;
         const pt = trailBuffers[p][t];
-        arr[idx] = pt[0];
-        arr[idx + 1] = pt[1];
-        arr[idx + 2] = pt[2];
+        arr[i] = pt[0];
+        arr[i + 1] = pt[1];
+        arr[i + 2] = pt[2];
       }
     }
     posAttr.needsUpdate = true;
@@ -202,5 +213,5 @@
 <T.AmbientLight intensity={0.3} />
 
 {#if geometry}
-  <T.Points {geometry} {material} />
+  <T.LineSegments {geometry} {material} />
 {/if}

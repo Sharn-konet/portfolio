@@ -11,6 +11,7 @@ export interface AttractorSystem {
   initialState: Vec3;
   dt: number;
   scale: number;
+  equations: string;
 }
 
 // RK4 solver using Butcher tableau:
@@ -197,6 +198,13 @@ export const lorenz: AttractorSystem = {
   initialState: [1, 1, 1],
   dt: 0.005,
   scale: 25,
+  equations: `dx = sigma * (y - x)
+dy = x * (rho - z) - y
+dz = x * y - beta * z
+
+sigma = 10
+rho = 28
+beta = 2.667`,
 };
 
 export const tsucs1: AttractorSystem = {
@@ -206,10 +214,19 @@ export const tsucs1: AttractorSystem = {
     beta * x - x * z + epsilon * y,
     zeta * z + x * y - delta * x * x,
   ],
-  defaultParams: { alpha: 40, beta: 0.833, delta: 0.5, epsilon: 0.65, zeta: 20 },
+  defaultParams: { alpha: 40, beta: 0.5, delta: 0.65, epsilon: 20, zeta: 0.833 },
   initialState: [1, 1, 1],
   dt: 0.001,
-  scale: 40,
+  scale: 60,
+  equations: `dx = alpha * (y - x) + delta * x * z
+dy = beta * x - x * z + epsilon * y
+dz = zeta * z + x * y - delta * x * x
+
+alpha = 40
+beta = 0.5
+delta = 0.65
+epsilon = 20
+zeta = 0.833`,
 };
 
 export const tsucs2: AttractorSystem = {
@@ -219,10 +236,20 @@ export const tsucs2: AttractorSystem = {
     varsigma * x - x * z + epsilon * y,
     zeta * z + x * y - beta * x * x,
   ],
-  defaultParams: { alpha: 40, delta: 0.16, varsigma: 55, zeta: 20, beta: 1.833, epsilon: 0.65 },
+  defaultParams: { alpha: 40, delta: 0.5, varsigma: 55, zeta: -1.833, beta: 0.16, epsilon: 0.65 },
   initialState: [1, 1, 1],
   dt: 0.0005,
-  scale: 60,
+  scale: 40,
+  equations: `dx = alpha * (y - x) + delta * x * z
+dy = varsigma * x - x * z + epsilon * y
+dz = zeta * z + x * y - beta * x * x
+
+alpha = 40
+delta = 0.5
+varsigma = 55
+zeta = -1.833
+beta = 0.16
+epsilon = 0.65`,
 };
 
 export const yuWang: AttractorSystem = {
@@ -236,6 +263,14 @@ export const yuWang: AttractorSystem = {
   initialState: [1, 1, 1],
   dt: 0.001,
   scale: 20,
+  equations: `dx = alpha * (y - x)
+dy = beta * x - alpha * x * z
+dz = exp(x * y) - sigma * z + delta
+
+alpha = 10
+beta = 40
+sigma = 2
+delta = 2.5`,
 };
 
 export const aizawa: AttractorSystem = {
@@ -249,6 +284,16 @@ export const aizawa: AttractorSystem = {
   initialState: [0.1, 0, 0],
   dt: 0.005,
   scale: 1.5,
+  equations: `dx = (z - beta) * x - delta * y
+dy = delta * x + (z - beta) * y
+dz = sigma + alpha * z - z ^ 3 / 3 - (x ^ 2 + y ^ 2) * (1 + epsilon * z) + zeta * z * x ^ 3
+
+alpha = 0.95
+beta = 0.7
+sigma = 0.6
+delta = 3.5
+epsilon = 0.25
+zeta = 0.1`,
 };
 
 export const thomas: AttractorSystem = {
@@ -262,6 +307,11 @@ export const thomas: AttractorSystem = {
   initialState: [1, 0, 0],
   dt: 0.03,
   scale: 4,
+  equations: `dx = sin(y) - beta * x
+dy = sin(z) - beta * y
+dz = sin(x) - beta * z
+
+beta = 0.19`,
 };
 
 export const rucklidge: AttractorSystem = {
@@ -275,6 +325,12 @@ export const rucklidge: AttractorSystem = {
   initialState: [1, 0, 4.5],
   dt: 0.01,
   scale: 8,
+  equations: `dx = -kappa * x + alpha * y - y * z
+dy = x
+dz = -z + y * y
+
+kappa = 2
+alpha = 6.7`,
 };
 
 export const genesioTesi: AttractorSystem = {
@@ -288,6 +344,13 @@ export const genesioTesi: AttractorSystem = {
   initialState: [0.1, 0.1, 0.1],
   dt: 0.01,
   scale: 1.5,
+  equations: `dx = y
+dy = z
+dz = -alpha * x - beta * y - sigma * z + x ^ 2
+
+alpha = 0.44
+beta = 1.1
+sigma = 1.0`,
 };
 
 export const finance: AttractorSystem = {
@@ -301,6 +364,13 @@ export const finance: AttractorSystem = {
   initialState: [0.1, 0.1, 0.1],
   dt: 0.02,
   scale: 4,
+  equations: `dx = (1 / beta - alpha) * x + x * y + z
+dy = -beta * y - x ^ 2
+dz = -x - sigma * z
+
+alpha = 0.001
+beta = 0.2
+sigma = 1.1`,
 };
 
 export const shimizuMorioka: AttractorSystem = {
@@ -314,6 +384,12 @@ export const shimizuMorioka: AttractorSystem = {
   initialState: [0.1, 0.1, 0.1],
   dt: 0.02,
   scale: 2,
+  equations: `dx = y
+dy = (1 - z) * x - alpha * y
+dz = x ^ 2 - beta * z
+
+alpha = 0.75
+beta = 0.45`,
 };
 
 export const noseHoover: AttractorSystem = {
@@ -327,6 +403,11 @@ export const noseHoover: AttractorSystem = {
   initialState: [0.1, 0, 0],
   dt: 0.02,
   scale: 3,
+  equations: `dx = y
+dy = -x + y * z
+dz = alpha - y ^ 2
+
+alpha = 1.5`,
 };
 
 export const liuChen: AttractorSystem = {
@@ -340,6 +421,17 @@ export const liuChen: AttractorSystem = {
   initialState: [1, 1, 1],
   dt: 0.001,
   scale: 15,
+  equations: `dx = alpha * y + beta * x + sigma * y * z
+dy = delta * y - z + epsilon * x * z
+dz = zeta * z + eta * x * y
+
+alpha = 2.4
+beta = -3.78
+sigma = 14
+delta = -11
+epsilon = 4
+zeta = 5.58
+eta = 1`,
 };
 
 export const arneodo: AttractorSystem = {
@@ -353,6 +445,13 @@ export const arneodo: AttractorSystem = {
   initialState: [0.1, 0, 0],
   dt: 0.01,
   scale: 4,
+  equations: `dx = y
+dy = z
+dz = -alpha * x - beta * y - z + sigma * x ^ 3
+
+alpha = -5.5
+beta = 3.5
+sigma = -1.0`,
 };
 
 export const bouali: AttractorSystem = {
@@ -366,6 +465,12 @@ export const bouali: AttractorSystem = {
   initialState: [1, 0.1, 0.1],
   dt: 0.01,
   scale: 5,
+  equations: `dx = x * (4 - y) + alpha * z
+dy = -y * (1 - x ^ 2)
+dz = -x * (1.5 - sigma * z) - 0.05 * z
+
+alpha = 0.3
+sigma = 1.0`,
 };
 
 export const burkeShaw: AttractorSystem = {
@@ -379,6 +484,12 @@ export const burkeShaw: AttractorSystem = {
   initialState: [1, 0, 0],
   dt: 0.005,
   scale: 3,
+  equations: `dx = -sigma * (x + y)
+dy = -y - sigma * x * z
+dz = sigma * x * y + nu
+
+sigma = 10
+nu = 4.272`,
 };
 
 export const chenCelikovsky: AttractorSystem = {
@@ -392,6 +503,13 @@ export const chenCelikovsky: AttractorSystem = {
   initialState: [1, 1, 1],
   dt: 0.002,
   scale: 30,
+  equations: `dx = alpha * (y - x)
+dy = (alpha - beta) * x - x * z + sigma * y
+dz = x * y - beta * z
+
+alpha = 36
+beta = 3
+sigma = 20`,
 };
 
 export const chenLee: AttractorSystem = {
@@ -405,6 +523,13 @@ export const chenLee: AttractorSystem = {
   initialState: [1, 0, 4.5],
   dt: 0.003,
   scale: 20,
+  equations: `dx = alpha * x - y * z
+dy = beta * y + x * z
+dz = sigma * z + x * y / 3
+
+alpha = 5
+beta = -10
+sigma = -0.38`,
 };
 
 export const hadley: AttractorSystem = {
@@ -418,6 +543,14 @@ export const hadley: AttractorSystem = {
   initialState: [0.1, 0, 0],
   dt: 0.01,
   scale: 2,
+  equations: `dx = -y ^ 2 - z ^ 2 - alpha * x + alpha * zeta
+dy = x * y - beta * x * z - y + eta
+dz = beta * x * y + x * z - z
+
+alpha = 0.2
+beta = 4
+zeta = 8
+eta = 1`,
 };
 
 export const halvorsen: AttractorSystem = {
@@ -431,6 +564,11 @@ export const halvorsen: AttractorSystem = {
   initialState: [-5, 0, 0],
   dt: 0.005,
   scale: 12,
+  equations: `dx = -alpha * x - 4 * y - 4 * z - y ^ 2
+dy = -alpha * y - 4 * z - 4 * x - z ^ 2
+dz = -alpha * z - 4 * x - 4 * y - x ^ 2
+
+alpha = 1.4`,
 };
 
 export const newtonLeipnik: AttractorSystem = {
@@ -444,6 +582,12 @@ export const newtonLeipnik: AttractorSystem = {
   initialState: [0.349, 0, -0.16],
   dt: 0.02,
   scale: 0.8,
+  equations: `dx = -alpha * x + y + 10 * y * z
+dy = -x - 0.4 * y + 5 * x * z
+dz = beta * z - 5 * x * y
+
+alpha = 0.4
+beta = 0.175`,
 };
 
 export const lorenzMod2: AttractorSystem = {
@@ -457,6 +601,14 @@ export const lorenzMod2: AttractorSystem = {
   initialState: [0.1, 0.1, 0.1],
   dt: 0.005,
   scale: 5,
+  equations: `dx = -alpha * x + y ^ 2 - z ^ 2 + alpha * sigma
+dy = x * (y - beta * z) + delta
+dz = z + x * (beta * y + z)
+
+alpha = 0.9
+beta = 5
+sigma = 9.9
+delta = 1`,
 };
 
 // Export all systems as an array

@@ -2,14 +2,24 @@
   import { allSystems, type AttractorSystem } from '@lib/attractors';
 
   let {
-    selectedSystem = $bindable(allSystems[0]),
+    selectedSystem,
     currentParams = $bindable({ ...allSystems[0].defaultParams }),
+    equationText,
+    equationError,
+    onPresetSelect,
+    onEquationEdit,
+    onParamChange,
     colorStart = $bindable('#3366ff'),
     colorEnd = $bindable('#ff33cc'),
     speed = $bindable(1),
   }: {
     selectedSystem: AttractorSystem;
     currentParams: Record<string, number>;
+    equationText: string;
+    equationError: string | null;
+    onPresetSelect: (system: AttractorSystem) => void;
+    onEquationEdit: (text: string) => void;
+    onParamChange: (key: string, value: number) => void;
     colorStart: string;
     colorEnd: string;
     speed: number;
@@ -17,16 +27,12 @@
 
   let showControls = $state(true);
 
-  function selectSystem(system: AttractorSystem) {
-    selectedSystem = system;
-    currentParams = { ...system.defaultParams };
-  }
-
   function resetParams() {
-    currentParams = { ...selectedSystem.defaultParams };
+    for (const key of Object.keys(currentParams)) {
+      onParamChange(key, selectedSystem.defaultParams[key] ?? 1);
+    }
   }
 
-  // Compute sensible step for a parameter value
   function stepFor(val: number): number {
     const abs = Math.abs(val);
     if (abs >= 100) return 1;
@@ -53,13 +59,25 @@
   {#if showControls}
     <div class="controls-inner">
         <div class="controls-content">
-          <h3>Attractor System</h3>
+          <h3>Equations</h3>
+          <textarea
+            class="equation-editor"
+            rows={6}
+            spellcheck="false"
+            value={equationText}
+            oninput={(e) => onEquationEdit(e.currentTarget.value)}
+          ></textarea>
+          {#if equationError}
+            <div class="equation-error">{equationError}</div>
+          {/if}
+
+          <h3>Presets</h3>
           <div class="system-grid">
             {#each allSystems as system}
               <button
                 class="system-btn"
                 class:active={selectedSystem.name === system.name}
-                onclick={() => selectSystem(system)}
+                onclick={() => onPresetSelect(system)}
               >
                 {system.name}
               </button>
@@ -82,14 +100,18 @@
           <h3>Parameters</h3>
           <div class="params">
             {#each Object.entries(currentParams) as [key, value]}
-              {@const defaultVal = selectedSystem.defaultParams[key]}
+              {@const defaultVal = selectedSystem.defaultParams[key] ?? value}
               <div class="param-row">
                 <label for="param-{key}">{key}</label>
                 <input
                   id="param-{key}"
                   type="number"
                   step={stepFor(defaultVal)}
-                  bind:value={currentParams[key]}
+                  value={parseFloat(value.toPrecision(6))}
+                  oninput={(e) => {
+                    const v = parseFloat(e.currentTarget.value);
+                    if (!isNaN(v)) onParamChange(key, v);
+                  }}
                 />
               </div>
             {/each}
@@ -116,16 +138,18 @@
 <style>
   .controls-overlay {
     position: absolute;
-    top: 1em;
-    left: 1em;
+    top: 0.75em;
+    left: 0.75em;
+    bottom: 0.75em;
     z-index: 10;
-    max-width: 320px;
-    max-height: calc(100vh - 8em);
-    overflow-y: auto;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
   }
 
   .controls-overlay.collapsed {
-    max-width: auto;
+    bottom: auto;
   }
 
   .toggle-btn {
@@ -138,6 +162,9 @@
     font-family: inherit;
     font-size: 0.9em;
     margin-bottom: 0.5em;
+    pointer-events: auto;
+    align-self: flex-start;
+    flex-shrink: 0;
   }
 
   :global(body.dark-mode) .toggle-btn {
@@ -149,6 +176,9 @@
     border: 1px solid rgba(var(--light-mode-text-color), 0.2);
     border-radius: 8px;
     backdrop-filter: blur(8px);
+    pointer-events: auto;
+    overflow-y: auto;
+    min-height: 0;
   }
 
   :global(body.dark-mode) .controls-inner {
@@ -164,6 +194,36 @@
     font-size: 1.3em;
     font-weight: lighter;
     margin: 0.5em 0 0.25em;
+  }
+
+  .equation-editor {
+    width: 100%;
+    font-family: monospace;
+    font-size: 0.8em;
+    line-height: 1.4;
+    padding: 0.5em;
+    border: 1px solid rgba(var(--light-mode-text-color), 0.3);
+    border-radius: 6px;
+    background: rgba(var(--light-mode-background-color), 0.5);
+    color: inherit;
+    resize: vertical;
+    box-sizing: border-box;
+    tab-size: 2;
+  }
+
+  :global(body.dark-mode) .equation-editor {
+    background: rgba(var(--dark-mode-background-color), 0.5);
+    border-color: rgba(var(--dark-mode-text-color), 0.3);
+  }
+
+  .equation-error {
+    font-family: monospace;
+    font-size: 0.75em;
+    color: #e53e3e;
+    margin-top: 0.25em;
+    padding: 0.3em 0.5em;
+    background: rgba(229, 62, 62, 0.1);
+    border-radius: 4px;
   }
 
   .system-grid {
@@ -281,10 +341,10 @@
     border-color: rgb(var(--light-mode-text-color));
   }
 
-  .controls-overlay::-webkit-scrollbar {
+  .controls-inner::-webkit-scrollbar {
     width: 4px;
   }
-  .controls-overlay::-webkit-scrollbar-thumb {
+  .controls-inner::-webkit-scrollbar-thumb {
     background: rgba(var(--light-mode-text-color), 0.3);
     border-radius: 2px;
   }
