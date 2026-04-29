@@ -14,7 +14,7 @@ export function load({ params }) {
 		Component: found.Component,
 		meta: found.meta,
 		range: formatRange(found.meta.start, found.meta.end),
-		pageTitle: `${found.meta.title} · ${found.meta.org} — sharnko.net`,
+		pageTitle: `${found.meta.title} · ${found.meta.org} · sharnko.net`,
 		pageDescription: found.meta.description ?? `${found.meta.title} at ${found.meta.org}.`
 	};
 }

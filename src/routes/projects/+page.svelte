@@ -11,10 +11,10 @@
 <div class="page">
 	<aside class="side">
 		<div class="tag">// Projects</div>
-		<div class="title">Flo — 3D Differential Equation Visualiser</div>
+		<div class="title">Flo · 3D Differential Equation Visualiser</div>
 		<div class="desc">
 			<p>
-				A strange-attractor sandbox — six chaotic systems integrated with RK4, projected to
+				A strange-attractor sandbox. Six chaotic systems integrated with RK4, projected to
 				phosphor.
 			</p>
 			<p class="dim">
@@ -22,7 +22,7 @@
 				that survived the redesign.
 			</p>
 			<p class="dim">
-				Click any system on the right to switch — same equations, tiny perturbations in
+				Click any system on the right to switch. Same equations, tiny perturbations in
 				initial conditions, divergent paths. Classic chaos.
 			</p>
 			<p class="dim">

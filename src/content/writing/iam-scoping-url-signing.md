@@ -1,6 +1,6 @@
 ---
 slug: iam-scoping-url-signing
-title: Scoping IAM for URL-Signing Only — a Counter-Pattern
+title: Scoping IAM for URL-Signing Only, a Counter-Pattern
 date: 2026-01-22
 description: When "least privilege" makes things harder to operate, push back.
 draft: true

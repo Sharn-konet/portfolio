@@ -2,6 +2,7 @@
 	type Item = {
 		href: string;
 		title: string;
+		subtitle?: string;
 		meta?: string;
 		external?: boolean;
 		icon?: string;
@@ -31,7 +32,12 @@
 				onclick={onSelect}
 			>
 				<span class="arr" aria-hidden="true">{item.icon ?? '▸'}</span>
-				<span class="title">{item.title}</span>
+				<span class="body">
+					<span class="title">{item.title}</span>
+					{#if item.subtitle}
+						<span class="subtitle">{item.subtitle}</span>
+					{/if}
+				</span>
 				<span class="meta">{item.meta ?? ''}</span>
 			</a>
 		</li>
@@ -82,8 +88,19 @@
 		font-size: var(--font-small);
 		transition: opacity 100ms, color 100ms, text-shadow 100ms;
 	}
+	.body {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+	}
 	.title {
 		font-size: var(--font-base);
+	}
+	.subtitle {
+		font-size: var(--font-small);
+		color: var(--phosphor-mid);
+		letter-spacing: 0.06em;
 	}
 	.meta {
 		font-size: var(--font-small);

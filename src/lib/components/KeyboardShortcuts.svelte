@@ -67,8 +67,8 @@
 				} else if (p.startsWith('/photos/') && p !== '/photos') {
 					goto('/photos');
 					e.preventDefault();
-				} else if (p === '/film') {
-					goto('/writing');
+				} else if (p.startsWith('/videos/') && p !== '/videos') {
+					goto('/videos');
 					e.preventDefault();
 				}
 			}

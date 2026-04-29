@@ -9,7 +9,7 @@ kind: experience
 description: Graduate rotation across applied science and data engineering teams.
 ---
 
-Graduate rotation across applied science and data engineering. Learnt the shape of a real production data org — the difference between a notebook that runs and a model that earns its keep.
+Graduate rotation across applied science and data engineering. Learnt the shape of a real production data org. The difference between a notebook that runs and a model that earns its keep.
 
 - Prototyped a handful of internal tools that made it to the live stack
 - Partnered with applied science on model evaluation patterns

@@ -6,5 +6,5 @@
 </script>
 
 <RevealText>
-	<EntryList items={data.experience} label="// Experience" />
+	<EntryList items={data.items} label="// Films" />
 </RevealText>

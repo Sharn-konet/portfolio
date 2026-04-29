@@ -11,20 +11,14 @@ function formatDate(date: string): string {
 export function load() {
 	const items = getWritingList();
 	return {
-		pageTitle: 'Writing — sharnko.net',
+		pageTitle: 'Writing · sharnko.net',
 		pageDescription: 'Engineering posts and notes.',
-		items: [
-			...items.map((i: WritingMeta) => ({
-				href: `/writing/${i.slug}`,
-				title: i.title,
-				meta: formatDate(i.date)
-			})),
-			{
-				href: '/film',
-				title: 'Intensive Care — Short Documentary, 2017',
-				meta: '2017',
-				icon: '▶'
-			}
-		]
+		items: items.map((i: WritingMeta) => ({
+			href: i.external ?? `/writing/${i.slug}`,
+			title: i.title,
+			meta: formatDate(i.date),
+			external: Boolean(i.external),
+			icon: i.external ? '↗' : undefined
+		}))
 	};
 }

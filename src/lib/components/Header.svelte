@@ -1,19 +1,16 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import { activeTab } from '$lib/nav';
-
-	let tab = $derived(activeTab(page.url.pathname));
+	import SoundToggle from './SoundToggle.svelte';
 </script>
 
 <header>
-	<span>
-		<span class="brand">REITSMA_S</span>
+	<span class="ident">
+		<span class="brand">Sharn-Konet Reitsma</span>
 		<span class="sep">·</span>
-		founding eng
-		<span class="sep">·</span>
-		<span class="id">{tab.id}</span>
+		<span class="role">Founding Engineer</span>
 	</span>
-	<span class="loc">akl <span class="sep">·</span> nz</span>
+	<span class="right">
+		<SoundToggle />
+	</span>
 </header>
 
 <style>
@@ -30,14 +27,21 @@
 		text-shadow: 0 0 4px var(--glow-soft);
 		flex-shrink: 0;
 	}
-	.brand,
-	.id {
+	.brand {
 		color: var(--phosphor);
 		text-shadow: 0 0 6px var(--glow), 0 0 12px var(--glow-soft);
+	}
+	.role {
+		color: var(--phosphor-mid);
 	}
 	.sep {
 		margin: 0 8px;
 		opacity: 0.5;
+	}
+	.right {
+		display: flex;
+		align-items: center;
+		gap: 14px;
 	}
 	@media (max-width: 1024px) {
 		header {
@@ -50,7 +54,10 @@
 			font-size: 10px;
 			letter-spacing: 0.16em;
 		}
-		.loc {
+		.role {
+			display: none;
+		}
+		.sep {
 			display: none;
 		}
 	}

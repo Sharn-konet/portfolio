@@ -1,14 +1,17 @@
-import { getWorkList, getWritingList } from '$lib/content';
+import { getWorkList, getWritingList, getVideoList } from '$lib/content';
 
 export const prerender = true;
 
 const ORIGIN = 'https://sharnko.net';
 
 export function GET() {
-	const staticUrls = ['/', '/work', '/projects', '/writing', '/photos', '/contact', '/film'];
+	const staticUrls = ['/', '/work', '/projects', '/writing', '/photos', '/videos', '/skills'];
 	const workUrls = getWorkList().map((w) => `/work/${w.slug}`);
-	const writingUrls = getWritingList().map((w) => `/writing/${w.slug}`);
-	const all = [...staticUrls, ...workUrls, ...writingUrls];
+	const writingUrls = getWritingList()
+		.filter((w) => !w.external)
+		.map((w) => `/writing/${w.slug}`);
+	const videoUrls = getVideoList().map((v) => `/videos/${v.slug}`);
+	const all = [...staticUrls, ...workUrls, ...writingUrls, ...videoUrls];
 
 	const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

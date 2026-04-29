@@ -1,34 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { tabs, activeTab } from '$lib/nav';
-	import SoundToggle from './SoundToggle.svelte';
 
 	let tab = $derived(activeTab(page.url.pathname));
 	let index = $derived(tabs.findIndex((t) => t.slug === tab.slug));
-	let path = $derived.by(() => {
-		const p = page.url.pathname;
-		if (p === '/') return '~/about.md';
-		if (p === '/work') return '~/work/';
-		if (p.startsWith('/work/')) return `~/work/${p.split('/')[2]}.md`;
-		if (p === '/writing') return '~/writing/';
-		if (p.startsWith('/writing/')) return `~/writing/${p.split('/')[2]}.md`;
-		if (p === '/photos') return '~/photos/';
-		if (p.startsWith('/photos/')) return `~/photos/${p.split('/')[2]}/`;
-		if (p === '/contact') return '~/contact.md';
-		if (p === '/film') return '~/film.mp4';
-		return tab.path;
-	});
 </script>
 
 <footer>
 	<div class="left">
-		<span aria-live="polite">{path}</span>
+		<span class="brand">SKR</span>
+		<span class="sep">·</span>
+		<span class="loc">Auckland · NZ</span>
 	</div>
 	<div class="right">
 		<span><span class="dot" aria-hidden="true">●</span> Ready</span>
 		<span class="sep">·</span>
 		<span class="muted">{index + 1} of {tabs.length}</span>
-		<SoundToggle />
 	</div>
 </footer>
 
@@ -44,12 +31,21 @@
 		background: rgba(140, 200, 220, 0.04);
 		text-shadow: 0 0 3px var(--glow-soft);
 		flex-shrink: 0;
+		text-transform: uppercase;
 	}
 	.left,
 	.right {
 		display: flex;
 		gap: 14px;
 		align-items: center;
+	}
+	.brand {
+		color: var(--phosphor);
+		text-shadow: 0 0 6px var(--glow), 0 0 12px var(--glow-soft);
+		letter-spacing: 0.22em;
+	}
+	.loc {
+		color: var(--phosphor-mid);
 	}
 	.dot {
 		color: var(--accent);

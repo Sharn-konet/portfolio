@@ -11,6 +11,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"skills:build": "node scripts/build-skills-art.mjs",
+		"contact:build": "node scripts/build-contact-art.mjs",
 		"prepare": "svelte-kit sync"
 	},
 	"devDependencies": {

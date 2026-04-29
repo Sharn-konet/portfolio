@@ -55,12 +55,8 @@
 <section class="skills-page">
 	<header class="masthead">
 		<div class="topline">
-			<span class="mark">// FIELD INTELLIGENCE — TECHNOLOGY DOSSIERS</span>
-			<span class="dim">SKR·KIT · INTERNAL</span>
-		</div>
-		<div class="topline">
-			<span class="dim">{totalSubjects} SKILLS</span>
-			<span class="dim">UPDATED {today}</span>
+			<span class="mark">// Skills</span>
+			<span class="dim">{totalSubjects} entries · updated {today}</span>
 		</div>
 	</header>
 

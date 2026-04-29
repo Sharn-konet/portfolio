@@ -187,7 +187,7 @@
 
 <section class="sim" data-reveal>
 	<div class="header">
-		<span class="tag">// Simulation — Strange Attractors</span>
+		<span class="tag">// Simulation · Strange Attractors</span>
 		<span class="meta">{activeName.toUpperCase()} · RK4 · {PARTICLES} PARTICLES</span>
 	</div>
 

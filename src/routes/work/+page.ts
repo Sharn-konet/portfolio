@@ -5,19 +5,14 @@ export const prerender = true;
 export function load() {
 	const items = getWorkList();
 	const experience = items.filter((i: WorkMeta) => (i.kind ?? 'experience') === 'experience');
-	const projects = items.filter((i: WorkMeta) => i.kind === 'project');
 	return {
-		pageTitle: 'Work — sharnko.net',
-		pageDescription: 'Experience and projects.',
+		pageTitle: 'Work · sharnko.net',
+		pageDescription: 'Work history.',
 		experience: experience.map((i: WorkMeta) => ({
 			href: `/work/${i.slug}`,
-			title: `${i.org} — ${i.title}`,
-			meta: formatRange(i.start, i.end)
-		})),
-		projects: projects.map((i: WorkMeta) => ({
-			href: `/work/${i.slug}`,
 			title: i.title,
-			meta: i.org && i.org !== 'project' && i.org !== 'Project' ? i.org : 'Demo'
+			subtitle: i.org,
+			meta: formatRange(i.start, i.end)
 		}))
 	};
 }

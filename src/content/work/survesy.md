@@ -9,7 +9,7 @@ kind: experience
 description: Backend, ML, and infrastructure for an AI-native survey platform.
 ---
 
-Backend, ML, and infrastructure for an AI-native survey platform. Small team, broad surface area — the kind of role where every decision compounds.
+Backend, ML, and infrastructure for an AI-native survey platform. Small team, broad surface area, the kind of role where every decision compounds.
 
 - Shipped the durable-execution backbone that survives long-running AI pipelines
 - Own the data and observability stack end to end

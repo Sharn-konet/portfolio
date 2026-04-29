@@ -1,27 +1,52 @@
 <script lang="ts">
 	import RevealText from '$lib/components/RevealText.svelte';
+	import SocialIcons from '$lib/components/SocialIcons.svelte';
 	import About, { metadata } from '$content/about.md';
 
 	const meta = metadata as Record<string, string>;
-	const rows = [
+
+	const idRows = [
 		{ key: 'Identifier', val: meta.identifier },
 		{ key: 'Role', val: meta.role },
 		{ key: 'Company', val: meta.company },
 		{ key: 'Location', val: meta.location },
 		{ key: 'Scope', val: meta.scope }
 	];
+
+	const socials = [
+		{ slug: 'email' as const, label: 'Email', href: `mailto:${meta.email}` },
+		{ slug: 'github' as const, label: 'GitHub', href: `https://github.com/${meta.github}` },
+		{
+			slug: 'linkedin' as const,
+			label: 'LinkedIn',
+			href: `https://www.linkedin.com/in/${meta.linkedin}`
+		},
+		{
+			slug: 'instagram' as const,
+			label: 'Instagram',
+			href: `https://instagram.com/${meta.instagram}`
+		}
+	];
 </script>
 
 <RevealText>
 	<div class="rows">
-		{#each rows as row (row.key)}
+		{#each idRows as row (row.key)}
 			<div class="row" data-reveal>
 				<span class="key">{row.key}</span>
 				<span class="val">{row.val}</span>
 			</div>
 		{/each}
 	</div>
+
 	<div class="divider" data-reveal></div>
+
+	<div data-reveal>
+		<SocialIcons items={socials} />
+	</div>
+
+	<div class="divider" data-reveal></div>
+
 	<div class="prose" data-reveal>
 		<About />
 	</div>

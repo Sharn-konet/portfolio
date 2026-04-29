@@ -13,7 +13,6 @@
 
 	let { children } = $props();
 
-	let isFilm = $derived(page.url.pathname === '/film');
 	let routeKey = $derived(page.url.pathname);
 
 	$effect(() => {
@@ -29,7 +28,7 @@
 	<meta
 		name="description"
 		content={page.data?.pageDescription ??
-			'Sharn-Konet Reitsma — Founding Engineer, sometimes filmmaker, occasional photographer.'}
+			'Sharn-Konet Reitsma. Founding Engineer, filmmaker, photographer.'}
 	/>
 </svelte:head>
 
@@ -37,10 +36,8 @@
 
 <CRT>
 	<Header />
-	{#if !isFilm}
-		<TabStrip />
-	{/if}
-	<main id="main" class="body" class:film={isFilm}>
+	<TabStrip />
+	<main id="main" class="body">
 		{#key routeKey}
 			{@render children()}
 		{/key}
@@ -74,9 +71,5 @@
 	}
 	.body::-webkit-scrollbar-thumb:hover {
 		background: rgba(140, 200, 220, 0.45);
-	}
-	.body.film {
-		padding: 0;
-		display: flex;
 	}
 </style>

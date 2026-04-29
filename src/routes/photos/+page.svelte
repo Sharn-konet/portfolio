@@ -22,8 +22,8 @@
 				<span class="muted">// No photographs loaded.</span>
 			</div>
 			<div class="prose hint">
-				Drop images into <code>static/gallery/</code> — at the top level or grouped into
-				subfolders — and they'll appear here. Supports
+				Drop images into <code>static/gallery/</code>, at the top level or grouped into
+				subfolders, and they'll appear here. Supports
 				<code>.jpg</code> / <code>.jpeg</code> / <code>.png</code>, with optional matching
 				<code>.avif</code> and <code>.webp</code> variants for better compression.
 			</div>

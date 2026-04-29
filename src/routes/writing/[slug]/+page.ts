@@ -8,18 +8,21 @@ const writingModules = import.meta.glob<{ metadata?: WritingMeta }>('/src/conten
 });
 
 export function entries() {
-	return Object.entries(writingModules).map(([path]) => ({
-		slug: path.split('/').pop()!.replace(/\.md$/, '')
-	}));
+	return Object.entries(writingModules)
+		.filter(([, mod]) => !mod.metadata?.external)
+		.map(([path]) => ({
+			slug: path.split('/').pop()!.replace(/\.md$/, '')
+		}));
 }
 
 export function load({ params }) {
 	const found = getWritingComponent(params.slug);
 	if (!found) throw error(404, 'not found');
+	if (found.meta.external) throw error(404, 'not found');
 	return {
 		Component: found.Component,
 		meta: found.meta,
-		pageTitle: `${found.meta.title} — sharnko.net`,
+		pageTitle: `${found.meta.title} · sharnko.net`,
 		pageDescription: found.meta.description ?? found.meta.title
 	};
 }

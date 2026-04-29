@@ -1,6 +1,6 @@
 ---
 slug: flo
-title: Flo — 3D Differential Equation Visualiser
+title: Flo · 3D Differential Equation Visualiser
 org: Project
 start: 2024-09
 end: 2024-10

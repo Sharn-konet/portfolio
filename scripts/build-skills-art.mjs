@@ -38,14 +38,12 @@ const SKILLS = [
 	'html',
 	'css',
 	'aws',
+	'gcp',
 	'snowflake',
 	'new-relic',
-	'sumo-logic',
-	'netlify',
 	'kubernetes',
 	'docker',
-	'git',
-	'teamcity'
+	'git'
 ];
 
 // Devicon directory name per slug. null = not in Devicon (skip).
@@ -61,14 +59,12 @@ const DEVICON_NAME = {
 	html: 'html5',
 	css: 'css3',
 	aws: 'amazonwebservices',
+	gcp: 'googlecloud',
 	snowflake: null,
 	'new-relic': 'newrelic',
-	'sumo-logic': null,
-	netlify: 'netlify',
 	kubernetes: 'kubernetes',
 	docker: 'docker',
-	git: 'git',
-	teamcity: null
+	git: 'git'
 };
 
 // Variant search order. `plain` first — it's typically a single-path silhouette
