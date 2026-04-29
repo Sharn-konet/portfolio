@@ -1,3 +1,0 @@
-install:
-	brew install webp
-	

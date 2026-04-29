@@ -1,56 +1,66 @@
-# Sharn-Konet's Portfolio Website
+# sharnko.net
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b9d15ba3-f4cd-47c3-9607-1fc547326b63/deploy-status)](https://app.netlify.com/sites/sharnkonet-portfolio/deploys)
+Personal site for Sharn-Konet Reitsma. Lumon-inspired CRT terminal for the main site, Kodak Carousel projection room for the photos. SvelteKit 2 + Svelte 5, statically prerendered for Cloudflare Pages.
 
-This is the source code for my portfolio website which I made using
-[Svelte](https://svelte.dev/) and [Netlify](https://www.netlify.com/).
+Live at [sharnko.net](https://sharnko.net).
 
-You can see it in action by going to [sharnko.net](https://sharnko.net)
+## Stack
 
-The website is made completely from scratch. Initially I started with Hugo and
-AWS Lightsail. I soon got frustrated with how little I could change the
-aesthetic of any given Hugo theme, and instead decided to learn how to do
-front-end development.
+- **SvelteKit 2 + Svelte 5** with `@sveltejs/adapter-static`
+- **mdsvex** for markdown content (work entries, writing posts, about)
+- **Vanilla CSS** with design tokens in `src/lib/tokens.css` — no Tailwind
+- **Web Audio API** for the CRT bed, click, kachunk, etc — synthesised, no audio files
+- **Cloudflare Pages** hosting
 
-Svelte was my framework of choice for this, its modularity allows me to focus on
-a particular component of the portfolio and that made it a lot easier to learn
-the web dev concepts I was using.
+## Layout
 
-I switched to Netlify from AWS Lightsail because it only really catered for
-static websites, and I wanted to include some dynamic elements now that I was
-writing the code myself. Netlify seemed like the best alternative as it had a
-supported adapter maintained by the Svelte team. This meant I could create my
-website however I wanted locally, and it would translate directly to the website
-I'd see under my domain.
+```
+/                  → home (CRT — about pane)
+/work              → CRT — experience and projects index
+/work/[slug]       → CRT — entry detail
+/writing           → CRT — writing index (links into /film as a documentary item)
+/writing/[slug]    → CRT — post detail (mdsvex render)
+/photos            → CRT pane that points at the projection room
+/photos/[tray]     → projection room — different aesthetic; Kodak Carousel
+/contact           → CRT — contact rows
+/film              → minimal CRT chrome — embedded documentary
 
-## Projects
+/cv.pdf            → static asset
+/rss.xml           → writing feed
+/sitemap.xml       → auto-generated
+/robots.txt        → standard
+```
 
-The projects section of the website is meant to be a place to house all of my
-projects so that they are publically accessible. This means rather than having
-to run some source code, people can interact with it online.
+## Content
 
-At the moment, this section is empty while I figure out the best way to
-integrate compute resources into the website.
+Markdown in `src/content/`:
 
-## Gallery
+- `about.md` — frontmatter for identifier rows, body for prose
+- `work/*.md` — schema in `src/lib/content.ts`
+- `writing/*.md` — schema in `src/lib/content.ts`
+- `photos/*.json` — tray definitions, schema in `src/lib/photos.ts`
 
-The gallery is a place for me to upload all of my photos so that if people are
-interested in my photography, I can direct them to one place.
-
-## Development
-
-To get this repository working on your local machine, clone the repository and
-run the following command in the created directory:
+## Develop
 
 ```bash
 npm install
-```
-
-This will install all the required dependencies for the website.
-
-If you'd like to get the website up and running, run:
-
-```bash
 npm run dev
 ```
 
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Keyboard
+
+- `1`–`5` jump to tabs (about, work, writing, photos, contact)
+- `j` / `k` (or arrow keys) move within list views
+- `Esc` exits a detail view
+- In the projection room: `←` / `→` advance, `f` focuses, `Esc` leaves
+
+## Design notes
+
+The aesthetic is the theme. There is no light mode, no cookie banner, no comment system, no analytics dashboard, no contact form. Sound is opt-in (off by default, persists in `localStorage`). All animations honour `prefers-reduced-motion: reduce`.

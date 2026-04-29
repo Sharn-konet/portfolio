@@ -1,0 +1,81 @@
+:root {
+	/* Phosphor */
+	--screen: #0a1f3a;
+	--screen-deep: #061123;
+	--phosphor: #e8f4f6;
+	--phosphor-mid: #aacfd6;
+	--phosphor-dim: #6a99a3;
+	--glow: rgba(160, 230, 240, 0.7);
+	--glow-soft: rgba(100, 200, 220, 0.45);
+
+	/* Accents */
+	--accent: #ffb74d;
+	--accent-glow: rgba(255, 183, 77, 0.7);
+
+	/* Layout — desktop default */
+	--content-max: 1280px;
+	--crt-radius: 24px;
+	--case-padding: 24px;
+
+	/* Type */
+	--font-mono: 'Berkeley Mono', 'Departure Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular,
+		Menlo, monospace;
+	--font-base: 17px;
+	--font-small: 14px;
+	--font-tiny: 12px;
+
+	/* Padding (CRT body) */
+	--pad-x: 64px;
+	--pad-y: 56px;
+
+	/* Effect intensities (tunable; reduced-motion overrides below) */
+	--scanline-opacity: 0.36;
+	--vignette-strength: 0.78;
+	--glow-strength: 1;
+	--flicker-enabled: 1;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+	:root {
+		--case-padding: 16px;
+		--crt-radius: 20px;
+		--pad-x: 44px;
+		--pad-y: 40px;
+		--font-base: 16px;
+		--font-small: 13px;
+	}
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+	:root {
+		--case-padding: 8px;
+		--crt-radius: 14px;
+		--pad-x: 22px;
+		--pad-y: 24px;
+		--font-base: 15px;
+		--font-small: 12px;
+		--font-tiny: 11px;
+		--scanline-opacity: 0.28;
+	}
+}
+
+@media (prefers-contrast: more) {
+	:root {
+		--phosphor: #ffffff;
+		--phosphor-mid: #d8eef0;
+		--phosphor-dim: #9cc8d0;
+		--glow: rgba(255, 255, 255, 0.32);
+		--glow-soft: rgba(255, 255, 255, 0.18);
+		--scanline-opacity: 0.45;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--scanline-opacity: 0.22;
+		--vignette-strength: 0.55;
+		--flicker-enabled: 0;
+	}
+}

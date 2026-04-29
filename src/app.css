@@ -1,0 +1,85 @@
+@import './lib/tokens.css';
+
+/*
+ * Berkeley Mono / Departure Mono drop-in slot.
+ * If a paid Berkeley Mono license is acquired, place its woff2 files in
+ * static/fonts/BerkeleyMono/ and uncomment the @font-face block below.
+ * Until then, the system fallback chain in --font-mono carries the look.
+ */
+/*
+@font-face {
+	font-family: 'Berkeley Mono';
+	src: url('/fonts/BerkeleyMono/BerkeleyMono-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: optional;
+}
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	font-family: var(--font-mono);
+	font-weight: 400;
+	background: #000;
+	color: var(--phosphor);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overscroll-behavior: none;
+}
+
+/* Hide the native cursor everywhere on hover-capable devices.
+ * Without this, browsers still apply `cursor: pointer` to anchors/buttons
+ * and the system pointer flashes back into view. */
+@media (hover: hover) {
+	html,
+	body,
+	*,
+	*::before,
+	*::after {
+		cursor: none;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+	border: none;
+	background: transparent;
+	color: inherit;
+	padding: 0;
+}
+
+::selection {
+	background: var(--accent);
+	color: var(--screen-deep);
+}
+
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 8px;
+	background: var(--phosphor);
+	color: var(--screen-deep);
+	padding: 6px 12px;
+	z-index: 10000;
+	text-shadow: none;
+}
+.skip-link:focus {
+	top: 8px;
+}
+
+:focus-visible {
+	outline: 1px solid var(--accent);
+	outline-offset: 2px;
+}
