@@ -27,28 +27,28 @@
 </script>
 
 {#if open}
-	<div class="overlay" role="dialog" aria-modal="true" aria-label="keyboard shortcuts">
+	<div class="overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
 		<div class="panel">
-			<div class="title">// keyboard shortcuts</div>
+			<div class="title">// Keyboard Shortcuts</div>
 			<dl>
-				<dt>1 – 5</dt>
-				<dd>jump to tabs (about · work · writing · photos · contact)</dd>
+				<dt>1 – 7</dt>
+				<dd>Jump to tabs (About · Contact · Skills · Work · Projects · Writing · Photos)</dd>
 				<dt>j / k</dt>
-				<dd>move selection in lists</dd>
+				<dd>Move selection in lists</dd>
 				<dt>↑ / ↓</dt>
-				<dd>same as j / k</dd>
-				<dt>↵ enter</dt>
-				<dd>open the focused item</dd>
-				<dt>esc</dt>
-				<dd>back / close</dd>
+				<dd>Same as j / k</dd>
+				<dt>↵ Enter</dt>
+				<dd>Open the focused item</dd>
+				<dt>Esc</dt>
+				<dd>Back / close</dd>
 				<dt>← / →</dt>
-				<dd>(in the projection room) reverse / forward slide</dd>
+				<dd>(In the projection room) reverse / forward slide</dd>
 				<dt>f</dt>
-				<dd>(in the projection room) focus easter egg</dd>
+				<dd>(In the projection room) focus easter egg</dd>
 				<dt>?</dt>
-				<dd>this help</dd>
+				<dd>This help</dd>
 			</dl>
-			<button class="close" onclick={() => (open = false)} data-interactive>close (esc)</button>
+			<button class="close" onclick={() => (open = false)} data-interactive>Close (Esc)</button>
 		</div>
 	</div>
 {/if}

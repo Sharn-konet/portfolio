@@ -5,8 +5,8 @@ export const prerender = true;
 export function load() {
 	const { sets, flat } = getPhotos();
 	return {
-		pageTitle: 'photos — sharnko.net',
-		pageDescription: 'photographs by sharn-konet reitsma.',
+		pageTitle: 'Photos — sharnko.net',
+		pageDescription: 'Photographs by Sharn-Konet Reitsma.',
 		sets,
 		flat
 	};

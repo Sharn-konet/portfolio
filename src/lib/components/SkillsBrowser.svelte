@@ -69,7 +69,7 @@
 			class="list"
 			role="listbox"
 			tabindex="0"
-			aria-label="skills"
+			aria-label="Skills"
 			onkeydown={onKey}
 		>
 			<div class="list-header">SKILL INDEX</div>
@@ -140,7 +140,7 @@
 					</div>
 
 					<section class="block">
-						<div class="block-head">notes</div>
+						<div class="block-head">Notes</div>
 						<p>{selected.notes}</p>
 					</section>
 				</div>

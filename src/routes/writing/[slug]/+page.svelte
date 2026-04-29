@@ -18,7 +18,7 @@
 			<span class="date">{formatDate(data.meta.date)}</span>
 			{#if data.meta.draft}
 				<span class="sep">·</span>
-				<span class="draft">draft</span>
+				<span class="draft">Draft</span>
 			{/if}
 		</div>
 	</header>
@@ -26,7 +26,7 @@
 	<article class="prose">
 		<Component />
 	</article>
-	<a class="back" href="/writing">← back to writing</a>
+	<a class="back" href="/writing">← Back to Writing</a>
 </RevealText>
 
 <style>

@@ -2,19 +2,19 @@
 	import RevealText from '$lib/components/RevealText.svelte';
 
 	const rows = [
-		{ key: 'email', val: 'hello@sharnko.net', href: 'mailto:hello@sharnko.net' },
-		{ key: 'github', val: 'sharn-konet', href: 'https://github.com/sharn-konet' },
+		{ key: 'Email', val: 'hello@sharnko.net', href: 'mailto:hello@sharnko.net' },
+		{ key: 'GitHub', val: 'sharn-konet', href: 'https://github.com/sharn-konet' },
 		{
-			key: 'linkedin',
+			key: 'LinkedIn',
 			val: '/in/sharn-konet-reitsma',
 			href: 'https://www.linkedin.com/in/sharn-konet-reitsma'
 		},
-		{ key: 'photos', val: '@sharnsphotos', href: 'https://instagram.com/sharnsphotos' }
+		{ key: 'Photos', val: '@sharnsphotos', href: 'https://instagram.com/sharnsphotos' }
 	];
 </script>
 
 <svelte:head>
-	<title>contact — sharnko.net</title>
+	<title>Contact — sharnko.net</title>
 </svelte:head>
 
 <RevealText>
@@ -28,7 +28,7 @@
 	</div>
 	<div class="divider" data-reveal></div>
 	<div class="prose muted" data-reveal>
-		// signal received. response within two business days.
+		// Signal received. Response within two business days.
 	</div>
 </RevealText>
 

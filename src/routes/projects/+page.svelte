@@ -1,0 +1,116 @@
+<script lang="ts">
+	import AttractorSim from '$lib/components/AttractorSim.svelte';
+
+	let { data } = $props();
+</script>
+
+<svelte:head>
+	<title>{data.pageTitle}</title>
+</svelte:head>
+
+<div class="page">
+	<aside class="side">
+		<div class="tag">// Projects</div>
+		<div class="title">Flo — 3D Differential Equation Visualiser</div>
+		<div class="desc">
+			<p>
+				A strange-attractor sandbox — six chaotic systems integrated with RK4, projected to
+				phosphor.
+			</p>
+			<p class="dim">
+				Originally a WebGL tool with a hand-rolled equation parser; this is the version
+				that survived the redesign.
+			</p>
+			<p class="dim">
+				Click any system on the right to switch — same equations, tiny perturbations in
+				initial conditions, divergent paths. Classic chaos.
+			</p>
+			<p class="dim">
+				<a href="/work/flo">Read more →</a>
+			</p>
+		</div>
+	</aside>
+	<main class="content">
+		<AttractorSim />
+	</main>
+</div>
+
+<style>
+	.page {
+		height: 100%;
+		display: grid;
+		grid-template-columns: minmax(220px, 280px) 1fr;
+		gap: 32px;
+		overflow: hidden;
+	}
+	.side {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		min-height: 0;
+		overflow-y: auto;
+		scrollbar-width: thin;
+		scrollbar-color: rgba(140, 200, 220, 0.3) transparent;
+	}
+	.side::-webkit-scrollbar {
+		width: 6px;
+	}
+	.side::-webkit-scrollbar-thumb {
+		background: rgba(140, 200, 220, 0.25);
+	}
+	.tag {
+		font-size: var(--font-tiny);
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--phosphor-mid);
+	}
+	.title {
+		font-size: var(--font-base);
+		color: var(--phosphor);
+		text-shadow: 0 0 4px var(--glow), 0 0 12px var(--glow-soft);
+		line-height: 1.4;
+	}
+	.desc {
+		padding-top: 10px;
+		border-top: 1px dashed rgba(140, 200, 220, 0.18);
+		font-size: var(--font-small);
+		color: var(--phosphor-mid);
+		line-height: 1.6;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.desc p {
+		margin: 0;
+	}
+	.desc .dim {
+		color: var(--phosphor-dim);
+		font-size: var(--font-tiny);
+		line-height: 1.7;
+	}
+	.desc a {
+		color: var(--accent);
+		text-decoration: none;
+		text-shadow: 0 0 6px var(--accent-glow);
+	}
+	.desc a:hover {
+		text-decoration: underline;
+	}
+	.content {
+		min-width: 0;
+		min-height: 0;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+	@media (max-width: 760px) {
+		.page {
+			grid-template-columns: 1fr;
+			height: auto;
+			overflow: visible;
+		}
+		.content {
+			height: 60vh;
+		}
+	}
+</style>

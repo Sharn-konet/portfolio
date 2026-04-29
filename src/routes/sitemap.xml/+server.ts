@@ -5,7 +5,7 @@ export const prerender = true;
 const ORIGIN = 'https://sharnko.net';
 
 export function GET() {
-	const staticUrls = ['/', '/work', '/writing', '/photos', '/contact', '/film'];
+	const staticUrls = ['/', '/work', '/projects', '/writing', '/photos', '/contact', '/film'];
 	const workUrls = getWorkList().map((w) => `/work/${w.slug}`);
 	const writingUrls = getWritingList().map((w) => `/writing/${w.slug}`);
 	const all = [...staticUrls, ...workUrls, ...writingUrls];

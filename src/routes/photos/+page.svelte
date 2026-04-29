@@ -19,11 +19,11 @@
 	{#if data.flat.length === 0}
 		<div class="empty" data-reveal>
 			<div class="prose">
-				<span class="muted">// no photographs loaded.</span>
+				<span class="muted">// No photographs loaded.</span>
 			</div>
 			<div class="prose hint">
-				drop images into <code>static/gallery/</code> — at the top level or grouped into
-				subfolders — and they'll appear here. supports
+				Drop images into <code>static/gallery/</code> — at the top level or grouped into
+				subfolders — and they'll appear here. Supports
 				<code>.jpg</code> / <code>.jpeg</code> / <code>.png</code>, with optional matching
 				<code>.avif</code> and <code>.webp</code> variants for better compression.
 			</div>
@@ -31,7 +31,7 @@
 	{:else}
 		{#each data.sets as set, si (set.slug)}
 			{#if data.sets.length > 1 || set.name !== 'photographs'}
-				<div class="set-label" data-reveal>// {set.name}</div>
+				<div class="set-label" data-reveal>// {set.name.charAt(0).toUpperCase() + set.name.slice(1)}</div>
 			{/if}
 			<div class="grid" data-reveal>
 				{#each set.photos as photo (photo.href)}

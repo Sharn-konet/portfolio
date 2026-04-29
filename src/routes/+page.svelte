@@ -4,11 +4,11 @@
 
 	const meta = metadata as Record<string, string>;
 	const rows = [
-		{ key: 'identifier', val: meta.identifier },
-		{ key: 'role', val: meta.role },
-		{ key: 'company', val: meta.company },
-		{ key: 'location', val: meta.location },
-		{ key: 'scope', val: meta.scope }
+		{ key: 'Identifier', val: meta.identifier },
+		{ key: 'Role', val: meta.role },
+		{ key: 'Company', val: meta.company },
+		{ key: 'Location', val: meta.location },
+		{ key: 'Scope', val: meta.scope }
 	];
 </script>
 

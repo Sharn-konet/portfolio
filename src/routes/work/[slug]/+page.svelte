@@ -18,7 +18,7 @@
 	<article class="prose" data-reveal>
 		<Component />
 	</article>
-	<a class="back" href="/work" data-reveal>← back to work</a>
+	<a class="back" href="/work" data-reveal>← Back to Work</a>
 </RevealText>
 
 <style>

@@ -7,8 +7,8 @@ export function load() {
 	const experience = items.filter((i: WorkMeta) => (i.kind ?? 'experience') === 'experience');
 	const projects = items.filter((i: WorkMeta) => i.kind === 'project');
 	return {
-		pageTitle: 'work — sharnko.net',
-		pageDescription: 'experience and projects.',
+		pageTitle: 'Work — sharnko.net',
+		pageDescription: 'Experience and projects.',
 		experience: experience.map((i: WorkMeta) => ({
 			href: `/work/${i.slug}`,
 			title: `${i.org} — ${i.title}`,
@@ -17,7 +17,7 @@ export function load() {
 		projects: projects.map((i: WorkMeta) => ({
 			href: `/work/${i.slug}`,
 			title: i.title,
-			meta: i.org && i.org !== 'project' ? i.org : 'demo'
+			meta: i.org && i.org !== 'project' && i.org !== 'Project' ? i.org : 'Demo'
 		}))
 	};
 }

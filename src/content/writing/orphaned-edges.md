@@ -1,13 +1,13 @@
 ---
 slug: orphaned-edges
-title: orphaned edges and the four-part fix
+title: Orphaned Edges and the Four-Part Fix
 date: 2026-02-08
-description: a graph traversal bug that took a week to find and an afternoon to write up.
+description: A graph traversal bug that took a week to find and an afternoon to write up.
 draft: true
 ---
 
-> draft. content to come.
+> Draft. Content to come.
 
-we had a graph traversal bug. nodes were reachable, edges were valid, but a small subset of edges was being dropped from the materialised view. it took a week to find and an afternoon to write up.
+We had a graph traversal bug. Nodes were reachable, edges were valid, but a small subset of edges was being dropped from the materialised view. It took a week to find and an afternoon to write up.
 
-the short version: the producer and consumer disagreed about what counted as a "live" edge. the long version is below.
+The short version: the producer and consumer disagreed about what counted as a "live" edge. The long version is below.

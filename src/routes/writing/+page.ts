@@ -11,8 +11,8 @@ function formatDate(date: string): string {
 export function load() {
 	const items = getWritingList();
 	return {
-		pageTitle: 'writing — sharnko.net',
-		pageDescription: 'engineering posts and notes.',
+		pageTitle: 'Writing — sharnko.net',
+		pageDescription: 'Engineering posts and notes.',
 		items: [
 			...items.map((i: WritingMeta) => ({
 				href: `/writing/${i.slug}`,
@@ -21,7 +21,7 @@ export function load() {
 			})),
 			{
 				href: '/film',
-				title: 'intensive care — short documentary, 2017',
+				title: 'Intensive Care — Short Documentary, 2017',
 				meta: '2017',
 				icon: '▶'
 			}

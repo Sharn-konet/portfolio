@@ -74,7 +74,7 @@ export function getWritingComponent(
 
 export function formatRange(start: string, end: string): string {
 	const fmt = (s: string) => {
-		if (!s || s === '~' || s === 'now') return 'now';
+		if (!s || s === '~' || s === 'now') return 'Now';
 		const [y] = s.split('-');
 		return y;
 	};

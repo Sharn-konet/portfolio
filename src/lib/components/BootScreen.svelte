@@ -133,7 +133,7 @@
 <div class="boot" role="status" aria-live="polite">
 	<div class="stack">
 		<pre class="portal" class:show={portalVisible} aria-hidden="true">{PORTAL}</pre>
-		<div class="label">SHARNKO.NET / TERMLINK</div>
+		<div class="label">SHARNKO.NET / PORTFOLIO</div>
 		<div class="bar-row">
 			<span class="bar-glyph">{barGlyph(filled)}</span>
 			<span class="bar-pct">{pctText(filled)}</span>

@@ -25,7 +25,7 @@
 		<span aria-live="polite">{path}</span>
 	</div>
 	<div class="right">
-		<span><span class="dot" aria-hidden="true">●</span> ready</span>
+		<span><span class="dot" aria-hidden="true">●</span> Ready</span>
 		<span class="sep">·</span>
 		<span class="muted">{index + 1} of {tabs.length}</span>
 		<SoundToggle />

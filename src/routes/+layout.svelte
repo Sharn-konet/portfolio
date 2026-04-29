@@ -29,11 +29,11 @@
 	<meta
 		name="description"
 		content={page.data?.pageDescription ??
-			'Sharn-Konet Reitsma — founding engineer, sometimes filmmaker, occasional photographer.'}
+			'Sharn-Konet Reitsma — Founding Engineer, sometimes filmmaker, occasional photographer.'}
 	/>
 </svelte:head>
 
-<a class="skip-link" href="#main">skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <CRT>
 	<Header />

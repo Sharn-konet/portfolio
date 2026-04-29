@@ -6,15 +6,6 @@
 
 	let entered = false;
 
-	const GLYPH = `        ╱╲
-       ╱  ╲
-      ╱ ◆◆ ╲
-     ╱ ◆◆◆◆ ╲
-    ╱  ◆◆  ╱
-     ╲    ╱
-      ╲  ╱
-       ╲╱`;
-
 	async function enter() {
 		if (entered) return;
 		entered = true;
@@ -46,15 +37,13 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="enter" aria-label="Enter terminal" onclick={enter}>
 	<div class="stack">
-		<pre class="glyph" aria-hidden="true">{GLYPH}</pre>
 		<div class="title">SHARNKO.NET</div>
-		<div class="sub">TERMLINK PROTOCOL v3.4</div>
+		<div class="sub">PERSONAL PORTFOLIO</div>
 		<button class="cta" type="button" onclick={(e) => { e.stopPropagation(); enter(); }}>
 			<span class="bracket">[</span>
 			<span class="label">PRESS TO ENTER</span>
 			<span class="bracket">]</span>
 		</button>
-		<div class="hint">click anywhere · or press any key</div>
 	</div>
 </div>
 
@@ -71,27 +60,12 @@
 		justify-content: center;
 		padding: 24px;
 		text-shadow: 0 0 4px var(--glow), 0 0 12px var(--glow-soft);
-		cursor: pointer;
 	}
 	.stack {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 14px;
-	}
-	.glyph {
-		margin: 0 0 8px 0;
-		font-family: var(--font-mono);
-		font-size: 22px;
-		line-height: 1;
-		white-space: pre;
-		color: var(--phosphor);
-		text-shadow: 0 0 8px var(--glow), 0 0 22px var(--glow-soft);
-		animation: glyph-pulse 3s ease-in-out infinite;
-	}
-	@keyframes glyph-pulse {
-		0%, 100% { opacity: 0.85; }
-		50% { opacity: 1; }
 	}
 	.title {
 		font-size: 22px;
@@ -110,7 +84,6 @@
 		color: var(--phosphor);
 		font-size: 16px;
 		letter-spacing: 0.24em;
-		cursor: pointer;
 		padding: 10px 4px;
 		text-shadow: 0 0 4px var(--glow), 0 0 12px var(--glow-soft);
 		animation: cta-blink 1.4s steps(1) infinite;
@@ -129,14 +102,7 @@
 	@keyframes cta-blink {
 		50% { opacity: 0.55; }
 	}
-	.hint {
-		font-size: 11px;
-		letter-spacing: 0.2em;
-		color: var(--phosphor-dim);
-		margin-top: 4px;
-	}
 	@media (max-width: 600px) {
-		.glyph { font-size: 18px; }
 		.title { font-size: 18px; }
 		.cta { font-size: 14px; }
 	}

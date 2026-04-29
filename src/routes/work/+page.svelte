@@ -6,6 +6,6 @@
 </script>
 
 <RevealText>
-	<EntryList items={data.experience} label="// experience" />
-	<EntryList items={data.projects} label="// projects" />
+	<EntryList items={data.experience} label="// Experience" />
+	<EntryList items={data.projects} label="// Projects" />
 </RevealText>

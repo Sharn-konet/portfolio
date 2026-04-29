@@ -1,16 +1,16 @@
 ---
 slug: uoa-research
-title: research assistant
-org: university of auckland
+title: Research Assistant
+org: University of Auckland
 start: 2020-01
 end: 2022-01
 order: 5
 kind: experience
-description: spatial statistics, computer vision, and the paper that came out of it.
+description: Spatial statistics, computer vision, and the paper that came out of it.
 ---
 
-spatial statistics and computer vision research alongside undergrad and honours. the work that became *spatial variation sequences* (psivt 2023).
+Spatial statistics and computer vision research alongside undergrad and honours. The work that became *Spatial Variation Sequences* (PSIVT 2023).
 
-- co-authored a peer-reviewed paper at psivt 2023
-- spent more time than was reasonable on simulation tooling
-- learnt to write so academics would read it, then unlearnt it for industry
+- Co-authored a peer-reviewed paper at PSIVT 2023
+- Spent more time than was reasonable on simulation tooling
+- Learnt to write so academics would read it, then unlearnt it for industry

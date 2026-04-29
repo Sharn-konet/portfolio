@@ -19,10 +19,10 @@
 		></iframe>
 	{:else}
 		<div class="placeholder">
-			<div class="title">intensive care</div>
-			<div class="meta">2017 · short documentary</div>
-			<div class="note">// awaiting upload — embed url not yet wired in.</div>
-			<a class="back" href="/writing">← back</a>
+			<div class="title">Intensive Care</div>
+			<div class="meta">2017 · Short Documentary</div>
+			<div class="note">// Awaiting upload — embed URL not yet wired in.</div>
+			<a class="back" href="/writing">← Back</a>
 		</div>
 	{/if}
 </div>

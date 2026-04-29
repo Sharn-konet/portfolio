@@ -1,13 +1,13 @@
 ---
-identifier: sharn-konet reitsma
-role: founding engineer
-company: survesy
-location: auckland, new zealand
-scope: backend · ml · infrastructure
+identifier: Sharn-Konet Reitsma
+role: Founding Engineer
+company: Survesy
+location: Auckland, New Zealand
+scope: Backend · ML · Infrastructure
 ---
 
-engineer, sometimes filmmaker, occasional photographer. i build the backend, ml, and infrastructure that keeps survesy moving.
+Engineer, sometimes filmmaker, occasional photographer. I build the backend, ML, and infrastructure that keeps Survesy moving.
 
-before that, four years at xero across data applications, applied science, and data engineering. before that, university of auckland — first class honours, engineering science. co-author, psivt 2023.
+Before that, four years at Xero across data applications, applied science, and data engineering. Before that, the University of Auckland — first class honours, engineering science. Co-author, PSIVT 2023.
 
-outside of work — landscape and macro photography on a sony a7c. won the student section of doc edge, 2017, for a short documentary about an icu doctor.
+Outside of work — landscape and macro photography on a Sony A7C. Won the student section of Doc Edge, 2017, for a short documentary about an ICU doctor.

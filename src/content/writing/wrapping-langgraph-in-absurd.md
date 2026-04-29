@@ -1,13 +1,13 @@
 ---
 slug: wrapping-langgraph-in-absurd
-title: wrapping langgraph in absurd — a durable-execution post-mortem
+title: Wrapping LangGraph in Absurd — a Durable-Execution Post-Mortem
 date: 2026-03-14
-description: what we got right and wrong wrapping langgraph in a durable execution layer.
+description: What we got right and wrong wrapping LangGraph in a durable execution layer.
 draft: true
 ---
 
-> draft. content to come.
+> Draft. Content to come.
 
-when we picked langgraph for the agent layer at survesy, the question that immediately surfaced was: how do we make this *durable*? langgraph itself is happy to run an agent end-to-end in memory, but production demands the ability to survive a restart, retry a step, and replay deterministically.
+When we picked LangGraph for the agent layer at Survesy, the question that immediately surfaced was: how do we make this *durable*? LangGraph itself is happy to run an agent end-to-end in memory, but production demands the ability to survive a restart, retry a step, and replay deterministically.
 
-this post walks through the pattern we landed on — wrapping each langgraph node as an absurd activity — and the three things i'd do differently next time.
+This post walks through the pattern we landed on — wrapping each LangGraph node as an Absurd activity — and the three things I'd do differently next time.

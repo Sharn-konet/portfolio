@@ -6,5 +6,5 @@
 </script>
 
 <RevealText>
-	<EntryList items={data.items} label="// recent posts" />
+	<EntryList items={data.items} label="// Recent Posts" />
 </RevealText>

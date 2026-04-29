@@ -71,9 +71,9 @@
 </script>
 
 <button class="toggle" class:on={$soundEnabled} onclick={toggle} aria-pressed={$soundEnabled}>
-	{#if powering}<span aria-hidden="true">▶</span> powering on…
-	{:else if $soundEnabled}<span aria-hidden="true">●</span> sound on
-	{:else}<span aria-hidden="true">◌</span> sound off
+	{#if powering}<span aria-hidden="true">▶</span> Powering On…
+	{:else if $soundEnabled}<span aria-hidden="true">●</span> Sound On
+	{:else}<span aria-hidden="true">◌</span> Sound Off
 	{/if}
 </button>
 

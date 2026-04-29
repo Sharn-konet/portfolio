@@ -36,12 +36,12 @@
 	class="lightbox"
 	role="dialog"
 	aria-modal="true"
-	aria-label={current?.caption ?? 'photo'}
+	aria-label={current?.caption ?? 'Photo'}
 >
-	<button class="backdrop" onclick={onClose} aria-label="close"></button>
-	<button class="nav prev" onclick={prev} aria-label="previous">◀</button>
-	<button class="nav next" onclick={next} aria-label="next">▶</button>
-	<button class="close" onclick={onClose} aria-label="close">✕ close</button>
+	<button class="backdrop" onclick={onClose} aria-label="Close"></button>
+	<button class="nav prev" onclick={prev} aria-label="Previous">◀</button>
+	<button class="nav next" onclick={next} aria-label="Next">▶</button>
+	<button class="close" onclick={onClose} aria-label="Close">✕ Close</button>
 	<picture>
 		{#if current.avif}<source srcset={current.avif} type="image/avif" />{/if}
 		{#if current.webp}<source srcset={current.webp} type="image/webp" />{/if}
