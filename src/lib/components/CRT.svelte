@@ -1,38 +1,36 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-	import { booted, markBooted } from '$lib/stores/boot';
 	import { reducedMotion } from '$lib/stores/motion';
+	import BootScreen from './BootScreen.svelte';
+	import EnterScreen from './EnterScreen.svelte';
 
 	let { children } = $props();
 
-	const initial: 'off' | 'on' =
-		browser && !$booted && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-			? 'off'
-			: 'on';
-	let powerState = $state<'off' | 'booting' | 'on' | 'powering-on-fast'>(initial);
+	type PowerState = 'enter' | 'loading' | 'booting' | 'on' | 'powering-on-fast';
+	let powerState = $state<PowerState>('on');
 
 	let hiddenAt = 0;
 
+	function startBoot() {
+		powerState = 'loading';
+	}
+
+	function startPowerOn() {
+		powerState = 'booting';
+		setTimeout(() => {
+			powerState = 'on';
+		}, 1700);
+	}
+
 	onMount(() => {
-		if (!$booted && !$reducedMotion) {
-			requestAnimationFrame(() => {
-				powerState = 'booting';
-				setTimeout(() => {
-					powerState = 'on';
-					markBooted();
-				}, 1700);
-			});
-		} else if (!$booted) {
-			markBooted();
-		}
+		powerState = 'enter';
 
 		const onVis = () => {
 			if (document.hidden) {
 				hiddenAt = Date.now();
 			} else {
 				const away = Date.now() - hiddenAt;
-				if (away > 5000 && !$reducedMotion) {
+				if (away > 5000 && !$reducedMotion && powerState === 'on') {
 					powerState = 'powering-on-fast';
 					setTimeout(() => {
 						powerState = 'on';
@@ -43,7 +41,6 @@
 		const onKey = (e: KeyboardEvent) => {
 			if (powerState === 'booting') {
 				powerState = 'on';
-				markBooted();
 				e.preventDefault();
 			}
 		};
@@ -71,6 +68,12 @@
 		<div class="scanlines" aria-hidden="true"></div>
 		<div class="rgb-mask" aria-hidden="true"></div>
 		<div class="vignette" aria-hidden="true"></div>
+		{#if powerState === 'loading'}
+			<BootScreen onDone={startPowerOn} />
+		{/if}
+		{#if powerState === 'enter'}
+			<EnterScreen onEnter={startBoot} />
+		{/if}
 	</div>
 </div>
 
@@ -243,9 +246,9 @@
 		flex-direction: column;
 	}
 
-	:global(html.js) [data-state='off'] .content {
+	:global(html.js) [data-state='enter'] .content,
+	:global(html.js) [data-state='loading'] .content {
 		opacity: 0;
-		transform: scale(1, 0);
 	}
 
 	.content.booting {

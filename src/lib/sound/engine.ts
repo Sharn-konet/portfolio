@@ -268,6 +268,62 @@ class SoundEngine {
 		src.start();
 	}
 
+	bootBeep() {
+		if (!this.enabled || !this.ready || !this.ctx || !this.master) return;
+		const ctx = this.ctx;
+		const t0 = ctx.currentTime;
+		const osc = ctx.createOscillator();
+		osc.type = 'square';
+		osc.frequency.setValueAtTime(180, t0);
+		osc.frequency.exponentialRampToValueAtTime(820, t0 + 0.18);
+		const lpf = ctx.createBiquadFilter();
+		lpf.type = 'lowpass';
+		lpf.frequency.value = 2400;
+		const gain = ctx.createGain();
+		gain.gain.setValueAtTime(0, t0);
+		gain.gain.linearRampToValueAtTime(0.06, t0 + 0.02);
+		gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.32);
+		osc.connect(lpf).connect(gain).connect(this.master);
+		osc.start(t0);
+		osc.stop(t0 + 0.34);
+	}
+
+	bootTick() {
+		if (!this.enabled || !this.ready || !this.ctx || !this.master) return;
+		if (!this.throttle('bootTick', 24)) return;
+		const ctx = this.ctx;
+		const t0 = ctx.currentTime;
+		const osc = ctx.createOscillator();
+		osc.type = 'square';
+		osc.frequency.value = 1900;
+		const gain = ctx.createGain();
+		gain.gain.setValueAtTime(0.03, t0);
+		gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.045);
+		osc.connect(gain).connect(this.master);
+		osc.start(t0);
+		osc.stop(t0 + 0.05);
+	}
+
+	bootReady() {
+		if (!this.enabled || !this.ready || !this.ctx || !this.master) return;
+		const ctx = this.ctx;
+		const t0 = ctx.currentTime;
+		const tone = (freq: number, start: number, dur: number, vol: number) => {
+			const osc = ctx.createOscillator();
+			osc.type = 'triangle';
+			osc.frequency.value = freq;
+			const g = ctx.createGain();
+			g.gain.setValueAtTime(0, t0 + start);
+			g.gain.linearRampToValueAtTime(vol, t0 + start + 0.015);
+			g.gain.exponentialRampToValueAtTime(0.0001, t0 + start + dur);
+			osc.connect(g).connect(this.master!);
+			osc.start(t0 + start);
+			osc.stop(t0 + start + dur + 0.02);
+		};
+		tone(523, 0, 0.18, 0.05);
+		tone(784, 0.12, 0.26, 0.05);
+	}
+
 	setBed(kind: BedKind) {
 		if (!this.enabled || !this.ready) return;
 		if (this.bedKind === kind) return;

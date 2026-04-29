@@ -28,8 +28,8 @@
 				return;
 			}
 
-			// Tab jumps via 1-5 — same click as a real tab press
-			if (/^[1-5]$/.test(e.key)) {
+			// Tab jumps via number keys — same click as a real tab press
+			if (/^[1-9]$/.test(e.key)) {
 				const tab = tabs[parseInt(e.key, 10) - 1];
 				if (tab) {
 					const current = activeTab(page.url.pathname).slug;

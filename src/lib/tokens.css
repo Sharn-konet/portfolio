@@ -14,8 +14,8 @@
 
 	/* Layout — desktop default */
 	--content-max: 1280px;
-	--crt-radius: 24px;
-	--case-padding: 24px;
+	--crt-radius: 0px;
+	--case-padding: 0px;
 
 	/* Type */
 	--font-mono: 'Berkeley Mono', 'Departure Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular,
@@ -26,7 +26,7 @@
 
 	/* Padding (CRT body) */
 	--pad-x: 64px;
-	--pad-y: 56px;
+	--pad-y: 24px;
 
 	/* Effect intensities (tunable; reduced-motion overrides below) */
 	--scanline-opacity: 0.36;
@@ -38,10 +38,8 @@
 /* Tablet */
 @media (max-width: 1024px) {
 	:root {
-		--case-padding: 16px;
-		--crt-radius: 20px;
 		--pad-x: 44px;
-		--pad-y: 40px;
+		--pad-y: 18px;
 		--font-base: 16px;
 		--font-small: 13px;
 	}
@@ -50,10 +48,8 @@
 /* Mobile */
 @media (max-width: 600px) {
 	:root {
-		--case-padding: 8px;
-		--crt-radius: 14px;
 		--pad-x: 22px;
-		--pad-y: 24px;
+		--pad-y: 14px;
 		--font-base: 15px;
 		--font-small: 12px;
 		--font-tiny: 11px;

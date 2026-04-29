@@ -7,6 +7,15 @@
 		icon?: string;
 	};
 	let { items, label }: { items: Item[]; label?: string } = $props();
+
+	async function onSelect() {
+		try {
+			const { sound } = await import('$lib/sound/engine');
+			sound.kachunk();
+		} catch {
+			/* sound module may not be ready */
+		}
+	}
 </script>
 
 {#if label}
@@ -19,6 +28,7 @@
 				href={item.href}
 				target={item.external ? '_blank' : undefined}
 				rel={item.external ? 'noopener noreferrer' : undefined}
+				onclick={onSelect}
 			>
 				<span class="arr" aria-hidden="true">{item.icon ?? '▸'}</span>
 				<span class="title">{item.title}</span>
