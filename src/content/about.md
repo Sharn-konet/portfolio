@@ -10,7 +10,7 @@ linkedin: sharnkonet
 instagram: sharnsphotos
 ---
 
-Engineer, filmmaker, photographer.
+Engineer, photographer, filmmaker.
 
 I'm a founding engineer at Survesy. I lead a team of engineers building out our core survey authoring experience, and set the technical direction for our AI products. This includes the algorithms we use for generating surveys, our evaluation harness, and the infrastructure which runs the product. I'm currently extending into full-stack work, building out the frontend for our AI interfaces.
 

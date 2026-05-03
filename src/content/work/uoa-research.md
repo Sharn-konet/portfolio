@@ -9,8 +9,7 @@ kind: experience
 description: Spatial statistics, computer vision, and the paper that came out of it.
 ---
 
-Spatial statistics and computer vision research alongside undergrad and honours. The work that became *Spatial Variation Sequences* (PSIVT 2023).
+Spatial statistics and computer vision research alongside undergrad and honors. The work that became _Spatial Variation Sequences_ (PSIVT 2023). This work covered automatic feature generation for satellite imagery, and its application in detecting pools on properties.
 
-- Co-authored a peer-reviewed paper at PSIVT 2023
-- Spent more time than was reasonable on simulation tooling
-- Learnt to write so academics would read it, then unlearnt it for industry
+- Wrote the entire paper from scratch using LaTeX.
+- Revived the legacy project, and identified gaps.

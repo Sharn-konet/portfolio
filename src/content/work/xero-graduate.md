@@ -1,6 +1,6 @@
 ---
 slug: xero-graduate
-title: Data Scientist (Graduate)
+title: Graduate Data Engineer
 org: Xero
 start: 2022-01
 end: 2023-01

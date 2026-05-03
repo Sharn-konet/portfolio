@@ -1,7 +1,7 @@
 ---
 slug: spark64
 title: AI Software Developer
-org: Spark64 / ElementX
+org: Spark64 (now ElementX)
 start: 2020-01
 end: 2021-01
 order: 4
