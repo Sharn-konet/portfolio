@@ -32,21 +32,34 @@ function rk4Step(f: DerivativeFn, s: Vec3, p: Record<string, number>, dt: number
 	];
 }
 
-export function stepParticle(state: Vec3, system: AttractorSystem, params: Record<string, number>): Vec3 {
-	const next = rk4Step(system.derivative, state, params, system.dt);
+export function stepParticle(
+	state: Vec3,
+	system: AttractorSystem,
+	params: Record<string, number>,
+	dt: number = system.dt
+): Vec3 {
+	const next = rk4Step(system.derivative, state, params, dt);
 	if (!isFinite(next[0]) || !isFinite(next[1]) || !isFinite(next[2])) {
 		return [...system.initialState];
 	}
 	return next;
 }
 
-// Run the system silently for `samples` steps to find a bounding box, then
-// return offset+scale that maps the attractor into a unit cube.
-export function computeNormalization(
+export interface AttractorStats {
+	norm: Normalization;
+	radius: number;
+	halfExtents: Vec3;
+}
+
+// Walk the trajectory once, recording samples and tracking min/max per axis.
+// From min/max we derive `norm` and `halfExtents` directly; a quick second
+// pass over the recorded points gives the bounding-sphere `radius` (the only
+// quantity that needs the already-computed center).
+export function computeStats(
 	system: AttractorSystem,
 	params: Record<string, number>,
-	samples = 8000
-): Normalization {
+	samples = 24000
+): AttractorStats {
 	let s: Vec3 = [...system.initialState];
 	const skip = Math.floor(samples * 0.1);
 	for (let i = 0; i < skip; i++) {
@@ -56,21 +69,46 @@ export function computeNormalization(
 			break;
 		}
 	}
+	const xs = new Float64Array(samples);
+	const ys = new Float64Array(samples);
+	const zs = new Float64Array(samples);
 	let minX = Infinity, minY = Infinity, minZ = Infinity;
 	let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
 	let valid = 0;
 	for (let i = 0; i < samples; i++) {
 		if (!isFinite(s[0]) || !isFinite(s[1]) || !isFinite(s[2])) break;
-		minX = Math.min(minX, s[0]); maxX = Math.max(maxX, s[0]);
-		minY = Math.min(minY, s[1]); maxY = Math.max(maxY, s[1]);
-		minZ = Math.min(minZ, s[2]); maxZ = Math.max(maxZ, s[2]);
+		xs[i] = s[0]; ys[i] = s[1]; zs[i] = s[2];
+		if (s[0] < minX) minX = s[0]; if (s[0] > maxX) maxX = s[0];
+		if (s[1] < minY) minY = s[1]; if (s[1] > maxY) maxY = s[1];
+		if (s[2] < minZ) minZ = s[2]; if (s[2] > maxZ) maxZ = s[2];
 		valid++;
 		s = rk4Step(system.derivative, s, params, system.dt);
 	}
-	if (!valid || !isFinite(minX)) return { center: [...system.initialState], scale: 1 };
+	if (!valid || !isFinite(minX)) {
+		return {
+			norm: { center: [...system.initialState], scale: 1 },
+			radius: 1,
+			halfExtents: [1, 1, 1]
+		};
+	}
 	const center: Vec3 = [(minX + maxX) / 2, (minY + maxY) / 2, (minZ + maxZ) / 2];
 	const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ);
-	return { center, scale: extent > 1e-10 ? extent / 2 : 1 };
+	const scale = extent > 1e-10 ? extent / 2 : 1;
+	const halfExtents: Vec3 = [
+		Math.max((maxX - minX) / 2 / scale, 1e-6),
+		Math.max((maxY - minY) / 2 / scale, 1e-6),
+		Math.max((maxZ - minZ) / 2 / scale, 1e-6)
+	];
+	let max2 = 0;
+	for (let i = 0; i < valid; i++) {
+		const dx = (xs[i] - center[0]) / scale;
+		const dy = (ys[i] - center[1]) / scale;
+		const dz = (zs[i] - center[2]) / scale;
+		const r2 = dx * dx + dy * dy + dz * dz;
+		if (r2 > max2) max2 = r2;
+	}
+	const r = Math.sqrt(max2);
+	return { norm: { center, scale }, radius: r > 1e-6 ? r : 1, halfExtents };
 }
 
 export function generateInitialStates(system: AttractorSystem, count: number, perturb = 0.02): Vec3[] {
@@ -87,65 +125,6 @@ export function generateInitialStates(system: AttractorSystem, count: number, pe
 	return out;
 }
 
-export interface ProjBounds {
-	maxX: number;
-	maxY: number;
-}
-
-/**
- * Sample the attractor's trajectory and project it at many rotZ angles.
- * Returns the worst-case projected |x|/|y| under the renderer's tumble so the
- * caller can fit `drawScale` to keep every frame inside the canvas.
- */
-export function computeProjBounds(
-	system: AttractorSystem,
-	params: Record<string, number>,
-	norm: Normalization,
-	tilt: number,
-	sampleSteps = 4000,
-	rotSamples = 24
-): ProjBounds {
-	let maxX = 0;
-	let maxY = 0;
-	let s: Vec3 = [...system.initialState];
-	const skip = Math.floor(sampleSteps * 0.1);
-	for (let i = 0; i < skip; i++) {
-		s = rk4Step(system.derivative, s, params, system.dt);
-		if (!isFinite(s[0])) {
-			s = [...system.initialState];
-			break;
-		}
-	}
-	const cosT = Math.cos(tilt);
-	const sinT = Math.sin(tilt);
-	const cosArr = new Float64Array(rotSamples);
-	const sinArr = new Float64Array(rotSamples);
-	for (let r = 0; r < rotSamples; r++) {
-		const a = (r / rotSamples) * Math.PI * 2;
-		cosArr[r] = Math.cos(a);
-		sinArr[r] = Math.sin(a);
-	}
-	for (let i = 0; i < sampleSteps; i++) {
-		if (!isFinite(s[0]) || !isFinite(s[1]) || !isFinite(s[2])) break;
-		const nx = (s[0] - norm.center[0]) / norm.scale;
-		const ny = (s[1] - norm.center[1]) / norm.scale;
-		const nz = (s[2] - norm.center[2]) / norm.scale;
-		for (let r = 0; r < rotSamples; r++) {
-			const wx = nx * cosArr[r] - ny * sinArr[r];
-			const wy = nx * sinArr[r] + ny * cosArr[r];
-			const tz = wy * sinT + nz * cosT;
-			const ax = Math.abs(wx);
-			const ay = Math.abs(tz);
-			if (ax > maxX) maxX = ax;
-			if (ay > maxY) maxY = ay;
-		}
-		s = rk4Step(system.derivative, s, params, system.dt);
-	}
-	if (maxX < 1e-6) maxX = 1;
-	if (maxY < 1e-6) maxY = 1;
-	return { maxX, maxY };
-}
-
 // ============ Systems ============
 // Selected from the original 21 for visual variety — classic, smooth, cyclic,
 // curly, and cyclic-symmetric forms.
@@ -159,7 +138,7 @@ export const lorenz: AttractorSystem = {
 	],
 	defaultParams: { sigma: 10, rho: 28, beta: 8 / 3 },
 	initialState: [1, 1, 1],
-	dt: 0.005
+	dt: 0.0025
 };
 
 export const aizawa: AttractorSystem = {
@@ -195,7 +174,7 @@ export const halvorsen: AttractorSystem = {
 	],
 	defaultParams: { alpha: 1.4 },
 	initialState: [-5, 0, 0],
-	dt: 0.005
+	dt: 0.0025
 };
 
 export const rucklidge: AttractorSystem = {
