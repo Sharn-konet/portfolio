@@ -14,19 +14,27 @@
 		<div class="title">Flo · 3D Differential Equation Visualiser</div>
 		<div class="desc">
 			<p>
-				A strange-attractor sandbox. Six chaotic systems integrated with RK4, projected to
-				phosphor.
+				A strange-attractor sandbox, written to investigate differential equations with three
+				dimenssions.
+			</p>
+			<p>
+				Here I have recreated the project using JavaScript, and have embedded six of the chaotic
+				systems from the original project.
 			</p>
 			<p class="dim">
-				Originally a WebGL tool with a hand-rolled equation parser; this is the version
-				that survived the redesign.
+				Originally, this project was written using Python and served using Plotly. However, Python's
+				interpreted nature left a lot to be desired when it came to performance.
 			</p>
 			<p class="dim">
-				Click any system on the right to switch. Same equations, tiny perturbations in
-				initial conditions, divergent paths. Classic chaos.
+				Subsequently, the project I rewrote the project using Julia, which resolved a lot of the
+				performance issues which were found in the Python version. In addition to rewriting the
+				solving of the equations, I also used the languages metaprogramming features to build a
+				custom language for reading the expressions, and used this to extend the project to many
+				different kinds of attractors.
 			</p>
 			<p class="dim">
-				<a href="/work/flo">Read more →</a>
+				Click any system on the right to switch. Same equations, tiny perturbations in initial
+				conditions, divergent paths. Classic chaos.
 			</p>
 		</div>
 	</aside>
@@ -67,7 +75,9 @@
 	.title {
 		font-size: var(--font-base);
 		color: var(--phosphor);
-		text-shadow: 0 0 4px var(--glow), 0 0 12px var(--glow-soft);
+		text-shadow:
+			0 0 4px var(--glow),
+			0 0 12px var(--glow-soft);
 		line-height: 1.4;
 	}
 	.desc {
