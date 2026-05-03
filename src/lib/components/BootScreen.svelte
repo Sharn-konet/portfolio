@@ -169,7 +169,7 @@
 	.portal {
 		margin: 0;
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: clamp(4.5px, 1.4vw, 10px);
 		line-height: 1;
 		letter-spacing: 0;
 		white-space: pre;
@@ -195,7 +195,7 @@
 		align-items: baseline;
 		gap: 12px;
 		width: 100%;
-		font-size: 14px;
+		font-size: clamp(12px, 1.5vw, 14px);
 		font-variant-numeric: tabular-nums;
 	}
 	.bar-glyph {
@@ -213,28 +213,5 @@
 	}
 	.status.ready {
 		color: var(--phosphor);
-	}
-	@media (max-width: 1024px) {
-		.portal {
-			font-size: 9px;
-		}
-	}
-	@media (max-width: 760px) {
-		.portal {
-			font-size: 7px;
-		}
-		.bar-row {
-			font-size: 12px;
-		}
-	}
-	@media (max-width: 500px) {
-		.portal {
-			font-size: 5.5px;
-		}
-	}
-	@media (max-width: 380px) {
-		.portal {
-			font-size: 4.5px;
-		}
 	}
 </style>

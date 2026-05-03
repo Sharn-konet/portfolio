@@ -68,7 +68,7 @@
 		gap: 14px;
 	}
 	.title {
-		font-size: 22px;
+		font-size: clamp(18px, 2.5vw, 22px);
 		letter-spacing: 0.32em;
 	}
 	.sub {
@@ -82,7 +82,7 @@
 		border: 0;
 		font: inherit;
 		color: var(--phosphor);
-		font-size: 16px;
+		font-size: clamp(14px, 1.8vw, 16px);
 		letter-spacing: 0.24em;
 		padding: 10px 4px;
 		text-shadow: 0 0 4px var(--glow), 0 0 12px var(--glow-soft);
@@ -101,9 +101,5 @@
 	}
 	@keyframes cta-blink {
 		50% { opacity: 0.55; }
-	}
-	@media (max-width: 600px) {
-		.title { font-size: 18px; }
-		.cta { font-size: 14px; }
 	}
 </style>

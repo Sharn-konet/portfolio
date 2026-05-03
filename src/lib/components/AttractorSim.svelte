@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { reducedMotion } from '$lib/stores/motion';
 	import {
 		attractors,
 		computeNormalization,
@@ -17,7 +16,6 @@
 	let paused = $state(false);
 
 	const PARTICLES = 90;
-	const ROTATION_SPEED = 0.18; // rad/s, slow tumble around Z (vertical)
 	const STEPS_PER_FRAME = 4;
 	const TILT = -0.18; // ~10° X-axis tilt for depth
 
@@ -56,8 +54,6 @@
 		let particles: Vec3[] = [];
 		let norm: Normalization = { center: [0, 0, 0], scale: 1 };
 		let bounds: ProjBounds = { maxX: 1, maxY: 1 };
-		let rotZ = 0;
-		let lastTime = 0;
 		let currentIdx = activeIdx;
 		let cssWidth = 0;
 		let cssHeight = 0;
@@ -95,23 +91,16 @@
 				}
 				particles[i] = s;
 			}
-			rotZ = 0;
 			fillBg();
 		}
 
-		function frame(t: number) {
+		function frame() {
 			if (currentIdx !== activeIdx) {
 				currentIdx = activeIdx;
 				reseed(currentIdx);
 			}
 
-			if (!lastTime) lastTime = t;
-			const dt = Math.min(0.05, (t - lastTime) / 1000);
-			lastTime = t;
-
 			if (!paused) {
-				if (!$reducedMotion) rotZ += ROTATION_SPEED * dt;
-
 				// Phosphor decay — translucent screen wash leaves trails fading
 				ctx!.fillStyle = 'rgba(10, 31, 58, 0.035)';
 				ctx!.fillRect(0, 0, cssWidth, cssHeight);
@@ -120,13 +109,9 @@
 				const cx = cssWidth / 2;
 				const cy = cssHeight / 2;
 				// Fit the per-attractor projected bounds inside the canvas with a
-				// small margin. This is the only thing that keeps every system
-				// (including the asymmetric ones) inside the frame at every
-				// rotation.
+				// small margin so every system stays in frame.
 				const drawScale =
 					Math.min(cx / bounds.maxX, cy / bounds.maxY) * 0.92;
-				const cosZ = Math.cos(rotZ);
-				const sinZ = Math.sin(rotZ);
 				const cosT = Math.cos(TILT);
 				const sinT = Math.sin(TILT);
 
@@ -141,17 +126,13 @@
 					const ny = (s[1] - norm.center[1]) / norm.scale;
 					const nz = (s[2] - norm.center[2]) / norm.scale;
 
-					// Rotate around world Z (vertical screen axis), then tilt
-					// around world X for depth feel. World X→screen X, world
-					// Z→screen Y (negated because screen Y is down). World Y is
-					// depth (into screen). This gives the famous Lorenz view at
-					// rotZ=0 — wings in X-Z plane, slowly tumbling.
-					const wx = nx * cosZ - ny * sinZ;
-					const wy = nx * sinZ + ny * cosZ;
-					const ty = wy * cosT - nz * sinT;
-					const tz = wy * sinT + nz * cosT;
+					// Tilt around world X for depth feel. World X→screen X,
+					// world Z→screen Y (negated because screen Y is down).
+					// World Y is depth (into screen).
+					const ty = ny * cosT - nz * sinT;
+					const tz = ny * sinT + nz * cosT;
 
-					const px = cx + wx * drawScale;
+					const px = cx + nx * drawScale;
 					const py = cy - tz * drawScale;
 					// Depth = ty (positive toward camera with negative tilt)
 					const depth = Math.max(0, Math.min(1, (ty + 1.4) / 2.8));
@@ -368,18 +349,5 @@
 	}
 	.preset.active .bracket {
 		visibility: visible;
-	}
-	@media (max-width: 700px) {
-		.header {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 4px;
-		}
-		.viewport {
-			aspect-ratio: 4 / 3;
-		}
-		.overlay.bottom {
-			font-size: 9px;
-		}
 	}
 </style>

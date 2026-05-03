@@ -6,50 +6,19 @@
 
 	let { children } = $props();
 
-	type PowerState = 'enter' | 'loading' | 'booting' | 'on' | 'powering-on-fast';
+	type PowerState = 'enter' | 'loading' | 'on';
 	let powerState = $state<PowerState>('on');
-
-	let hiddenAt = 0;
 
 	function startBoot() {
 		powerState = 'loading';
 	}
 
-	function startPowerOn() {
-		powerState = 'booting';
-		setTimeout(() => {
-			powerState = 'on';
-		}, 1700);
+	function finishBoot() {
+		powerState = 'on';
 	}
 
 	onMount(() => {
 		powerState = 'enter';
-
-		const onVis = () => {
-			if (document.hidden) {
-				hiddenAt = Date.now();
-			} else {
-				const away = Date.now() - hiddenAt;
-				if (away > 5000 && !$reducedMotion && powerState === 'on') {
-					powerState = 'powering-on-fast';
-					setTimeout(() => {
-						powerState = 'on';
-					}, 700);
-				}
-			}
-		};
-		const onKey = (e: KeyboardEvent) => {
-			if (powerState === 'booting') {
-				powerState = 'on';
-				e.preventDefault();
-			}
-		};
-		document.addEventListener('visibilitychange', onVis);
-		document.addEventListener('keydown', onKey);
-		return () => {
-			document.removeEventListener('visibilitychange', onVis);
-			document.removeEventListener('keydown', onKey);
-		};
 	});
 </script>
 
@@ -58,18 +27,14 @@
 		<div class="curve" aria-hidden="true"></div>
 		<div class="glow-layer" aria-hidden="true"></div>
 		<div class="scroll-band" aria-hidden="true"></div>
-		<div
-			class="content"
-			class:booting={powerState === 'booting'}
-			class:fast={powerState === 'powering-on-fast'}
-		>
+		<div class="content">
 			{@render children?.()}
 		</div>
 		<div class="scanlines" aria-hidden="true"></div>
 		<div class="rgb-mask" aria-hidden="true"></div>
 		<div class="vignette" aria-hidden="true"></div>
 		{#if powerState === 'loading'}
-			<BootScreen onDone={startPowerOn} />
+			<BootScreen onDone={finishBoot} />
 		{/if}
 		{#if powerState === 'enter'}
 			<EnterScreen onEnter={startBoot} />
@@ -249,56 +214,5 @@
 	:global(html.js) [data-state='enter'] .content,
 	:global(html.js) [data-state='loading'] .content {
 		opacity: 0;
-	}
-
-	.content.booting {
-		animation: power-on 1700ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
-	}
-	.content.fast {
-		animation: power-on 700ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
-	}
-
-	@keyframes power-on {
-		0% {
-			opacity: 0;
-			transform: scale(1, 0);
-			filter: brightness(0);
-		}
-		8% {
-			opacity: 1;
-			transform: scale(1.02, 0.001);
-			filter: brightness(20) contrast(2);
-		}
-		22% {
-			transform: scale(1.015, 0.003);
-			filter: brightness(18) contrast(2);
-		}
-		35% {
-			transform: scale(1.01, 0.08) skewX(0.4deg);
-			filter: brightness(8) contrast(1.6) saturate(2);
-		}
-		50% {
-			transform: scale(1.008, 0.5) skewX(-0.2deg);
-			filter: brightness(4) contrast(1.4) saturate(1.7);
-		}
-		65% {
-			transform: scale(1.003, 0.92);
-			filter: brightness(2) contrast(1.2) saturate(1.4);
-		}
-		80% {
-			transform: scale(1, 1);
-			filter: brightness(1.4) contrast(1.1) saturate(1.2);
-		}
-		100% {
-			transform: scale(1);
-			filter: none;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.content.booting,
-		.content.fast {
-			animation: none;
-		}
 	}
 </style>
