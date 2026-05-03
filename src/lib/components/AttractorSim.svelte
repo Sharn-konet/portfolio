@@ -14,11 +14,8 @@
 	let activeIdx = $state(0);
 	let paused = $state(false);
 
-	const PARTICLES = 90;
+	const MAX_PARTICLES = 300;
 	const STEPS_PER_FRAME = 2;
-	// Render-time slowdown applied on top of each system's dt. 1.0 = use the
-	// system's natural dt; lower = slower, more contemplative motion.
-	const SIM_SPEED = 0.5;
 	const TRAIL_LEN = 40;
 	const INITIAL_PITCH = -0.18; // ~10° X-axis tilt for depth
 	const PITCH_LIMIT = Math.PI / 2 - 0.05;
@@ -40,6 +37,10 @@
 	let dragId: number | null = null;
 	let lastX = 0;
 	let lastY = 0;
+
+	let particleCount = $state(90);
+	let simSpeed = $state(0.5);
+	let triggerReseed: () => void = () => {};
 
 	function fmtParams(p: Record<string, number>) {
 		return Object.entries(p)
@@ -126,11 +127,12 @@
 		let cssWidth = 0;
 		let cssHeight = 0;
 
-		// Reused per-frame projection buffers (avoid GC pressure in the hot loop).
-		const trailProjX = new Float64Array(PARTICLES * TRAIL_LEN);
-		const trailProjY = new Float64Array(PARTICLES * TRAIL_LEN);
-		const headPersp = new Float64Array(PARTICLES);
-		const headDepth = new Float64Array(PARTICLES);
+		// Reused per-frame projection buffers sized to the cap; only the first
+		// `particleCount` slots are touched each frame.
+		const trailProjX = new Float64Array(MAX_PARTICLES * TRAIL_LEN);
+		const trailProjY = new Float64Array(MAX_PARTICLES * TRAIL_LEN);
+		const headPersp = new Float64Array(MAX_PARTICLES);
+		const headDepth = new Float64Array(MAX_PARTICLES);
 		// Pre-quantised stroke styles, one per trail-age bucket.
 		const trailStyles: string[] = [];
 		for (let j = 1; j < TRAIL_LEN; j++) {
@@ -160,12 +162,13 @@
 			norm = stats.norm;
 			radius = stats.radius;
 			halfExtents = stats.halfExtents;
-			particles = generateInitialStates(sys, PARTICLES, 0.05);
+			particles = generateInitialStates(sys, particleCount, 0.05);
 			// Spread particles around the attractor by stepping each one a
 			// different number of warmup steps. Without this, particles sit on
 			// top of each other for many seconds before chaos pulls them apart.
 			const baseWarmup = 800;
-			trails = new Array(PARTICLES);
+			const renderDt = sys.dt * simSpeed;
+			trails = new Array(particleCount);
 			for (let i = 0; i < particles.length; i++) {
 				const extra = Math.floor((i / particles.length) * 1200);
 				const total = baseWarmup + extra;
@@ -176,7 +179,6 @@
 				// Fill the trail by walking TRAIL_LEN more steps so every trail
 				// is full-length from frame zero — keeps the render loop branch-
 				// free and the alpha gradient stable across particles.
-				const renderDt = sys.dt * SIM_SPEED;
 				const trail: Vec3[] = new Array(TRAIL_LEN);
 				for (let k = 0; k < TRAIL_LEN; k++) {
 					s = stepParticle(s, sys, sys.defaultParams, renderDt);
@@ -212,7 +214,7 @@
 
 			// Step + record new trail entry per particle.
 			if (!paused) {
-				const renderDt = sys.dt * SIM_SPEED;
+				const renderDt = sys.dt * simSpeed;
 				for (let i = 0; i < particles.length; i++) {
 					let s = particles[i];
 					for (let k = 0; k < STEPS_PER_FRAME; k++) {
@@ -225,8 +227,11 @@
 				}
 			}
 
-			// Project every trail point into the shared buffers.
-			for (let i = 0; i < PARTICLES; i++) {
+			// Project every trail point into the shared buffers. Drive iteration
+			// from the actual array length — `particleCount` may have been bumped
+			// by the slider but won't take effect until reseed fires on release.
+			const count = particles.length;
+			for (let i = 0; i < count; i++) {
 				const trail = trails[i];
 				const base = i * TRAIL_LEN;
 				for (let j = 0; j < TRAIL_LEN; j++) {
@@ -257,7 +262,7 @@
 			for (let j = 1; j < TRAIL_LEN; j++) {
 				ctx!.strokeStyle = trailStyles[j];
 				ctx!.beginPath();
-				for (let i = 0; i < PARTICLES; i++) {
+				for (let i = 0; i < count; i++) {
 					const base = i * TRAIL_LEN;
 					ctx!.moveTo(trailProjX[base + j - 1], trailProjY[base + j - 1]);
 					ctx!.lineTo(trailProjX[base + j], trailProjY[base + j]);
@@ -267,7 +272,7 @@
 
 			// Glowing head dots.
 			ctx!.shadowColor = 'rgba(140, 220, 255, 0.9)';
-			for (let i = 0; i < PARTICLES; i++) {
+			for (let i = 0; i < count; i++) {
 				const headIdx = i * TRAIL_LEN + (TRAIL_LEN - 1);
 				const px = trailProjX[headIdx];
 				const py = trailProjY[headIdx];
@@ -376,6 +381,8 @@
 		reseed(currentIdx);
 		raf = requestAnimationFrame(frame);
 
+		triggerReseed = () => reseed(activeIdx);
+
 		const onResize = () => resize();
 		window.addEventListener('resize', onResize);
 
@@ -402,7 +409,7 @@
 	<div class="frame">
 		<div class="header">
 			<span class="tag">// Simulation · Strange Attractors</span>
-			<span class="meta">{activeName.toUpperCase()} · RK4 · {PARTICLES} PARTICLES</span>
+			<span class="meta">{activeName.toUpperCase()} · RK4 · {particleCount} PARTICLES</span>
 		</div>
 
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -445,6 +452,33 @@
 						<span class="bracket right" aria-hidden="true"> ]</span>
 					</button>
 				{/each}
+			</div>
+			<div class="settings">
+				<label class="setting">
+					<span class="setting-label">PARTICLES</span>
+					<input
+						type="range"
+						min="20"
+						max={MAX_PARTICLES}
+						step="5"
+						data-interactive
+						bind:value={particleCount}
+						onchange={() => triggerReseed()}
+					/>
+					<span class="setting-value">{particleCount}</span>
+				</label>
+				<label class="setting">
+					<span class="setting-label">SPEED</span>
+					<input
+						type="range"
+						min="0.1"
+						max="2"
+						step="0.1"
+						data-interactive
+						bind:value={simSpeed}
+					/>
+					<span class="setting-value">{simSpeed.toFixed(1)}×</span>
+				</label>
 			</div>
 			<div class="hint" aria-hidden="true">DRAG · SCROLL · DBL-CLICK RESET</div>
 		</div>
@@ -603,5 +637,63 @@
 		letter-spacing: 0.18em;
 		color: var(--phosphor-dim);
 		white-space: nowrap;
+	}
+	.settings {
+		display: flex;
+		gap: 18px;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.setting {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-size: var(--font-tiny);
+		letter-spacing: 0.18em;
+	}
+	.setting-label {
+		color: var(--phosphor-mid);
+	}
+	.setting-value {
+		color: var(--phosphor);
+		font-variant-numeric: tabular-nums;
+		min-width: 3em;
+		text-align: right;
+		text-shadow: 0 0 4px var(--glow-soft);
+	}
+	.setting input[type='range'] {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 110px;
+		height: 14px;
+		background: transparent;
+		accent-color: var(--phosphor);
+	}
+	.setting input[type='range']::-webkit-slider-runnable-track {
+		height: 1px;
+		background: rgba(140, 200, 220, 0.35);
+	}
+	.setting input[type='range']::-moz-range-track {
+		height: 1px;
+		background: rgba(140, 200, 220, 0.35);
+	}
+	.setting input[type='range']::-webkit-slider-thumb {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 10px;
+		height: 10px;
+		margin-top: -4.5px;
+		background: var(--phosphor);
+		border: 0;
+		border-radius: 0;
+		box-shadow: 0 0 6px var(--glow-soft);
+	}
+	.setting input[type='range']::-moz-range-thumb {
+		width: 10px;
+		height: 10px;
+		background: var(--phosphor);
+		border: 0;
+		border-radius: 0;
+		box-shadow: 0 0 6px var(--glow-soft);
 	}
 </style>

@@ -1,14 +1,37 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import RevealText from '$lib/components/RevealText.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
 
 	let { data } = $props();
 
+	let shuffled = $state<typeof data.flat>([]);
+	let mounted = $state(false);
 	let lightboxIndex = $state<number | null>(null);
-	let allPhotos = $derived(data.flat);
+	const photos = $derived(mounted ? shuffled : data.flat);
 
-	function open(globalIndex: number) {
-		lightboxIndex = globalIndex;
+	onMount(() => {
+		const a = [...data.flat];
+		for (let i = a.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[a[i], a[j]] = [a[j], a[i]];
+		}
+		shuffled = a;
+		mounted = true;
+	});
+
+	async function play(name: 'click' | 'kachunk') {
+		try {
+			const { sound } = await import('$lib/sound/engine');
+			sound[name]();
+		} catch {
+			/* ignore */
+		}
+	}
+
+	function open(i: number) {
+		lightboxIndex = i;
+		play('kachunk');
 	}
 	function close() {
 		lightboxIndex = null;
@@ -29,28 +52,22 @@
 			</div>
 		</div>
 	{:else}
-		{#each data.sets as set, si (set.slug)}
-			{#if data.sets.length > 1 || set.name !== 'photographs'}
-				<div class="set-label" data-reveal>// {set.name.charAt(0).toUpperCase() + set.name.slice(1)}</div>
-			{/if}
-			<div class="grid" data-reveal>
-				{#each set.photos as photo (photo.href)}
-					{@const globalIndex = data.flat.findIndex((p) => p.href === photo.href)}
-					<button class="tile" onclick={() => open(globalIndex)} aria-label={photo.caption ?? 'photo'}>
-						<picture>
-							{#if photo.avif}<source srcset={photo.avif} type="image/avif" />{/if}
-							{#if photo.webp}<source srcset={photo.webp} type="image/webp" />{/if}
-							<img src={photo.href} alt={photo.alt} loading="lazy" />
-						</picture>
-					</button>
-				{/each}
-			</div>
-		{/each}
+		<div class="grid" data-reveal>
+			{#each photos as photo, i (photo.href)}
+				<button class="tile" onclick={() => open(i)} aria-label={photo.caption ?? 'photo'}>
+					<picture>
+						{#if photo.avif}<source srcset={photo.avif} type="image/avif" />{/if}
+						{#if photo.webp}<source srcset={photo.webp} type="image/webp" />{/if}
+						<img src={photo.href} alt={photo.alt} loading="lazy" />
+					</picture>
+				</button>
+			{/each}
+		</div>
 	{/if}
 </RevealText>
 
 {#if lightboxIndex !== null}
-	<Lightbox photos={allPhotos} bind:index={lightboxIndex} onClose={close} />
+	<Lightbox {photos} bind:index={lightboxIndex} onClose={close} />
 {/if}
 
 <style>
@@ -79,18 +96,6 @@
 		text-shadow: none;
 		color: var(--phosphor);
 	}
-	.set-label {
-		font-size: var(--font-tiny);
-		letter-spacing: 0.24em;
-		text-transform: uppercase;
-		color: var(--phosphor-dim);
-		margin: 28px 0 14px;
-		text-shadow: 0 0 4px var(--glow-soft);
-	}
-	.set-label:first-child {
-		margin-top: 0;
-	}
-
 	.grid {
 		columns: 3;
 		column-gap: 14px;
@@ -121,6 +126,13 @@
 		border-color: rgba(160, 230, 240, 0.5);
 		box-shadow: 0 0 24px rgba(120, 200, 220, 0.18);
 		transform: translateY(-1px);
+	}
+	.tile:focus {
+		outline: none;
+	}
+	.tile:focus-visible {
+		outline: 1px solid rgba(160, 230, 240, 0.7);
+		outline-offset: 2px;
 	}
 	.tile picture,
 	.tile img {

@@ -3,10 +3,13 @@
  *
  * Drop any image (.jpg, .jpeg, .png, .webp, .avif) anywhere under
  * `static/gallery/` and it will appear in the grid. If you put images in a
- * subdirectory, that subdirectory's name becomes a section heading.
+ * subdirectory, that subdirectory's name becomes the photo's set.
  *
  * Per-image AVIF/WebP fallbacks: drop `name.avif` and/or `name.webp`
  * alongside `name.jpg` and the <picture> tag will use the best one.
+ *
+ * Order here is deterministic (alphabetic href). The /photos page shuffles
+ * client-side on mount so each visit gets a different mosaic arrangement.
  */
 
 export type Photo = {
