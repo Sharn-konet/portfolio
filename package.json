@@ -12,6 +12,13 @@
 		"format": "prettier --write .",
 		"skills:build": "node scripts/build-skills-art.mjs",
 		"contact:build": "node scripts/build-contact-art.mjs",
+		"photos:list": "node scripts/photos-list.mjs",
+		"photos:list:all": "node scripts/photos-list.mjs --all",
+		"photos:list:shallow": "node scripts/photos-list.mjs --shallow",
+		"photos:process": "node scripts/photos-process.mjs",
+		"photos:publish": "npm run -s photos:list | nsxiv -tio | npm run -s photos:process",
+		"photos:publish:all": "npm run -s photos:list:all | nsxiv -tio | npm run -s photos:process",
+		"photos:publish:shallow": "npm run -s photos:list:shallow | nsxiv -tio | npm run -s photos:process",
 		"prepare": "svelte-kit sync"
 	},
 	"devDependencies": {

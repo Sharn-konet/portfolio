@@ -1,0 +1,835 @@
+{
+  "version": 2,
+  "entries": {
+    "2025-08-30 - Moving to Sandringham/processed/DSC08687-2-edited.jpg": {
+      "hash": "fp1-13a8afc32efa229446188507b5e0bab128aa864f20b864ccbb9d0e99279b6470",
+      "set": "2025-08-30-moving-to-sandringham",
+      "outputs": [
+        "2025-08-30-moving-to-sandringham/dsc08687-2-edited.jpg",
+        "2025-08-30-moving-to-sandringham/dsc08687-2-edited.webp",
+        "2025-08-30-moving-to-sandringham/dsc08687-2-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:16.273Z"
+    },
+    "2025-08-30 - Moving to Sandringham/processed/DSC09749.jpg": {
+      "hash": "fp1-3aa46ac8aaa76cacdd7b8d23f5e78f9b519790340b03681eaeab4319b23e549b",
+      "set": "2025-08-30-moving-to-sandringham",
+      "outputs": [
+        "2025-08-30-moving-to-sandringham/dsc09749.jpg",
+        "2025-08-30-moving-to-sandringham/dsc09749.webp",
+        "2025-08-30-moving-to-sandringham/dsc09749.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:18.189Z"
+    },
+    "2025-09-07 Lars' House/processed/DSC09854.jpg": {
+      "hash": "fp1-50c940c84beb16f219f38ae9d72ec0c8c9cbcce8f8426d22865e1b073650e1a4",
+      "set": "2025-09-07-lars-house",
+      "outputs": [
+        "2025-09-07-lars-house/dsc09854.jpg",
+        "2025-09-07-lars-house/dsc09854.webp",
+        "2025-09-07-lars-house/dsc09854.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:24.243Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00111.jpg": {
+      "hash": "fp1-123cb6f05264c005319dc2e053b052b845667f07edeccd9e3127591d6c6b5ad8",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00111.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00111.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00111.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:28.476Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00257-edited.jpg": {
+      "hash": "fp1-a6ef7d345feb1ff3b50418d18bb587c54cfa6b0fc4ab089df0e833eb175152c5",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00257-edited.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00257-edited.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00257-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:37.795Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00274.jpg": {
+      "hash": "fp1-1c91490a727aade32f59cd1403ddcb5d9ffa64fcde2df6415e9d76479818b00e",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00274.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00274.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00274.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:46.515Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00329.jpg": {
+      "hash": "fp1-4a4864be090bac34cf503c9e48765a99e55b5a1ed0c384bfc814e1b22f206f06",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00329.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00329.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00329.avif"
+      ],
+      "publishedAt": "2026-05-03T10:40:55.917Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00374.jpg": {
+      "hash": "fp1-59408de2531a4f2cbc5b85ff14888bdd49f20113f1444add9e68cf22e2667a04",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00374.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00374.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00374.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:02.752Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00508.jpg": {
+      "hash": "fp1-240d60521ed47ee152ba3e369c4e128331d12e9147b1d4bf83c33a55a44a3a4c",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00508.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00508.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00508.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:13.522Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00669-1.jpg": {
+      "hash": "fp1-e5110651537c19081d8bb45158e10fccc4c64032711ada4e6809374bacc94e40",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00669-1.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00669-1.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00669-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:19.082Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC00828.jpg": {
+      "hash": "fp1-62e64ecea04528269e8c9d16ad0162c73fa020c6eeccb08c48dc6ef5d8207e02",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc00828.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc00828.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc00828.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:25.509Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC01186.jpg": {
+      "hash": "fp1-0f69210055ce502bfcf3678d4c4e71d0281f49e8fe8c10600e704e63d7f8eca1",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc01186.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc01186.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc01186.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:32.690Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC01267.jpg": {
+      "hash": "fp1-025cff3527bd831aceac2b5000a2eeb4b77eceebf7f741be13aefb7138ea847e",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc01267.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc01267.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc01267.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:38.246Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC01724-1.jpg": {
+      "hash": "fp1-a3ab466cb5d223b1b7431ffdb2ea375665d00964b44deb3c7f9bd3e4b5116c8a",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc01724-1.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc01724-1.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc01724-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:48.058Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC09139-poster ratio.png": {
+      "hash": "fp1-081920a005fd4919b5412c6201b6aac2b072a5644dcd09f0d1223232d317519b",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc09139-poster-ratio.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc09139-poster-ratio.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc09139-poster-ratio.avif"
+      ],
+      "publishedAt": "2026-05-03T10:41:56.906Z"
+    },
+    "2025-09-14 New Plymouth Road Trip/processed/DSC09911.jpg": {
+      "hash": "fp1-6df9c465b547f9e7644e564231cc11da42e3ff720037b56568fd8f8f13a9489b",
+      "set": "2025-09-14-new-plymouth-road-trip",
+      "outputs": [
+        "2025-09-14-new-plymouth-road-trip/dsc09911.jpg",
+        "2025-09-14-new-plymouth-road-trip/dsc09911.webp",
+        "2025-09-14-new-plymouth-road-trip/dsc09911.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:03.824Z"
+    },
+    "23-08-10 Big King Fog/processed/DSC08203-edited.jpg": {
+      "hash": "fp1-de38130d9e92529bbdd74f6dfbad00d624a0fa8e1294b7523026147bdf989755",
+      "set": "23-08-10-big-king-fog",
+      "outputs": [
+        "23-08-10-big-king-fog/dsc08203-edited.jpg",
+        "23-08-10-big-king-fog/dsc08203-edited.webp",
+        "23-08-10-big-king-fog/dsc08203-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:07.032Z"
+    },
+    "Big King 19-06-22/processed/DSC00884-scaled.jpg": {
+      "hash": "fp1-43251c6ddceb6fb552c2093b51987567de08826335d9ba31bdc4a6c93ab64bc1",
+      "set": "big-king-19-06-22",
+      "outputs": [
+        "big-king-19-06-22/dsc00884-scaled.jpg",
+        "big-king-19-06-22/dsc00884-scaled.webp",
+        "big-king-19-06-22/dsc00884-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:09.309Z"
+    },
+    "Big King 19-06-22/processed/DSC00906-scaled.jpg": {
+      "hash": "fp1-6b012bdfb5a8d590f1e36fea226c7166d91b5055f0d6f2dc6e7b94cf6a3d8222",
+      "set": "big-king-19-06-22",
+      "outputs": [
+        "big-king-19-06-22/dsc00906-scaled.jpg",
+        "big-king-19-06-22/dsc00906-scaled.webp",
+        "big-king-19-06-22/dsc00906-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:11.414Z"
+    },
+    "Big King 19-06-22/processed/DSC00916-scaled.jpg": {
+      "hash": "fp1-5cee019b95c840af2fa5fbf1dadd09939dab233ec02ddb2ef919ea7e87b09806",
+      "set": "big-king-19-06-22",
+      "outputs": [
+        "big-king-19-06-22/dsc00916-scaled.jpg",
+        "big-king-19-06-22/dsc00916-scaled.webp",
+        "big-king-19-06-22/dsc00916-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:13.786Z"
+    },
+    "Big King 19-06-22/processed/DSC00929-scaled-1.jpg": {
+      "hash": "fp1-3939ff97778f7e71a1cd17102a378a2b932f93b20f28a0aaa4619f05c5750cc7",
+      "set": "big-king-19-06-22",
+      "outputs": [
+        "big-king-19-06-22/dsc00929-scaled-1.jpg",
+        "big-king-19-06-22/dsc00929-scaled-1.webp",
+        "big-king-19-06-22/dsc00929-scaled-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:16.493Z"
+    },
+    "Big King 19-06-22/processed/DSC00977-scaled.jpg": {
+      "hash": "fp1-daee80a0c0974bc9803638ff8220a47abcba2ab04abb0efa8958a8e9e34d3a93",
+      "set": "big-king-19-06-22",
+      "outputs": [
+        "big-king-19-06-22/dsc00977-scaled.jpg",
+        "big-king-19-06-22/dsc00977-scaled.webp",
+        "big-king-19-06-22/dsc00977-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:17.476Z"
+    },
+    "Big King 19-06-22/processed/DSC00980-scaled.jpg": {
+      "hash": "fp1-3dce036fe21e1a6b3f669fd47688d73e0701853ff46608f6da977c92b8044561",
+      "set": "big-king-19-06-22",
+      "outputs": [
+        "big-king-19-06-22/dsc00980-scaled.jpg",
+        "big-king-19-06-22/dsc00980-scaled.webp",
+        "big-king-19-06-22/dsc00980-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:18.143Z"
+    },
+    "First Day with  135mm - 20-01-23/processed/DSC03892-1.jpg": {
+      "hash": "fp1-ead09d961829d125e89acfd980535b62e4082b1ca58a04eb3369e81885eb3dfb",
+      "set": "first-day-with-135mm-20-01-23",
+      "outputs": [
+        "first-day-with-135mm-20-01-23/dsc03892-1.jpg",
+        "first-day-with-135mm-20-01-23/dsc03892-1.webp",
+        "first-day-with-135mm-20-01-23/dsc03892-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:24.929Z"
+    },
+    "First Day with  135mm - 20-01-23/processed/DSC03939 (1).jpg": {
+      "hash": "fp1-de6ed71f470e668a84e3545d7a5be64293e3974821694124cfadef7bfd79de32",
+      "set": "first-day-with-135mm-20-01-23",
+      "outputs": [
+        "first-day-with-135mm-20-01-23/dsc03939-1.jpg",
+        "first-day-with-135mm-20-01-23/dsc03939-1.webp",
+        "first-day-with-135mm-20-01-23/dsc03939-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:27.784Z"
+    },
+    "First Day with  135mm - 20-01-23/processed/DSC04002.jpg": {
+      "hash": "fp1-3d261d01f8ae0e137f91464a935ccaec1937b87f8b34cc12fc294066f5ede8aa",
+      "set": "first-day-with-135mm-20-01-23",
+      "outputs": [
+        "first-day-with-135mm-20-01-23/dsc04002.jpg",
+        "first-day-with-135mm-20-01-23/dsc04002.webp",
+        "first-day-with-135mm-20-01-23/dsc04002.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:30.962Z"
+    },
+    "First Day with  135mm - 20-01-23/processed/DSC04200.jpg": {
+      "hash": "fp1-0f55ab1491af2ac6633757b986e9e3d2eaf4f34935a20aebeebcd07b7ce4df9a",
+      "set": "first-day-with-135mm-20-01-23",
+      "outputs": [
+        "first-day-with-135mm-20-01-23/dsc04200.jpg",
+        "first-day-with-135mm-20-01-23/dsc04200.webp",
+        "first-day-with-135mm-20-01-23/dsc04200.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:36.029Z"
+    },
+    "First Day with  135mm - 20-01-23/processed/DSC04924.jpg": {
+      "hash": "fp1-ce8a6fd113c5ea688fd0963efbb2290a14f743ab0af69253c9194cb788336cef",
+      "set": "first-day-with-135mm-20-01-23",
+      "outputs": [
+        "first-day-with-135mm-20-01-23/dsc04924.jpg",
+        "first-day-with-135mm-20-01-23/dsc04924.webp",
+        "first-day-with-135mm-20-01-23/dsc04924.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:46.199Z"
+    },
+    "First Day with  135mm - 20-01-23/processed/DSC05154.jpg": {
+      "hash": "fp1-78f0efa1d8e3da547235c0fdd45a9b6808f63af656af9a9192f6f7145f442615",
+      "set": "first-day-with-135mm-20-01-23",
+      "outputs": [
+        "first-day-with-135mm-20-01-23/dsc05154.jpg",
+        "first-day-with-135mm-20-01-23/dsc05154.webp",
+        "first-day-with-135mm-20-01-23/dsc05154.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:51.038Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01465-scaled.jpg": {
+      "hash": "fp1-e0b42f7651027f704f99cba295174773f3dea08d44da81582095665c26426a82",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01465-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01465-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01465-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:51.962Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01489.jpg": {
+      "hash": "fp1-8e6bd11a8e45d204fb7d1f75f4da22818456c79e54f6cfe736950a820d3c9ef6",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01489.jpg",
+        "foggy-five-am-8-8-22/dsc01489.webp",
+        "foggy-five-am-8-8-22/dsc01489.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:55.295Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01504-scaled.jpg": {
+      "hash": "fp1-69765fc21c233da6f60f61e00c8ee763e7d12a5f0d9649e1573ca904f3d0ddc5",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01504-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01504-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01504-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:56.130Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01508.jpg": {
+      "hash": "fp1-4e8667ecf6c2c48334c19e9175b5d782ec2693c07018b0a9201455266a935948",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01508.jpg",
+        "foggy-five-am-8-8-22/dsc01508.webp",
+        "foggy-five-am-8-8-22/dsc01508.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:58.933Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01514-scaled.jpg": {
+      "hash": "fp1-4a16b61d8898f8f77fcaa7ddce4def76f6b388f8fe0f6cbdfc001e71f184905c",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01514-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01514-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01514-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:42:59.992Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01529-scaled.jpg": {
+      "hash": "fp1-27096ed19a211f3795b180d8230b6a09768c5750f809fa29c686836c85c47328",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01529-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01529-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01529-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:00.858Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01565-scaled.jpg": {
+      "hash": "fp1-a7c6ddccb18c6d291e4db94f870688f967b98dbbf606611fd5112639ecfb718d",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01565-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01565-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01565-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:02.318Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01569-scaled.jpg": {
+      "hash": "fp1-7faa1329607211de810ac9c10db41f661f215f8644d7d70621a56fddb974aa58",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01569-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01569-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01569-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:03.799Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01599.jpg": {
+      "hash": "fp1-4896c323ad8ef55f411220195fe0cecda07a74378cfd99e9fd1b6b05990df01b",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01599.jpg",
+        "foggy-five-am-8-8-22/dsc01599.webp",
+        "foggy-five-am-8-8-22/dsc01599.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:08.467Z"
+    },
+    "Foggy Five AM - 8-8-22/processed/DSC01617-scaled.jpg": {
+      "hash": "fp1-5d50f5037a8f8c9687962deea29475cd3bcae61dfb4ba34a104978ae79f7772a",
+      "set": "foggy-five-am-8-8-22",
+      "outputs": [
+        "foggy-five-am-8-8-22/dsc01617-scaled.jpg",
+        "foggy-five-am-8-8-22/dsc01617-scaled.webp",
+        "foggy-five-am-8-8-22/dsc01617-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:09.238Z"
+    },
+    "Guy Fawkes - 05-11-22/processed/DSC02829-scaled.jpg": {
+      "hash": "fp1-9f69674004294da6b905a2aac6ac1772fc9634b023ca6c025b92d21b1b5a3e6b",
+      "set": "guy-fawkes-05-11-22",
+      "outputs": [
+        "guy-fawkes-05-11-22/dsc02829-scaled.jpg",
+        "guy-fawkes-05-11-22/dsc02829-scaled.webp",
+        "guy-fawkes-05-11-22/dsc02829-scaled.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:10.534Z"
+    },
+    "Guy Fawkes - 05-11-22/processed/DSC02836.jpg": {
+      "hash": "fp1-e21c7990f793b0ed1a265d4a74e6522d47cec5cfd9a8738af096b8e02bcfb3db",
+      "set": "guy-fawkes-05-11-22",
+      "outputs": [
+        "guy-fawkes-05-11-22/dsc02836.jpg",
+        "guy-fawkes-05-11-22/dsc02836.webp",
+        "guy-fawkes-05-11-22/dsc02836.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:14.296Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC05409-edited.jpg": {
+      "hash": "fp1-78a71d14a811a57e8d951cbd848de9e2ecf8986baf9725d789edcd2b0e2e8506",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc05409-edited.jpg",
+        "japan-trip-photos/photos/dsc05409-edited.webp",
+        "japan-trip-photos/photos/dsc05409-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:24.570Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC05454.jpg": {
+      "hash": "fp1-6cae2eb8477807acb82fcaeb81776bc74bd9d22c3fefdac7925adebad8aadfdb",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc05454.jpg",
+        "japan-trip-photos/photos/dsc05454.webp",
+        "japan-trip-photos/photos/dsc05454.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:37.601Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC05479.jpg": {
+      "hash": "fp1-6570499af9a5a58f27fc019ba1c86a8e9b38c7afe6f146a6460546f80e75e25d",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc05479.jpg",
+        "japan-trip-photos/photos/dsc05479.webp",
+        "japan-trip-photos/photos/dsc05479.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:50.942Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC05617.jpg": {
+      "hash": "fp1-a69ed2cead861ab05f5d63277e5c7a289d59ffe96525df64fdd1140c87196759",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc05617.jpg",
+        "japan-trip-photos/photos/dsc05617.webp",
+        "japan-trip-photos/photos/dsc05617.avif"
+      ],
+      "publishedAt": "2026-05-03T10:43:59.650Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC06492.jpg": {
+      "hash": "fp1-21c5aa263c0fd76fb8946df6de64447ba4a26f49644d24dc6f39d8104dbf0f8e",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc06492.jpg",
+        "japan-trip-photos/photos/dsc06492.webp",
+        "japan-trip-photos/photos/dsc06492.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:05.799Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC06527.jpg": {
+      "hash": "fp1-30b05ea6c849848d31dab8063d503dc4c0ae94e7683d2208be37a3a3dd0b31f5",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc06527.jpg",
+        "japan-trip-photos/photos/dsc06527.webp",
+        "japan-trip-photos/photos/dsc06527.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:09.425Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC06986.jpg": {
+      "hash": "fp1-2b8fdc8e3c6d5090732cb76a8e2c9d523cd6a5a595bd1f0747969c31d731ef12",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc06986.jpg",
+        "japan-trip-photos/photos/dsc06986.webp",
+        "japan-trip-photos/photos/dsc06986.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:13.656Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC07079.png": {
+      "hash": "fp1-a6f4fe59ff2154b8c60d280e8ccb9e928c83a1c8a78b9d7ceb3534ce3ce7bc3c",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc07079.jpg",
+        "japan-trip-photos/photos/dsc07079.webp",
+        "japan-trip-photos/photos/dsc07079.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:28.344Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC07117.jpg": {
+      "hash": "fp1-9fa9f17a99251f758c0276e25ecd8ccf06df5a153b72ab1228101c1606403ffb",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc07117.jpg",
+        "japan-trip-photos/photos/dsc07117.webp",
+        "japan-trip-photos/photos/dsc07117.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:34.298Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC07200-edited.jpg": {
+      "hash": "fp1-aff3f4536539d74fa74ff27b44de5c25fbbd2630e3434e7502c5f73139be6866",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc07200-edited.jpg",
+        "japan-trip-photos/photos/dsc07200-edited.webp",
+        "japan-trip-photos/photos/dsc07200-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:43.334Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC07497.jpg": {
+      "hash": "fp1-6a046879f780c76d6b06e0e6ad585aea41e0a7d0adf12e8fbdf542ae149886b5",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc07497.jpg",
+        "japan-trip-photos/photos/dsc07497.webp",
+        "japan-trip-photos/photos/dsc07497.avif"
+      ],
+      "publishedAt": "2026-05-03T10:44:48.932Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC07736-edited.jpg": {
+      "hash": "fp1-8f61c8ed64a732236158ff3f1ee8191e283f6671a2ad8e0e221069190a7a4b34",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc07736-edited.jpg",
+        "japan-trip-photos/photos/dsc07736-edited.webp",
+        "japan-trip-photos/photos/dsc07736-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:03.798Z"
+    },
+    "Japan Trip Photos/Photos/processed/DSC07762-edited.jpg": {
+      "hash": "fp1-054a566aa1749726588a5e886bb16f4b55c8362b5cf9d9f254781c080e290ced",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/dsc07762-edited.jpg",
+        "japan-trip-photos/photos/dsc07762-edited.webp",
+        "japan-trip-photos/photos/dsc07762-edited.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:16.346Z"
+    },
+    "Japan Trip Photos/Photos/processed/pixel-sort-alley.jpg": {
+      "hash": "fp1-528fda4d758e84fd2070243302db225fc43f81324453f04c7ab26a4067af5571",
+      "set": "japan-trip-photos/photos",
+      "outputs": [
+        "japan-trip-photos/photos/pixel-sort-alley.jpg",
+        "japan-trip-photos/photos/pixel-sort-alley.webp",
+        "japan-trip-photos/photos/pixel-sort-alley.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:33.642Z"
+    },
+    "Misc Photos - Full Card - 28-12-22/processed/DSC03133.jpg": {
+      "hash": "fp1-5f36bf995cb1045592307966fa6787cff1a2ffd63ddff1f6a260e874da470071",
+      "set": "misc-photos-full-card-28-12-22",
+      "outputs": [
+        "misc-photos-full-card-28-12-22/dsc03133.jpg",
+        "misc-photos-full-card-28-12-22/dsc03133.webp",
+        "misc-photos-full-card-28-12-22/dsc03133.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:41.844Z"
+    },
+    "Misc Photos - Full Card - 28-12-22/processed/DSC03209.jpg": {
+      "hash": "fp1-35ec16d10121abadac8eb089d376619acefec77c8f7d385130e1875e276bd4dc",
+      "set": "misc-photos-full-card-28-12-22",
+      "outputs": [
+        "misc-photos-full-card-28-12-22/dsc03209.jpg",
+        "misc-photos-full-card-28-12-22/dsc03209.webp",
+        "misc-photos-full-card-28-12-22/dsc03209.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:45.569Z"
+    },
+    "Misc Photos - Full Card - 28-12-22/processed/DSC03669.jpg": {
+      "hash": "fp1-28458d3ba57da61ae53dc3ee8d1a869e50b06b0fbb9d0041d414933ff5a4d832",
+      "set": "misc-photos-full-card-28-12-22",
+      "outputs": [
+        "misc-photos-full-card-28-12-22/dsc03669.jpg",
+        "misc-photos-full-card-28-12-22/dsc03669.webp",
+        "misc-photos-full-card-28-12-22/dsc03669.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:50.481Z"
+    },
+    "Misc Photos - Full Card - 28-12-22/processed/DSC03684.jpg": {
+      "hash": "fp1-6051ba56d787994fd326dd4d0cd859d5c890ec6611a76552d30a1cee0a3bf0ef",
+      "set": "misc-photos-full-card-28-12-22",
+      "outputs": [
+        "misc-photos-full-card-28-12-22/dsc03684.jpg",
+        "misc-photos-full-card-28-12-22/dsc03684.webp",
+        "misc-photos-full-card-28-12-22/dsc03684.avif"
+      ],
+      "publishedAt": "2026-05-03T10:45:54.809Z"
+    },
+    "Queenstown - 07-02-23/processed/DSC04883.jpg": {
+      "hash": "fp1-846fa6d89eaa9fe305695b3607670ed28746450c6bc104baf758862f6d3ae0cf",
+      "set": "queenstown-07-02-23",
+      "outputs": [
+        "queenstown-07-02-23/dsc04883.jpg",
+        "queenstown-07-02-23/dsc04883.webp",
+        "queenstown-07-02-23/dsc04883.avif"
+      ],
+      "publishedAt": "2026-05-03T10:46:05.527Z"
+    },
+    "Queenstown - 07-02-23/processed/DSC04918.jpg": {
+      "hash": "fp1-ad082104a8b8f4d3215e55f1fc5e469fab6befde4d26f7657a26d31d1182c410",
+      "set": "queenstown-07-02-23",
+      "outputs": [
+        "queenstown-07-02-23/dsc04918.jpg",
+        "queenstown-07-02-23/dsc04918.webp",
+        "queenstown-07-02-23/dsc04918.avif"
+      ],
+      "publishedAt": "2026-05-03T10:46:21.836Z"
+    },
+    "Queenstown - 07-02-23/processed/DSC04992.jpg": {
+      "hash": "fp1-0798b6c81d5d94fc017dc51e10f9c711beb23deef316a40dbfce209a9c911f84",
+      "set": "queenstown-07-02-23",
+      "outputs": [
+        "queenstown-07-02-23/dsc04992.jpg",
+        "queenstown-07-02-23/dsc04992.webp",
+        "queenstown-07-02-23/dsc04992.avif"
+      ],
+      "publishedAt": "2026-05-03T10:46:32.374Z"
+    },
+    "Queenstown - 07-02-23/processed/DSC05085.jpg": {
+      "hash": "fp1-5cd71449005edb9152bce5c9399e7cd3f5265b4952a98baa28ebc31c64dd6f11",
+      "set": "queenstown-07-02-23",
+      "outputs": [
+        "queenstown-07-02-23/dsc05085.jpg",
+        "queenstown-07-02-23/dsc05085.webp",
+        "queenstown-07-02-23/dsc05085.avif"
+      ],
+      "publishedAt": "2026-05-03T10:46:40.641Z"
+    },
+    "Queenstown - 07-02-23/processed/DSC05144.jpg": {
+      "hash": "fp1-efb137ddf82bfc24054a24079c0655aefead4fa923a32c137276f8c8f8c4c52a",
+      "set": "queenstown-07-02-23",
+      "outputs": [
+        "queenstown-07-02-23/dsc05144.jpg",
+        "queenstown-07-02-23/dsc05144.webp",
+        "queenstown-07-02-23/dsc05144.avif"
+      ],
+      "publishedAt": "2026-05-03T10:46:47.522Z"
+    },
+    "Queenstown - 07-02-23/processed/DSC05145-1.jpg": {
+      "hash": "fp1-bc5062689cc68c84075f1140c3906ae8fd5537226d7e3ab9cf176b763156ca74",
+      "set": "queenstown-07-02-23",
+      "outputs": [
+        "queenstown-07-02-23/dsc05145-1.jpg",
+        "queenstown-07-02-23/dsc05145-1.webp",
+        "queenstown-07-02-23/dsc05145-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:46:56.087Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC08965.jpg": {
+      "hash": "fp1-25a7cbf06a4d2e5d12aeda69784f158c2feb04e4f3c68c365a2997aa9decf71b",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc08965.jpg",
+        "queenstown-27-09-24/dsc08965.webp",
+        "queenstown-27-09-24/dsc08965.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:01.667Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09014.jpg": {
+      "hash": "fp1-ce99051ea7c5a56216292f957e0f106d8444db863922f425df975d0fb599c30f",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09014.jpg",
+        "queenstown-27-09-24/dsc09014.webp",
+        "queenstown-27-09-24/dsc09014.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:07.771Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09083.jpg": {
+      "hash": "fp1-bc42460aedc271087e7f3e61ffbce94ac75d6d4184404a46092e913ac9ee1086",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09083.jpg",
+        "queenstown-27-09-24/dsc09083.webp",
+        "queenstown-27-09-24/dsc09083.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:12.515Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09099.jpg": {
+      "hash": "fp1-0d5939faa6056734528ad9f5ef3961cad53def73890fb572a2f10724a2926b00",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09099.jpg",
+        "queenstown-27-09-24/dsc09099.webp",
+        "queenstown-27-09-24/dsc09099.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:20.475Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09140.jpg": {
+      "hash": "fp1-59ba117d35c4c9186cb38806aa7b7ce95edfa41f87944c3e1302d91e683049de",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09140.jpg",
+        "queenstown-27-09-24/dsc09140.webp",
+        "queenstown-27-09-24/dsc09140.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:24.256Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09316.jpg": {
+      "hash": "fp1-190d7fd21723c1e1f37b34143d48f62d2da646b323bedf67e8bc8fcdcc200748",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09316.jpg",
+        "queenstown-27-09-24/dsc09316.webp",
+        "queenstown-27-09-24/dsc09316.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:32.485Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09423.jpg": {
+      "hash": "fp1-dfa2c093c9a57099179da7eeeefaf40622a3b98e9602cb15e0b5bcbef8b25d52",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09423.jpg",
+        "queenstown-27-09-24/dsc09423.webp",
+        "queenstown-27-09-24/dsc09423.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:39.246Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09693-polaroid.jpg": {
+      "hash": "fp1-ad9de8bbacaaf2aaaec4f9a8fa1526f45436fb69d64356bdb5d4850d4c8b0d10",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09693-polaroid.jpg",
+        "queenstown-27-09-24/dsc09693-polaroid.webp",
+        "queenstown-27-09-24/dsc09693-polaroid.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:42.049Z"
+    },
+    "Queenstown - 27-09-24/processed/DSC09700.png": {
+      "hash": "fp1-78fd72b90801c6943bc0c223c1d1ff8b4574451b95c6e9a6594002f38ba5372f",
+      "set": "queenstown-27-09-24",
+      "outputs": [
+        "queenstown-27-09-24/dsc09700.jpg",
+        "queenstown-27-09-24/dsc09700.webp",
+        "queenstown-27-09-24/dsc09700.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:50.394Z"
+    },
+    "Tairua New Years 2022-2023/processed/DSC03684.jpg": {
+      "hash": "fp1-d2119baddaa232674eebc61193cd9e94cdea423e6f22d3daa5d5a6e6caa3096b",
+      "set": "tairua-new-years-2022-2023",
+      "outputs": [
+        "tairua-new-years-2022-2023/dsc03684.jpg",
+        "tairua-new-years-2022-2023/dsc03684.webp",
+        "tairua-new-years-2022-2023/dsc03684.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:54.875Z"
+    },
+    "The Hangover Pt.2/processed/flowa.jpg": {
+      "hash": "fp1-a28f115cbb03ac66287cb24f7e611e899b60cd920af4fc81f0d29cb49f87bb9e",
+      "set": "the-hangover-pt-2",
+      "outputs": [
+        "the-hangover-pt-2/flowa.jpg",
+        "the-hangover-pt-2/flowa.webp",
+        "the-hangover-pt-2/flowa.avif"
+      ],
+      "publishedAt": "2026-05-03T10:47:57.947Z"
+    },
+    "The Hangover Pt.2/processed/steep_hill.jpg": {
+      "hash": "fp1-dce56b6da839a74aeb70db83096f8ec61c6819a84e84cf068653958686503b67",
+      "set": "the-hangover-pt-2",
+      "outputs": [
+        "the-hangover-pt-2/steep-hill.jpg",
+        "the-hangover-pt-2/steep-hill.webp",
+        "the-hangover-pt-2/steep-hill.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:05.602Z"
+    },
+    "Tuateawa Getaway - 14-10-22/processed/DSC01871.jpg": {
+      "hash": "fp1-a5b81261adce2d680524eae8d6bda9c9a454f3bf1ef1a388f0a2cde5e0307299",
+      "set": "tuateawa-getaway-14-10-22",
+      "outputs": [
+        "tuateawa-getaway-14-10-22/dsc01871.jpg",
+        "tuateawa-getaway-14-10-22/dsc01871.webp",
+        "tuateawa-getaway-14-10-22/dsc01871.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:14.862Z"
+    },
+    "Tuateawa Getaway - 14-10-22/processed/DSC01907-1.jpg": {
+      "hash": "fp1-6f89889f7526be3b25e2317e804171147933f9999f55cd396dee272f0caaaf86",
+      "set": "tuateawa-getaway-14-10-22",
+      "outputs": [
+        "tuateawa-getaway-14-10-22/dsc01907-1.jpg",
+        "tuateawa-getaway-14-10-22/dsc01907-1.webp",
+        "tuateawa-getaway-14-10-22/dsc01907-1.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:23.883Z"
+    },
+    "Tuateawa Getaway - 14-10-22/processed/DSC01910.jpg": {
+      "hash": "fp1-b4dedd9be3d3996796d7d349d96954fec294893045aaaf9ab6e08e7d33706ab3",
+      "set": "tuateawa-getaway-14-10-22",
+      "outputs": [
+        "tuateawa-getaway-14-10-22/dsc01910.jpg",
+        "tuateawa-getaway-14-10-22/dsc01910.webp",
+        "tuateawa-getaway-14-10-22/dsc01910.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:34.534Z"
+    },
+    "Tuateawa Getaway - 14-10-22/processed/DSC02103.jpg": {
+      "hash": "fp1-c3174dacf6df5d5967a495316b7e2ee6f5b135e4566cb9d13d8da78a1c98c86c",
+      "set": "tuateawa-getaway-14-10-22",
+      "outputs": [
+        "tuateawa-getaway-14-10-22/dsc02103.jpg",
+        "tuateawa-getaway-14-10-22/dsc02103.webp",
+        "tuateawa-getaway-14-10-22/dsc02103.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:42.076Z"
+    },
+    "Tuateawa Getaway - 14-10-22/processed/DSC02179.jpg": {
+      "hash": "fp1-661371ddb1e2751eedff8b0296f475a7227f0cfc223acd4cd3dc51deed6ee710",
+      "set": "tuateawa-getaway-14-10-22",
+      "outputs": [
+        "tuateawa-getaway-14-10-22/dsc02179.jpg",
+        "tuateawa-getaway-14-10-22/dsc02179.webp",
+        "tuateawa-getaway-14-10-22/dsc02179.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:48.265Z"
+    },
+    "Uretiti Failed Trip/processed/DSC08554.jpg": {
+      "hash": "fp1-e6e2f41d8c48a5d88b59f69bb089142f37a851f3d61275cb6f23d516287b1b40",
+      "set": "uretiti-failed-trip",
+      "outputs": [
+        "uretiti-failed-trip/dsc08554.jpg",
+        "uretiti-failed-trip/dsc08554.webp",
+        "uretiti-failed-trip/dsc08554.avif"
+      ],
+      "publishedAt": "2026-05-03T10:48:53.788Z"
+    }
+  }
+}
