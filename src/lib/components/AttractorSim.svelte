@@ -186,12 +186,12 @@
 </script>
 
 <section class="sim" data-reveal>
-	<div class="header">
-		<span class="tag">// Simulation · Strange Attractors</span>
-		<span class="meta">{activeName.toUpperCase()} · RK4 · {PARTICLES} PARTICLES</span>
-	</div>
+	<div class="frame">
+		<div class="header">
+			<span class="tag">// Simulation · Strange Attractors</span>
+			<span class="meta">{activeName.toUpperCase()} · RK4 · {PARTICLES} PARTICLES</span>
+		</div>
 
-	<div class="viewport-wrap">
 		<div class="viewport">
 			<canvas bind:this={canvas} aria-label="Strange attractor simulation"></canvas>
 			<div class="overlay top-left">RK4 · dt={attractors[activeIdx].dt}</div>
@@ -207,33 +207,46 @@
 				{paused ? '▸' : '❚❚'}
 			</button>
 		</div>
-	</div>
 
-	<div class="controls">
-		<div class="presets">
-			{#each attractors as sys, i (sys.name)}
-				<button
-					class="preset"
-					class:active={activeIdx === i}
-					onclick={() => selectSystem(i)}
-					type="button"
-				>
-					<span class="bracket left" aria-hidden="true">[ </span>
-					<span class="label">{sys.name}</span>
-					<span class="bracket right" aria-hidden="true"> ]</span>
-				</button>
-			{/each}
+		<div class="controls">
+			<div class="presets">
+				{#each attractors as sys, i (sys.name)}
+					<button
+						class="preset"
+						class:active={activeIdx === i}
+						onclick={() => selectSystem(i)}
+						type="button"
+					>
+						<span class="bracket left" aria-hidden="true">[ </span>
+						<span class="label">{sys.name}</span>
+						<span class="bracket right" aria-hidden="true"> ]</span>
+					</button>
+				{/each}
+			</div>
 		</div>
 	</div>
 </section>
 
 <style>
 	.sim {
+		height: 100%;
+		min-height: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		container-type: size;
+		overflow: hidden;
+	}
+	.frame {
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		height: 100%;
 		min-height: 0;
+		/* Width derived so the inner 4:3 viewport plus chrome (header +
+		   controls + gaps, ~80px) fits the container. Header and controls
+		   inherit this width, so they line up with the viewport edges. */
+		width: min(100cqw, calc((100cqh - 80px) * 4 / 3));
+		max-height: 100cqh;
 	}
 	.header {
 		display: flex;
@@ -249,19 +262,10 @@
 	.header .tag {
 		color: var(--phosphor-mid);
 	}
-	.viewport-wrap {
-		flex: 1;
-		min-height: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		container-type: size;
-		overflow: hidden;
-	}
 	.viewport {
 		position: relative;
 		aspect-ratio: 4 / 3;
-		width: min(100cqw, calc(100cqh * 4 / 3));
+		width: 100%;
 		border: 1px solid rgba(140, 200, 220, 0.25);
 		background: var(--screen);
 		overflow: hidden;
