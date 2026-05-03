@@ -19,6 +19,8 @@ export type Photo = {
 	webp?: string;
 	caption?: string;
 	set?: string;
+	width?: number;
+	height?: number;
 };
 
 export type PhotoSet = {

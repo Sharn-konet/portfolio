@@ -1,24 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import RevealText from '$lib/components/RevealText.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
 
 	let { data } = $props();
+	const photos = $derived(data.flat);
 
-	let shuffled = $state<typeof data.flat>([]);
-	let mounted = $state(false);
 	let lightboxIndex = $state<number | null>(null);
-	const photos = $derived(mounted ? shuffled : data.flat);
-
-	onMount(() => {
-		const a = [...data.flat];
-		for (let i = a.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[a[i], a[j]] = [a[j], a[i]];
-		}
-		shuffled = a;
-		mounted = true;
-	});
 
 	async function play(name: 'click' | 'kachunk') {
 		try {
@@ -58,7 +45,14 @@
 					<picture>
 						{#if photo.avif}<source srcset={photo.avif} type="image/avif" />{/if}
 						{#if photo.webp}<source srcset={photo.webp} type="image/webp" />{/if}
-						<img src={photo.href} alt={photo.alt} loading="lazy" />
+						<img
+						src={photo.href}
+						alt={photo.alt}
+						width={photo.width}
+						height={photo.height}
+						loading="lazy"
+						decoding="async"
+					/>
 					</picture>
 				</button>
 			{/each}
