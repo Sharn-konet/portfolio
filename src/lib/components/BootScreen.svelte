@@ -44,10 +44,11 @@
 	let cancelled = false;
 	let armed = false;
 
-	function barGlyph(n: number) {
-		const f = '█'.repeat(n);
-		const e = '░'.repeat(BAR_LEN - n);
-		return `[${f}${e}]`;
+	function barFilled(n: number) {
+		return '█'.repeat(n);
+	}
+	function barEmpty(n: number) {
+		return '█'.repeat(BAR_LEN - n);
 	}
 	function pctText(n: number) {
 		return Math.round((n / BAR_LEN) * 100)
@@ -135,7 +136,11 @@
 		<pre class="portal" class:show={portalVisible} aria-hidden="true">{PORTAL}</pre>
 		<div class="label">SHARNKO.NET / PORTFOLIO</div>
 		<div class="bar-row">
-			<span class="bar-glyph">{barGlyph(filled)}</span>
+			<span class="bar-glyph"
+				><span class="bar-fill">{barFilled(filled)}</span><span class="bar-empty"
+					>{barEmpty(filled)}</span
+				></span
+			>
 			<span class="bar-pct">{pctText(filled)}</span>
 		</div>
 		<div class="status" class:ready>{ready ? '> READY.' : '> LOADING…'}</div>
@@ -201,6 +206,9 @@
 	.bar-glyph {
 		grid-column: 2;
 		white-space: pre;
+	}
+	.bar-empty {
+		opacity: 0.18;
 	}
 	.bar-pct {
 		grid-column: 3;
